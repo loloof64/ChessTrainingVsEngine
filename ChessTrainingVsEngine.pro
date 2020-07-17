@@ -90,7 +90,8 @@ SOURCES += \
     libs/thc-chess-library/PrivateChessDefs.cpp \
     libs/thc-chess-library/util.cpp \
     main.cpp \
-    gui/componentszone.cpp
+    gui/componentszone.cpp \
+    core/ucienginecommunication.cpp
 
 HEADERS += \
     gui/adapters/thcposition.h \
@@ -186,7 +187,8 @@ HEADERS += \
     libs/thc-chess-library/Move.h \
     libs/thc-chess-library/PrivateChessDefs.h \
     libs/thc-chess-library/util.h \
-    gui/componentszone.h
+    gui/componentszone.h \
+    core/ucienginecommunication.h
 
 RC_ICONS = chess.ico
 

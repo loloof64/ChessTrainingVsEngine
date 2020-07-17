@@ -19,6 +19,7 @@ loloof64::ComponentsZone::ComponentsZone(QWidget *parent) : QWidget(parent)
     _chessBoard = new ChessBoard(45, this);
     _movesHistory = new MovesHistoryFullComponent(this);
     _pgnDatabase = new PgnDatabase(false);
+    _engineCommunication = nullptr;
 
     QFont font;
     font.setPointSize(20);
@@ -77,6 +78,11 @@ loloof64::ComponentsZone::ComponentsZone(QWidget *parent) : QWidget(parent)
 
 loloof64::ComponentsZone::~ComponentsZone()
 {
+    if (_engineCommunication != nullptr) {
+        _engineCommunication->close();
+        delete _engineCommunication;
+    }
+
     if (_pgnDatabase != nullptr)
     {
         _pgnDatabase->close();
@@ -86,6 +92,16 @@ loloof64::ComponentsZone::~ComponentsZone()
     delete _movesHistory;
     delete _chessBoard;
     delete _mainLayout;
+}
+
+void loloof64::ComponentsZone::setEnginePath(QString enginePath)
+{
+    if (_engineCommunication != nullptr) {
+        _engineCommunication->close();
+        delete _engineCommunication;
+    }
+
+    _engineCommunication = new UCIEngineCommunication(enginePath);
 }
 
 void loloof64::ComponentsZone::reverseBoard()

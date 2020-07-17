@@ -14,6 +14,7 @@
 #include "chessboard/chessboard.h"
 #include "history/moveshistoryfullcomponent.h"
 #include "../libs/chessx-pgn/database/pgndatabase.h"
+#include "core/ucienginecommunication.h"
 
 namespace loloof64 {
     class ComponentsZone : public QWidget
@@ -23,6 +24,7 @@ namespace loloof64 {
         explicit ComponentsZone(QWidget *parent = nullptr);
         ~ComponentsZone();
         inline bool gameInProgress(){ return _chessBoard->gameInProgress(); }
+        void setEnginePath(QString enginePath);
 
     public slots:
         void reverseBoard();
@@ -33,6 +35,7 @@ namespace loloof64 {
         ChessBoard *_chessBoard;
         MovesHistoryFullComponent *_movesHistory;
         PgnDatabase *_pgnDatabase;
+        UCIEngineCommunication * _engineCommunication;
         Game _currentGame;
         bool _isWhitePly;
 
