@@ -1,7 +1,7 @@
 #include "ucienginecommunication.h"
 
 //////////////////////////
-#include <iostream>
+#include <QDebug>
 //////////////////////////
 
 loloof64::UCIEngineCommunication::UCIEngineCommunication(QString executablePath)
@@ -12,10 +12,27 @@ loloof64::UCIEngineCommunication::UCIEngineCommunication(QString executablePath)
     {
         auto stdOutputBytes = _relatedProcess->readAllStandardOutput();
         auto stdOutput = QString::fromStdString(stdOutputBytes.toStdString());
+        auto stdOutputLines = stdOutput.split('\n');
 
-        //////////////////////////////////////////////
-        std::cout << stdOutput.toStdString() << std::endl;
-        //////////////////////////////////////////////
+        for (auto it = stdOutputLines.begin(); it != stdOutputLines.end(); ++it)
+        {
+            auto line = *it;
+            /////////////////////
+            qDebug() << line;
+            /////////////////////
+            if (UCIEngineOptionSpin::canParse(line)) _spinOptions.append(UCIEngineOptionSpin(line));
+        }
+
+        ////////////////////////////////////////
+        for (auto it = _spinOptions.begin(); it != _spinOptions.end(); ++it)
+        {
+            qDebug() << QString("Spin option ") << QString(it->getName()) << " : " <<
+                         QString::number(it->getCurrent()) << "([" <<
+                         QString::number(it->getMinimum()) << ", " <<
+                         QString::number(it->getMaximum()) << "; " <<
+                         QString::number(it->getDefault()) << "])";
+        }
+        ////////////////////////////////////////
     });
 
     _relatedProcess->start(executablePath);

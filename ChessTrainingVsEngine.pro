@@ -91,7 +91,8 @@ SOURCES += \
     libs/thc-chess-library/util.cpp \
     main.cpp \
     gui/componentszone.cpp \
-    core/ucienginecommunication.cpp
+    core/ucienginecommunication.cpp \
+    core/uciengineoptionspin.cpp
 
 HEADERS += \
     gui/adapters/thcposition.h \
@@ -188,7 +189,8 @@ HEADERS += \
     libs/thc-chess-library/PrivateChessDefs.h \
     libs/thc-chess-library/util.h \
     gui/componentszone.h \
-    core/ucienginecommunication.h
+    core/ucienginecommunication.h \
+    core/uciengineoptionspin.h
 
 RC_ICONS = chess.ico
 
