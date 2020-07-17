@@ -7,31 +7,53 @@ bool loloof64::UCIEngineOptionSpin::canParse(QString optionString)
 {
     auto parts = optionString.split(QRegExp("\\s+"));
 
-    if (parts.size() < 5) return false;
+    for (auto it = parts.begin(); it != parts.end(); ++it)
+    {
+        auto current = *it;
+        if (current == "spin") return true;
+    }
 
-    auto name = parts[2];
-    auto type = parts[4];
-
-    if (type != "spin") return false;
-
-    return true;
+    return false;
 }
 
 loloof64::UCIEngineOptionSpin::UCIEngineOptionSpin(QString optionString)
 {
     auto parts = optionString.split(' ');
+    QString currentParsing;
+    QString currentParsingType;
 
-    if (parts.size() < 5) throw QString("Not a spin option");
+    for (auto it = parts.begin(); it != parts.end(); ++it)
+    {
+        auto currentPart = *it;
 
-    _name = parts[2];
-    auto type = parts[4];
+        if (currentPart == "name" || currentPart == "type" || currentPart == "default"
+                || currentPart == "default" || currentPart == "min" || currentPart == "max")
+        {
+            currentParsingType = currentPart;
+            if (currentPart == "name") currentParsing = QString();
+            continue;
+        }
 
-    if (type != "spin") throw QString("Not a spin option");
+        if (currentParsingType == "name")
+        {
+            _name += currentPart + " ";
+        }
+        else if (currentParsingType == "default")
+        {
+            _default = QString(currentPart).toInt();
+            _current = _default;
+        }
+        else if (currentParsingType == "min")
+        {
+            _min = QString(currentPart).toInt();
+        }
+        else if (currentParsingType == "max")
+        {
+            _max = QString(currentPart).toInt();
+        }
+    }
 
-    _default = parts[6].toInt();
-    _min = parts[8].toInt();
-    _max = parts[10].toInt();
-    _current = _default;
+    _name = _name.trimmed();
 }
 
 void loloof64::UCIEngineOptionSpin::setToDefault()
@@ -61,7 +83,7 @@ QString loloof64::UCIEngineOptionSpin::getName() const
     return _name;
 }
 
-int loloof64::UCIEngineOptionSpin::getCurrent() const
+int loloof64::UCIEngineOptionSpin::getValue() const
 {
     return _current;
 }

@@ -1,8 +1,8 @@
 #include "ucienginecommunication.h"
 
-//////////////////////////
+/////////////////////////////////
 #include <QDebug>
-//////////////////////////
+/////////////////////////////////
 
 loloof64::UCIEngineCommunication::UCIEngineCommunication(QString executablePath)
 {
@@ -17,22 +17,24 @@ loloof64::UCIEngineCommunication::UCIEngineCommunication(QString executablePath)
         for (auto it = stdOutputLines.begin(); it != stdOutputLines.end(); ++it)
         {
             auto line = *it;
-            /////////////////////
-            qDebug() << line;
-            /////////////////////
-            if (UCIEngineOptionSpin::canParse(line)) _spinOptions.append(UCIEngineOptionSpin(line));
-        }
+            /////////////////////////////
+            // qDebug() << line;
+            /////////////////////////////
 
-        ////////////////////////////////////////
-        for (auto it = _spinOptions.begin(); it != _spinOptions.end(); ++it)
-        {
-            qDebug() << QString("Spin option ") << QString(it->getName()) << " : " <<
-                         QString::number(it->getCurrent()) << "([" <<
-                         QString::number(it->getMinimum()) << ", " <<
-                         QString::number(it->getMaximum()) << "; " <<
-                         QString::number(it->getDefault()) << "])";
+            if (UCIEngineOptionSpin::canParse(line))
+            {
+                UCIEngineOptionSpin option(line);
+                /////////////////////////////
+                qDebug() << "SPIN " << option.getName() << "[" << option.getValue() << " | " << option.getDefault() << " | " <<
+                            option.getMinimum() << ", " << option.getMaximum() << "]";
+                /////////////////////////////
+                _spinOptions.insert(option.getName(), option);
+            }
+            if (line == "uciok") {
+                _uciOk = true;
+                setOptions();
+            }
         }
-        ////////////////////////////////////////
     });
 
     _relatedProcess->start(executablePath);
@@ -40,7 +42,8 @@ loloof64::UCIEngineCommunication::UCIEngineCommunication(QString executablePath)
 }
 
 
-loloof64::UCIEngineCommunication::~UCIEngineCommunication() {
+loloof64::UCIEngineCommunication::~UCIEngineCommunication()
+{
     if (_relatedProcess != nullptr) {
         _relatedProcess->close();
     }
@@ -48,8 +51,24 @@ loloof64::UCIEngineCommunication::~UCIEngineCommunication() {
     delete _relatedProcess;
 }
 
-void loloof64::UCIEngineCommunication::close() {
+void loloof64::UCIEngineCommunication::close()
+{
     if (_relatedProcess != nullptr) {
         _relatedProcess->close();
     }
+}
+
+void loloof64::UCIEngineCommunication::setOptions()
+{
+    if (_spinOptions.contains("UCI_Elo")) {
+        auto option = _spinOptions["UCI_Elo"];
+        option.setToMaximum();
+
+        QString optionCommand;
+        _relatedProcess->write(optionCommand.sprintf(
+                                   "setoption name %s value %d",
+                                   option.getName().toStdString().c_str(), option.getValue())
+                               .toStdString().c_str());
+    }
+    _relatedProcess->write("isready\n");
 }

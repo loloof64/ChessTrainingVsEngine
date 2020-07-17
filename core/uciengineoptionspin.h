@@ -14,7 +14,7 @@ namespace loloof64 {
         void setToDefault();
         void setToValue(int value);
         QString getName() const;
-        int getCurrent() const;
+        int getValue() const;
         int getDefault() const;
         int getMinimum() const;
         int getMaximum() const;

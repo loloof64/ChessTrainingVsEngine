@@ -6,7 +6,7 @@
 #include <QObject>
 #include <QProcess>
 #include <QString>
-#include <QVector>
+#include <QMap>
 
 namespace loloof64 {
     class UCIEngineCommunication : public QObject
@@ -19,7 +19,10 @@ namespace loloof64 {
         void close();
     private:
         QProcess * _relatedProcess;
-        QVector<UCIEngineOptionSpin> _spinOptions;
+        bool _uciOk;
+        bool _readyOk;
+        QMap<QString, UCIEngineOptionSpin> _spinOptions;
+        void setOptions();
     };
 }
 
