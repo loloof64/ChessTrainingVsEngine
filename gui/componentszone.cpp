@@ -102,6 +102,10 @@ void loloof64::ComponentsZone::setEnginePath(QString enginePath)
     }
 
     _engineCommunication = new UCIEngineCommunication(enginePath);
+    connect(_engineCommunication, &UCIEngineCommunication::isReady, [this]() {
+        _engineCommunication->sendCommand("position fen 8/8/8/N7/8/8/p1K5/k7 w - - 0 1");
+        _engineCommunication->sendCommand("go movetime 1100");
+    });
 }
 
 void loloof64::ComponentsZone::reverseBoard()

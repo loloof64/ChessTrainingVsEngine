@@ -1,8 +1,6 @@
 #include "ucienginecommunication.h"
 
-/////////////////////////////////
 #include <QDebug>
-/////////////////////////////////
 
 loloof64::UCIEngineCommunication::UCIEngineCommunication(QString executablePath)
 {
@@ -17,9 +15,8 @@ loloof64::UCIEngineCommunication::UCIEngineCommunication(QString executablePath)
         for (auto it = stdOutputLines.begin(); it != stdOutputLines.end(); ++it)
         {
             auto line = *it;
-            ////////////////////
+
             qDebug() << line;
-            ///////////////////
 
             if (UCIEngineOptionSpin::canParse(line))
             {
@@ -29,6 +26,10 @@ loloof64::UCIEngineCommunication::UCIEngineCommunication(QString executablePath)
             if (line == "uciok") {
                 _uciOk = true;
                 setOptions();
+            }
+            if (line == "readyok") {
+                _readyOk = true;
+                emit isReady();
             }
         }
     });
@@ -77,4 +78,13 @@ void loloof64::UCIEngineCommunication::setOptions()
                                .toStdString().c_str());
     }
     _relatedProcess->write("isready\n");
+}
+
+void loloof64::UCIEngineCommunication::sendCommand(QString command)
+{
+    if (_readyOk)
+    {
+        QString cmd;
+        _relatedProcess->write(cmd.sprintf("%s\n", command.toStdString().c_str()).toStdString().c_str());
+    }
 }

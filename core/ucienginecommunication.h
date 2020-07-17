@@ -17,6 +17,11 @@ namespace loloof64 {
         UCIEngineCommunication(QString executablePath);
         ~UCIEngineCommunication();
         void close();
+        void sendCommand(QString command);
+
+    signals:
+        void isReady();
+
     private:
         QProcess * _relatedProcess;
         bool _uciOk;
