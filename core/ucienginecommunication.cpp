@@ -17,14 +17,13 @@ loloof64::UCIEngineCommunication::UCIEngineCommunication(QString executablePath)
         for (auto it = stdOutputLines.begin(); it != stdOutputLines.end(); ++it)
         {
             auto line = *it;
+            ////////////////////
+            qDebug() << line;
+            ///////////////////
 
             if (UCIEngineOptionSpin::canParse(line))
             {
                 UCIEngineOptionSpin option(line);
-                /////////////////////////////
-                qDebug() << "SPIN " << option.getName() << "[" << option.getValue() << " | " << option.getDefault() << " | " <<
-                            option.getMinimum() << ", " << option.getMaximum() << "]";
-                /////////////////////////////
                 _spinOptions.insert(option.getName(), option);
             }
             if (line == "uciok") {
@@ -63,7 +62,7 @@ void loloof64::UCIEngineCommunication::setOptions()
 
         QString optionCommand;
         _relatedProcess->write(optionCommand.sprintf(
-                                   "setoption name %s value %d",
+                                   "setoption name %s value %d\n",
                                    option.getName().toStdString().c_str(), option.getValue())
                                .toStdString().c_str());
     }
@@ -73,7 +72,7 @@ void loloof64::UCIEngineCommunication::setOptions()
 
         QString optionCommand;
         _relatedProcess->write(optionCommand.sprintf(
-                                   "setoption name %s value %d",
+                                   "setoption name %s value %d\n",
                                    option.getName().toStdString().c_str(), option.getValue())
                                .toStdString().c_str());
     }
