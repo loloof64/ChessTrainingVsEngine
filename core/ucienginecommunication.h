@@ -21,6 +21,7 @@ namespace loloof64 {
 
     signals:
         void isReady();
+        void computedBestMove(QString moveString);
 
     private:
         QProcess * _relatedProcess;

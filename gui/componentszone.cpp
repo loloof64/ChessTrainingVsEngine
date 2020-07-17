@@ -12,6 +12,10 @@
 #include <QDataStream>
 #include <QTimer>
 
+/////////////////////////////////////////////////////////////////////////////
+#include <QDebug>
+/////////////////////////////////////////////////////////////////////////////
+
 loloof64::ComponentsZone::ComponentsZone(QWidget *parent) : QWidget(parent)
 {
     _mainLayout = new QHBoxLayout(this);
@@ -103,8 +107,15 @@ void loloof64::ComponentsZone::setEnginePath(QString enginePath)
 
     _engineCommunication = new UCIEngineCommunication(enginePath);
     connect(_engineCommunication, &UCIEngineCommunication::isReady, [this]() {
+        /////////////////////////////////////////////////////////////////////////////
         _engineCommunication->sendCommand("position fen 8/8/8/N7/8/8/p1K5/k7 w - - 0 1");
         _engineCommunication->sendCommand("go movetime 1100");
+        /////////////////////////////////////////////////////////////////////////////
+    });
+    connect(_engineCommunication, &UCIEngineCommunication::computedBestMove, [](QString move) {
+        /////////////////////////////////////////////////////////////////////////////
+        qDebug() << "Got move => " << move;
+        /////////////////////////////////////////////////////////////////////////////
     });
 }
 

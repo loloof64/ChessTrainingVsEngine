@@ -1,6 +1,7 @@
 #include "ucienginecommunication.h"
 
 #include <QDebug>
+#include <QRegExp>
 
 loloof64::UCIEngineCommunication::UCIEngineCommunication(QString executablePath)
 {
@@ -16,8 +17,6 @@ loloof64::UCIEngineCommunication::UCIEngineCommunication(QString executablePath)
         {
             auto line = *it;
 
-            qDebug() << line;
-
             if (UCIEngineOptionSpin::canParse(line))
             {
                 UCIEngineOptionSpin option(line);
@@ -30,6 +29,11 @@ loloof64::UCIEngineCommunication::UCIEngineCommunication(QString executablePath)
             if (line == "readyok") {
                 _readyOk = true;
                 emit isReady();
+            }
+            if (line.startsWith("bestmove")) {
+                auto parts = line.split(QRegExp("\\s+"));
+                auto move = parts[1];
+                emit computedBestMove(move);
             }
         }
     });
