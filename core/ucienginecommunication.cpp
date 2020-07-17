@@ -17,9 +17,6 @@ loloof64::UCIEngineCommunication::UCIEngineCommunication(QString executablePath)
         for (auto it = stdOutputLines.begin(); it != stdOutputLines.end(); ++it)
         {
             auto line = *it;
-            /////////////////////////////
-            // qDebug() << line;
-            /////////////////////////////
 
             if (UCIEngineOptionSpin::canParse(line))
             {
@@ -62,6 +59,16 @@ void loloof64::UCIEngineCommunication::setOptions()
 {
     if (_spinOptions.contains("UCI_Elo")) {
         auto option = _spinOptions["UCI_Elo"];
+        option.setToMaximum();
+
+        QString optionCommand;
+        _relatedProcess->write(optionCommand.sprintf(
+                                   "setoption name %s value %d",
+                                   option.getName().toStdString().c_str(), option.getValue())
+                               .toStdString().c_str());
+    }
+    if (_spinOptions.contains("Skill Level")) {
+        auto option = _spinOptions["Skill Level"];
         option.setToMaximum();
 
         QString optionCommand;
