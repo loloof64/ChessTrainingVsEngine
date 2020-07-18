@@ -20,42 +20,55 @@ PositionEditorDialog::PositionEditorDialog(QWidget *parent) : QDialog(parent, Qt
 
     _trashCanButton = new QPushButton();
     _trashCanButton->setIcon(QIcon(":/icons/trashCan.svg"));
+    _trashCanButton->setIconSize(QSize(50, 50));
 
     _whitePawnButton = new QPushButton();
     _whitePawnButton->setIcon(QIcon(":/chess_vectors/pl.svg"));
+    _whitePawnButton->setIconSize(QSize(50, 50));
 
     _whiteKnightButton = new QPushButton();
     _whiteKnightButton->setIcon(QIcon(":/chess_vectors/nl.svg"));
+    _whiteKnightButton->setIconSize(QSize(50, 50));
 
     _whiteBishopButton = new QPushButton();
     _whiteBishopButton->setIcon(QIcon(":/chess_vectors/bl.svg"));
+    _whiteBishopButton->setIconSize(QSize(50, 50));
 
     _whiteRookButton = new QPushButton();
     _whiteRookButton->setIcon(QIcon(":/chess_vectors/rl.svg"));
+    _whiteRookButton->setIconSize(QSize(50, 50));
 
     _whiteQueenButton = new QPushButton();
     _whiteQueenButton->setIcon(QIcon(":/chess_vectors/ql.svg"));
+    _whiteQueenButton->setIconSize(QSize(50, 50));
 
     _whiteKingButton = new QPushButton();
     _whiteKingButton->setIcon(QIcon(":/chess_vectors/kl.svg"));
+    _whiteKingButton->setIconSize(QSize(50, 50));
 
     _blackPawnButton = new QPushButton();
     _blackPawnButton->setIcon(QIcon(":/chess_vectors/pd.svg"));
+    _blackPawnButton->setIconSize(QSize(50, 50));
 
     _blackKnightButton = new QPushButton();
     _blackKnightButton->setIcon(QIcon(":/chess_vectors/nd.svg"));
+    _blackKnightButton->setIconSize(QSize(50, 50));
 
     _blackBishopButton = new QPushButton();
     _blackBishopButton->setIcon(QIcon(":/chess_vectors/bd.svg"));
+    _blackBishopButton->setIconSize(QSize(50, 50));
 
     _blackRookButton = new QPushButton();
     _blackRookButton->setIcon(QIcon(":/chess_vectors/rd.svg"));
+    _blackRookButton->setIconSize(QSize(50, 50));
 
     _blackQueenButton = new QPushButton();
     _blackQueenButton->setIcon(QIcon(":/chess_vectors/qd.svg"));
+    _blackQueenButton->setIconSize(QSize(50, 50));
 
     _blackKingButton = new QPushButton();
     _blackKingButton->setIcon(QIcon(":/chess_vectors/kd.svg"));
+    _blackKingButton->setIconSize(QSize(50, 50));
 
     _whitePiecesButtonsLine->addWidget(_whitePawnButton);
     _whitePiecesButtonsLine->addWidget(_whiteKnightButton);
