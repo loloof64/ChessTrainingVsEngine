@@ -1,5 +1,6 @@
 #include "settingsdialog.h"
 #include <QFileDialog>
+#include <QMessageBox>
 
 SettingsDialog::SettingsDialog(QWidget *parent): QDialog(parent, Qt::WindowTitleHint | Qt::CustomizeWindowHint)
 {
@@ -30,6 +31,10 @@ SettingsDialog::SettingsDialog(QWidget *parent): QDialog(parent, Qt::WindowTitle
     _mainLayout->addWidget(_validationButtons);
 
     connect(_validationButtons, &QDialogButtonBox::accepted, [this]() {
+        if (_uciEngineLineEdit->text().isEmpty()) {
+            QMessageBox::critical(this, tr("No engine choosen"), tr("You can't validate without choosing an UCI engine !"));
+            return;
+        }
         close();
     });
 

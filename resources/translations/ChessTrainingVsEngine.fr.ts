@@ -309,19 +309,19 @@ b%2
 <context>
     <name>MainWindow</name>
     <message>
-        <location filename="../../gui/main/mainwindow.cpp" line="10"/>
+        <location filename="../../gui/main/mainwindow.cpp" line="12"/>
         <source>New game</source>
         <comment>Caption for the button &apos;new game&apos;</comment>
         <translation>Nouvelle partie</translation>
     </message>
     <message>
-        <location filename="../../gui/main/mainwindow.cpp" line="15"/>
+        <location filename="../../gui/main/mainwindow.cpp" line="17"/>
         <source>Toggle side</source>
         <comment>Caption for the button &apos;toggle side&apos;</comment>
         <translation>Tourner l&apos;échiquier</translation>
     </message>
     <message>
-        <location filename="../../gui/main/mainwindow.cpp" line="18"/>
+        <location filename="../../gui/main/mainwindow.cpp" line="20"/>
         <source>Settings</source>
         <comment>Caption for the button &apos;settings&apos;</comment>
         <translation>Paramètres</translation>
@@ -954,17 +954,37 @@ b%2
 <context>
     <name>SettingsDialog</name>
     <message>
-        <location filename="../../gui/main/settingsdialog.cpp" line="13"/>
+        <location filename="../../gui/main/settingsdialog.cpp" line="15"/>
         <source>UCI engine</source>
         <translation>Moteur UCI</translation>
     </message>
     <message>
-        <location filename="../../gui/main/settingsdialog.cpp" line="15"/>
+        <location filename="../../gui/main/settingsdialog.cpp" line="17"/>
         <source>Choose engine ...</source>
         <translation>Choix du moteur UCI ...</translation>
     </message>
     <message>
-        <location filename="../../gui/main/settingsdialog.cpp" line="32"/>
+        <location filename="../../gui/main/settingsdialog.cpp" line="20"/>
+        <source>Choose engine</source>
+        <translation>Choix du moteur UCI</translation>
+    </message>
+    <message>
+        <location filename="../../gui/main/settingsdialog.cpp" line="20"/>
+        <source>All files</source>
+        <translation>Tous les fichiers</translation>
+    </message>
+    <message>
+        <location filename="../../gui/main/settingsdialog.cpp" line="35"/>
+        <source>No engine choosen</source>
+        <translation>Aucun fichier choisi</translation>
+    </message>
+    <message>
+        <location filename="../../gui/main/settingsdialog.cpp" line="35"/>
+        <source>You can&apos;t validate without choosing an UCI engine !</source>
+        <translation>Vous ne pouvez pas valider sans avoir choisi un moteur UCI !</translation>
+    </message>
+    <message>
+        <location filename="../../gui/main/settingsdialog.cpp" line="44"/>
         <source>Settings</source>
         <translation>Paramètres</translation>
     </message>
