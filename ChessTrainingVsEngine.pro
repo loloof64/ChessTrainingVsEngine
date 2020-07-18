@@ -161,7 +161,8 @@ HEADERS += \
     libs/thc-chess-library/HashLookup.h \
     libs/thc-chess-library/Move.h \
     libs/thc-chess-library/PrivateChessDefs.h \
-    libs/thc-chess-library/util.h
+    libs/thc-chess-library/util.h \
+    gui/main/settingsdialog.h
 
 SOURCES += \
     core/ucienginecommunication.cpp \
@@ -233,7 +234,8 @@ SOURCES += \
     libs/thc-chess-library/Move.cpp \
     libs/thc-chess-library/PrivateChessDefs.cpp \
     libs/thc-chess-library/util.cpp \
-    main.cpp
+    main.cpp \
+    gui/main/settingsdialog.cpp
 
 TRANSLATIONS += \
     resources/translations/ChessTrainingVsEngine.en.ts \

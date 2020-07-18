@@ -1,4 +1,6 @@
 #include "mainwindow.h"
+#include "settingsdialog.h"
+
 #include <QMessageBox>
 
 MainWindow::MainWindow(QWidget *parent)
@@ -16,7 +18,8 @@ MainWindow::MainWindow(QWidget *parent)
         this->_componentsZone->reverseBoard();
     });
     _mainToolBar->addAction(QIcon(QPixmap(":/icons/settings.svg")), QString(tr("Settings", "Caption for the button 'settings'")), [this](){
-
+        SettingsDialog settingsDialog(this);
+        settingsDialog.exec();
     });
 
     addToolBar(_mainToolBar);

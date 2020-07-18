@@ -41,12 +41,12 @@ b%2
     <message>
         <location filename="../../libs/chessx-pgn/database/bitboard.cpp" line="3088"/>
         <source>White</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">Blanco</translation>
     </message>
     <message>
         <location filename="../../libs/chessx-pgn/database/bitboard.cpp" line="3088"/>
         <source>Black</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">Negro</translation>
     </message>
 </context>
 <context>
@@ -146,7 +146,7 @@ b%2
     <message>
         <location filename="../../libs/chessx-pgn/database/filtermodel.cpp" line="54"/>
         <source>White</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">Blanco</translation>
     </message>
     <message>
         <location filename="../../libs/chessx-pgn/database/filtermodel.cpp" line="55"/>
@@ -156,7 +156,7 @@ b%2
     <message>
         <location filename="../../libs/chessx-pgn/database/filtermodel.cpp" line="56"/>
         <source>Black</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">Negro</translation>
     </message>
     <message>
         <location filename="../../libs/chessx-pgn/database/filtermodel.cpp" line="57"/>
@@ -312,19 +312,19 @@ b%2
         <location filename="../../gui/main/mainwindow.cpp" line="10"/>
         <source>New game</source>
         <comment>Caption for the button &apos;new game&apos;</comment>
-        <translation type="unfinished">Nueva partida</translation>
+        <translation>Nueva partida</translation>
     </message>
     <message>
         <location filename="../../gui/main/mainwindow.cpp" line="15"/>
         <source>Toggle side</source>
         <comment>Caption for the button &apos;toggle side&apos;</comment>
-        <translation type="unfinished">Cambiar el lado</translation>
+        <translation>Cambiar el lado</translation>
     </message>
     <message>
         <location filename="../../gui/main/mainwindow.cpp" line="18"/>
         <source>Settings</source>
         <comment>Caption for the button &apos;settings&apos;</comment>
-        <translation type="unfinished">Opciones</translation>
+        <translation>Opciones</translation>
     </message>
 </context>
 <context>
@@ -952,6 +952,24 @@ b%2
     </message>
 </context>
 <context>
+    <name>SettingsDialog</name>
+    <message>
+        <location filename="../../gui/main/settingsdialog.cpp" line="13"/>
+        <source>UCI engine</source>
+        <translation>UCI motor</translation>
+    </message>
+    <message>
+        <location filename="../../gui/main/settingsdialog.cpp" line="15"/>
+        <source>Choose engine ...</source>
+        <translation>Eleccion del motor UCI ...</translation>
+    </message>
+    <message>
+        <location filename="../../gui/main/settingsdialog.cpp" line="32"/>
+        <source>Settings</source>
+        <translation>Opciones</translation>
+    </message>
+</context>
+<context>
     <name>loloof64::ChessBoard</name>
     <message>
         <location filename="../../gui/chessboard/chessboard.cpp" line="595"/>
@@ -961,32 +979,32 @@ b%2
         <location filename="../../gui/chessboard/chessboard.cpp" line="607"/>
         <source>Game finished</source>
         <comment>Game finished modal title</comment>
-        <translation type="unfinished">Juego terminado</translation>
+        <translation>Juego terminado</translation>
     </message>
     <message>
         <location filename="../../gui/chessboard/chessboard.cpp" line="595"/>
         <source>Checkmate</source>
-        <translation type="unfinished">Jaque mate</translation>
+        <translation>Jaque mate</translation>
     </message>
     <message>
         <location filename="../../gui/chessboard/chessboard.cpp" line="598"/>
         <source>Stalemate</source>
-        <translation type="unfinished">Sit suan</translation>
+        <translation>Sit suan</translation>
     </message>
     <message>
         <location filename="../../gui/chessboard/chessboard.cpp" line="601"/>
         <source>Draw by 3-folds repetition</source>
-        <translation type="unfinished">Igualdad por las tres repeticiones</translation>
+        <translation>Igualdad por las tres repeticiones</translation>
     </message>
     <message>
         <location filename="../../gui/chessboard/chessboard.cpp" line="604"/>
         <source>Draw by insuficient material</source>
-        <translation type="unfinished">Igualdad por la falta de materiales</translation>
+        <translation>Igualdad por la falta de materiales</translation>
     </message>
     <message>
         <location filename="../../gui/chessboard/chessboard.cpp" line="607"/>
         <source>Draw by the 50 moves rule</source>
-        <translation type="unfinished">Igualdad por la ley de los 50 golpes</translation>
+        <translation>Igualdad por la ley de los 50 golpes</translation>
     </message>
 </context>
 <context>
@@ -994,17 +1012,17 @@ b%2
     <message>
         <location filename="../../gui/history/moveshistory.cpp" line="11"/>
         <source>Move number</source>
-        <translation type="unfinished">Nombre</translation>
+        <translation>Nombre</translation>
     </message>
     <message>
         <location filename="../../gui/history/moveshistory.cpp" line="11"/>
         <source>White</source>
-        <translation type="unfinished">Blanco</translation>
+        <translation>Blanco</translation>
     </message>
     <message>
         <location filename="../../gui/history/moveshistory.cpp" line="11"/>
         <source>Black</source>
-        <translation type="unfinished">Negro</translation>
+        <translation>Negro</translation>
     </message>
 </context>
 <context>
@@ -1012,22 +1030,22 @@ b%2
     <message>
         <location filename="../../gui/history/moveshistorybuttons.cpp" line="8"/>
         <source>Goto start</source>
-        <translation type="unfinished">Primero</translation>
+        <translation>Primero</translation>
     </message>
     <message>
         <location filename="../../gui/history/moveshistorybuttons.cpp" line="11"/>
         <source>Goto previous</source>
-        <translation type="unfinished">Anterior</translation>
+        <translation>Anterior</translation>
     </message>
     <message>
         <location filename="../../gui/history/moveshistorybuttons.cpp" line="14"/>
         <source>Goto next</source>
-        <translation type="unfinished">Siguiente</translation>
+        <translation>Siguiente</translation>
     </message>
     <message>
         <location filename="../../gui/history/moveshistorybuttons.cpp" line="17"/>
         <source>Goto end</source>
-        <translation type="unfinished">Ultimo</translation>
+        <translation>Ultimo</translation>
     </message>
 </context>
 <context>
@@ -1035,7 +1053,7 @@ b%2
     <message>
         <location filename="../../gui/chessboard/promotiondialog.cpp" line="57"/>
         <source>Select the promotion piece</source>
-        <translation type="unfinished">Usted elige la pieza de promocion</translation>
+        <translation>Usted elige la pieza de promocion</translation>
     </message>
 </context>
 </TS>
