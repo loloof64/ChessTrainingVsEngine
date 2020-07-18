@@ -15,6 +15,9 @@ MainWindow::MainWindow(QWidget *parent)
     _mainToolBar->addAction(QIcon(QPixmap(":/icons/swap.svg")), QString(tr("Toggle side", "Caption for the button 'toggle side'")), [this](){
         this->_componentsZone->reverseBoard();
     });
+    _mainToolBar->addAction(QIcon(QPixmap(":/icons/settings.svg")), QString(tr("Settings", "Caption for the button 'settings'")), [this](){
+
+    });
 
     addToolBar(_mainToolBar);
     setCentralWidget(_componentsZone);

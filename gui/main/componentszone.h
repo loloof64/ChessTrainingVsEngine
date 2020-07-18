@@ -11,9 +11,9 @@
 #include <QListWidget>
 #include <QPushButton>
 #include <QList>
-#include "chessboard/chessboard.h"
-#include "history/moveshistoryfullcomponent.h"
-#include "../libs/chessx-pgn/database/pgndatabase.h"
+#include "../chessboard/chessboard.h"
+#include "../history/moveshistoryfullcomponent.h"
+#include "../../libs/chessx-pgn/database/pgndatabase.h"
 #include "core/ucienginecommunication.h"
 
 namespace loloof64 {
