@@ -23,8 +23,6 @@ SettingsDialog::SettingsDialog(QWidget *parent): QDialog(parent, Qt::WindowTitle
         if ( ! choosenFile.isEmpty() ) {
             _uciEngineLineEdit->setText(choosenFile);
         }
-
-        serializeOptionFile();
     });
 
     _engineLineLayout->addWidget(_uciEngineLabel);
@@ -39,6 +37,8 @@ SettingsDialog::SettingsDialog(QWidget *parent): QDialog(parent, Qt::WindowTitle
             QMessageBox::critical(this, tr("No engine choosen"), tr("You can't validate without choosing an UCI engine !"));
             return;
         }
+
+        serializeOptionFile();
         close();
     });
 
