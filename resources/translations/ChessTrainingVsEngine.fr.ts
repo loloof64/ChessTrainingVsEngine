@@ -954,39 +954,55 @@ b%2
 <context>
     <name>SettingsDialog</name>
     <message>
-        <location filename="../../gui/main/settingsdialog.cpp" line="15"/>
+        <location filename="../../gui/main/settingsdialog.cpp" line="18"/>
         <source>UCI engine</source>
         <translation>Moteur UCI</translation>
     </message>
     <message>
-        <location filename="../../gui/main/settingsdialog.cpp" line="17"/>
+        <location filename="../../gui/main/settingsdialog.cpp" line="20"/>
         <source>Choose engine ...</source>
         <translation>Choix du moteur UCI ...</translation>
     </message>
     <message>
-        <location filename="../../gui/main/settingsdialog.cpp" line="20"/>
+        <location filename="../../gui/main/settingsdialog.cpp" line="23"/>
         <source>Choose engine</source>
         <translation>Choix du moteur UCI</translation>
     </message>
     <message>
-        <location filename="../../gui/main/settingsdialog.cpp" line="20"/>
+        <location filename="../../gui/main/settingsdialog.cpp" line="23"/>
         <source>All files</source>
         <translation>Tous les fichiers</translation>
     </message>
     <message>
-        <location filename="../../gui/main/settingsdialog.cpp" line="35"/>
+        <location filename="../../gui/main/settingsdialog.cpp" line="38"/>
         <source>No engine choosen</source>
         <translation>Aucun fichier choisi</translation>
     </message>
     <message>
-        <location filename="../../gui/main/settingsdialog.cpp" line="35"/>
+        <location filename="../../gui/main/settingsdialog.cpp" line="38"/>
         <source>You can&apos;t validate without choosing an UCI engine !</source>
         <translation>Vous ne pouvez pas valider sans avoir choisi un moteur UCI !</translation>
     </message>
     <message>
-        <location filename="../../gui/main/settingsdialog.cpp" line="44"/>
+        <location filename="../../gui/main/settingsdialog.cpp" line="53"/>
         <source>Settings</source>
         <translation>Paramètres</translation>
+    </message>
+    <message>
+        <location filename="../../gui/main/settingsdialog.cpp" line="86"/>
+        <location filename="../../gui/main/settingsdialog.cpp" line="89"/>
+        <source>Loading error</source>
+        <translation>Erreur de chargement</translation>
+    </message>
+    <message>
+        <location filename="../../gui/main/settingsdialog.cpp" line="86"/>
+        <source>No configuration file !</source>
+        <translation>Pas de fichier de configuration !</translation>
+    </message>
+    <message>
+        <location filename="../../gui/main/settingsdialog.cpp" line="89"/>
+        <source>Failed reading configuration file !</source>
+        <translation type="unfinished">Echec de lecture du fichier de configuration !</translation>
     </message>
 </context>
 <context>

@@ -27,6 +27,7 @@ private:
     QPushButton * _uciEngineChooserButton;
 
     void serializeOptionFile();
+    void loadOptionsFile();
 };
 
 #endif // SETTINGSDIALOG_H

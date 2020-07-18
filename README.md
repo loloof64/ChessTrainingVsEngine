@@ -1,6 +1,7 @@
 # Chess training Vs Engine
 
 Load or define a chess position, and train yourself against the engine (at its strongest level).
+**Be careful not to use special characters in your executable folder (such as accents), otherwise configuration file won't be parsed !**
 
 ## Developers
 

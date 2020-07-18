@@ -2,6 +2,8 @@
 #include "../../libs/mini-yaml/Yaml.hpp"
 #include <QFileDialog>
 #include <QMessageBox>
+#include <QDebug>
+#include <string>
 
 
 SettingsDialog::SettingsDialog(QWidget *parent): QDialog(parent, Qt::WindowTitleHint | Qt::CustomizeWindowHint)
@@ -47,6 +49,8 @@ SettingsDialog::SettingsDialog(QWidget *parent): QDialog(parent, Qt::WindowTitle
         close();
     });
 
+    loadOptionsFile();
+
     setWindowTitle(tr("Settings"));
     setModal(true);
 }
@@ -68,4 +72,23 @@ void SettingsDialog::serializeOptionFile()
     Yaml::Node root;
     root["uci_engine"] = _uciEngineLineEdit->text().toStdString();
     Yaml::Serialize(root, "ChessTrainingVsEngine.yml");
+}
+
+void SettingsDialog::loadOptionsFile()
+{
+    try {
+        Yaml::Node root;
+        Yaml::Parse(root, "ChessTrainingVsEngine.yml");
+
+        auto uciEnginePath = QString::fromStdString(root["uci_engine"].As<std::string>());
+        _uciEngineLineEdit->setText(uciEnginePath);
+    }
+    catch (Yaml::OperationException &ex) {
+        qDebug() << ex.Message();
+        QMessageBox::critical(this, tr("Loading error"), tr("No configuration file !"));
+    }
+    catch (Yaml::ParsingException &ex) {
+        qDebug() << ex.Message();
+        QMessageBox::critical(this, tr("Loading error"), tr("Failed reading configuration file !"));
+    }
 }

@@ -954,39 +954,55 @@ b%2
 <context>
     <name>SettingsDialog</name>
     <message>
-        <location filename="../../gui/main/settingsdialog.cpp" line="15"/>
+        <location filename="../../gui/main/settingsdialog.cpp" line="18"/>
         <source>UCI engine</source>
         <translation>UCI motor</translation>
     </message>
     <message>
-        <location filename="../../gui/main/settingsdialog.cpp" line="17"/>
+        <location filename="../../gui/main/settingsdialog.cpp" line="20"/>
         <source>Choose engine ...</source>
         <translation>Eleccion del motor UCI ...</translation>
     </message>
     <message>
-        <location filename="../../gui/main/settingsdialog.cpp" line="20"/>
+        <location filename="../../gui/main/settingsdialog.cpp" line="23"/>
         <source>Choose engine</source>
         <translation>Eleccion del motor UCI</translation>
     </message>
     <message>
-        <location filename="../../gui/main/settingsdialog.cpp" line="20"/>
+        <location filename="../../gui/main/settingsdialog.cpp" line="23"/>
         <source>All files</source>
         <translation>Todos los archivos</translation>
     </message>
     <message>
-        <location filename="../../gui/main/settingsdialog.cpp" line="35"/>
+        <location filename="../../gui/main/settingsdialog.cpp" line="38"/>
         <source>No engine choosen</source>
         <translation>Nigun archivo eligado</translation>
     </message>
     <message>
-        <location filename="../../gui/main/settingsdialog.cpp" line="35"/>
+        <location filename="../../gui/main/settingsdialog.cpp" line="38"/>
         <source>You can&apos;t validate without choosing an UCI engine !</source>
         <translation>No puede validar sin eligando un motor UCI !</translation>
     </message>
     <message>
-        <location filename="../../gui/main/settingsdialog.cpp" line="44"/>
+        <location filename="../../gui/main/settingsdialog.cpp" line="53"/>
         <source>Settings</source>
         <translation>Opciones</translation>
+    </message>
+    <message>
+        <location filename="../../gui/main/settingsdialog.cpp" line="86"/>
+        <location filename="../../gui/main/settingsdialog.cpp" line="89"/>
+        <source>Loading error</source>
+        <translation>Error de carga</translation>
+    </message>
+    <message>
+        <location filename="../../gui/main/settingsdialog.cpp" line="86"/>
+        <source>No configuration file !</source>
+        <translation>Sin archivo de configuracion !</translation>
+    </message>
+    <message>
+        <location filename="../../gui/main/settingsdialog.cpp" line="89"/>
+        <source>Failed reading configuration file !</source>
+        <translation type="unfinished">Error al leer el archivo de configuracion</translation>
     </message>
 </context>
 <context>
