@@ -5,7 +5,7 @@ SettingsDialog::SettingsDialog(QWidget *parent): QDialog(parent, Qt::WindowTitle
     _mainLayout = new QVBoxLayout(this);
     _mainLayout->setSpacing(10);
 
-    _engineLineLayout = new QHBoxLayout(this);
+    _engineLineLayout = new QHBoxLayout();
     _engineLineLayout->setSpacing(10);
 
     _validationButtons = new QDialogButtonBox(QDialogButtonBox::Ok | QDialogButtonBox::Cancel, this);
