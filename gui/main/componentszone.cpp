@@ -37,11 +37,6 @@ loloof64::ComponentsZone::ComponentsZone(QWidget *parent) : QWidget(parent)
             [this](QString moveFan, QString newPositionFen, MoveCoordinates lastMove, bool gameFinished)
     {
         _movesHistory->addHistoryItem(HistoryItem(moveFan, newPositionFen, lastMove), gameFinished);
-        const auto noMoreMove = ! _currentGame.hasNextMove();
-        if (noMoreMove){
-            _chessBoard->stopGame();
-            QMessageBox::information(this, tr("Congratulation"), tr("You found all the moves"));
-        }
     });
     connect(_movesHistory->getMovesHistoryMainComponent(), &loloof64::MovesHistory::requestPositionOnBoard,
             [this](HistoryItem item)
@@ -155,22 +150,6 @@ void loloof64::ComponentsZone::handleMoveVerification(MoveCoordinates moveCoordi
             promotionPiece = PieceType::Knight;
             break;
         }
-
-        const auto isAMatchingMove = _currentGame.findNextMove(
-            fromSquare, toSquare, promotionPiece
-        );
-
-        if (! isAMatchingMove)
-        {
-            _chessBoard->stopGame();
-            QTimer timer(this);
-            timer.singleShot(500, this, [this](){
-                showLoosingMessage();
-            });
-        }
-        else {
-            updateExpectedMoves();
-        }
     }
 }
 
@@ -200,14 +179,6 @@ void loloof64::ComponentsZone::makeComputerPlayNextMove()
     else {
         _chessBoard->playMove(startFile, startRank, endFile, endRank);
     }
-
-    updateExpectedMoves();
-}
-
-void loloof64::ComponentsZone::showLoosingMessage()
-{
-    QString expectedMoves{_expectedMovesFanList.join(", ")};
-    QMessageBox::critical(this, tr("You did not find one of the expected moves"), tr("Answers: %1").arg(expectedMoves));
 }
 
 char loloof64::ComponentsZone::promotionPieceToPromotionFen(Piece promotion) const
@@ -244,26 +215,4 @@ QString loloof64::ComponentsZone::moveToMoveFan(Move move)
     }
     const auto moveFan = _chessBoard->getMoveFan(startFile, startRank, endFile, endRank, nextMovePromotionFen);
     return moveFan;
-}
-
-void loloof64::ComponentsZone::updateExpectedMoves()
-{
-    _expectedMovesFanList.clear();
-
-    try {
-        auto mainMoveId = _currentGame.nextMove();
-        const auto mainMove = _currentGame.move(mainMoveId);
-        const auto mainMoveFan = moveToMoveFan(mainMove);
-        _expectedMovesFanList.push_back(mainMoveFan);
-
-        const auto variationsIds = _currentGame.variations();
-        for (const auto currentVariationId: variationsIds)
-        {
-            const auto variation = _currentGame.move(currentVariationId);
-            const auto variationMoveFan = moveToMoveFan(variation);
-            _expectedMovesFanList.push_back(variationMoveFan);
-        }
-    } catch (IllegalMoveException &e) {
-        _expectedMovesFanList.clear();
-    }
 }

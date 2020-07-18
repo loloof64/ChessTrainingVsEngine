@@ -41,9 +41,7 @@ namespace loloof64 {
 
         void handleMoveVerification(MoveCoordinates moveCoordinates, char promotion = 0);
         void makeComputerPlayNextMove();
-        void showLoosingMessage();
         char promotionPieceToPromotionFen(Piece promotion) const;
-        void updateExpectedMoves();
         QString moveToMoveFan(Move moveId);
     };
 }

@@ -235,3 +235,7 @@ SOURCES += \
     libs/thc-chess-library/util.cpp \
     main.cpp
 
+TRANSLATIONS += \
+    resources/translations/ChessTrainingVsEngine.en.ts \
+    resources/translations/ChessTrainingVsEngine.fr.ts \
+    resources/translations/ChessTrainingVsEngine.es.ts

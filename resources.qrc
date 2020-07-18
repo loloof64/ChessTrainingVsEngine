@@ -28,5 +28,9 @@
     <qresource prefix="/fonts">
         <file alias="FreeSerif.ttf">resources/fonts/FreeSerif.ttf</file>
     </qresource>
-    <qresource prefix="/translations"/>
+    <qresource prefix="/translations">
+        <file alias="ChessTrainingVsEngine.en.qm">resources/translations/ChessTrainingVsEngine.en.qm</file>
+        <file alias="ChessTrainingVsEngine.es.qm">resources/translations/ChessTrainingVsEngine.es.qm</file>
+        <file alias="ChessTrainingVsEngine.fr.qm">resources/translations/ChessTrainingVsEngine.fr.qm</file>
+    </qresource>
 </RCC>
