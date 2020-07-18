@@ -1,6 +1,6 @@
 #include "chessboard.h"
 #include "promotiondialog.h"
-#include "../adapters/thcposition.h"
+#include "../../core/adapters/thcposition.h"
 #include <QPainter>
 #include <QVector>
 #include <QString>

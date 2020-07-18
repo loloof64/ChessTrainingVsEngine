@@ -309,19 +309,19 @@ b%2
 <context>
     <name>MainWindow</name>
     <message>
-        <location filename="../../gui/main/mainwindow.cpp" line="12"/>
+        <location filename="../../gui/main/mainwindow.cpp" line="13"/>
         <source>New game</source>
         <comment>Caption for the button &apos;new game&apos;</comment>
         <translation>Nouvelle partie</translation>
     </message>
     <message>
-        <location filename="../../gui/main/mainwindow.cpp" line="17"/>
+        <location filename="../../gui/main/mainwindow.cpp" line="22"/>
         <source>Toggle side</source>
         <comment>Caption for the button &apos;toggle side&apos;</comment>
         <translation>Tourner l&apos;échiquier</translation>
     </message>
     <message>
-        <location filename="../../gui/main/mainwindow.cpp" line="20"/>
+        <location filename="../../gui/main/mainwindow.cpp" line="25"/>
         <source>Settings</source>
         <comment>Caption for the button &apos;settings&apos;</comment>
         <translation>Paramètres</translation>
@@ -952,57 +952,65 @@ b%2
     </message>
 </context>
 <context>
+    <name>PositionEditorDialog</name>
+    <message>
+        <location filename="../../gui/positioneditordialog.cpp" line="39"/>
+        <source>Position editor</source>
+        <translation type="unfinished">Editeur de position</translation>
+    </message>
+</context>
+<context>
     <name>SettingsDialog</name>
     <message>
-        <location filename="../../gui/main/settingsdialog.cpp" line="18"/>
+        <location filename="../../gui/main/settingsdialog.cpp" line="20"/>
         <source>UCI engine</source>
         <translation>Moteur UCI</translation>
     </message>
     <message>
-        <location filename="../../gui/main/settingsdialog.cpp" line="20"/>
+        <location filename="../../gui/main/settingsdialog.cpp" line="22"/>
         <source>Choose engine ...</source>
         <translation>Choix du moteur UCI ...</translation>
     </message>
     <message>
-        <location filename="../../gui/main/settingsdialog.cpp" line="23"/>
+        <location filename="../../gui/main/settingsdialog.cpp" line="25"/>
         <source>Choose engine</source>
         <translation>Choix du moteur UCI</translation>
     </message>
     <message>
-        <location filename="../../gui/main/settingsdialog.cpp" line="23"/>
+        <location filename="../../gui/main/settingsdialog.cpp" line="25"/>
         <source>All files</source>
         <translation>Tous les fichiers</translation>
     </message>
     <message>
-        <location filename="../../gui/main/settingsdialog.cpp" line="38"/>
+        <location filename="../../gui/main/settingsdialog.cpp" line="41"/>
         <source>No engine choosen</source>
         <translation>Aucun fichier choisi</translation>
     </message>
     <message>
-        <location filename="../../gui/main/settingsdialog.cpp" line="38"/>
+        <location filename="../../gui/main/settingsdialog.cpp" line="41"/>
         <source>You can&apos;t validate without choosing an UCI engine !</source>
         <translation>Vous ne pouvez pas valider sans avoir choisi un moteur UCI !</translation>
     </message>
     <message>
-        <location filename="../../gui/main/settingsdialog.cpp" line="53"/>
+        <location filename="../../gui/main/settingsdialog.cpp" line="56"/>
         <source>Settings</source>
         <translation>Paramètres</translation>
     </message>
     <message>
-        <location filename="../../gui/main/settingsdialog.cpp" line="86"/>
-        <location filename="../../gui/main/settingsdialog.cpp" line="89"/>
+        <location filename="../../gui/main/settingsdialog.cpp" line="91"/>
+        <location filename="../../gui/main/settingsdialog.cpp" line="95"/>
         <source>Loading error</source>
         <translation>Erreur de chargement</translation>
     </message>
     <message>
-        <location filename="../../gui/main/settingsdialog.cpp" line="86"/>
+        <location filename="../../gui/main/settingsdialog.cpp" line="91"/>
         <source>No configuration file !</source>
         <translation>Pas de fichier de configuration !</translation>
     </message>
     <message>
-        <location filename="../../gui/main/settingsdialog.cpp" line="89"/>
+        <location filename="../../gui/main/settingsdialog.cpp" line="95"/>
         <source>Failed reading configuration file !</source>
-        <translation type="unfinished">Echec de lecture du fichier de configuration !</translation>
+        <translation>Echec de lecture du fichier de configuration !</translation>
     </message>
 </context>
 <context>

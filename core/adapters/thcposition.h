@@ -1,7 +1,7 @@
 #ifndef THCPOSITION_H
 #define THCPOSITION_H
 
-#include "../chessboard/IPosition.h"
+#include "../IPosition.h"
 #include "../../libs/thc-chess-library/ChessRules.h"
 #include <QMap>
 #include <QString>

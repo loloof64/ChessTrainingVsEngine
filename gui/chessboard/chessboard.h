@@ -3,7 +3,7 @@
 
 #include <QWidget>
 #include <QMouseEvent>
-#include "IPosition.h"
+#include "../../core/IPosition.h"
 
 namespace loloof64 {
     struct DndData
@@ -43,7 +43,7 @@ namespace loloof64 {
         Q_OBJECT
     public:
         explicit ChessBoard(int cellsSize, QWidget *parent = nullptr);
-        ~ChessBoard();
+        virtual ~ChessBoard() override;
         inline bool gameInProgress(){ return _gameFinishedStatus == GameFinishedStatus::NOT_FINISHED; }
         inline bool isWhiteTurn(){ return _relatedPosition->isWhiteTurn(); }
         void setWhitePlayerType(PlayerType playerType);

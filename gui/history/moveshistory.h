@@ -4,7 +4,7 @@
 #include <QTableWidget>
 #include <QVector>
 #include <QLabel>
-#include "../chessboard/IPosition.h"
+#include "../../core/IPosition.h"
 
 namespace loloof64 {
     class MovesHistory : public QTableWidget

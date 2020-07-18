@@ -68,9 +68,9 @@ RESOURCES += \
 HEADERS += \
     core/ucienginecommunication.h \
     core/uciengineoptionspin.h \
-    gui/adapters/thcposition.h \
+    core/adapters/thcposition.h \
     gui/chessboard/chessboard.h \
-    gui/chessboard/IPosition.h \
+    core/IPosition.h \
     gui/chessboard/promotiondialog.h \
     gui/history/moveshistory.h \
     gui/history/moveshistorybuttons.h \
@@ -163,12 +163,14 @@ HEADERS += \
     libs/thc-chess-library/PrivateChessDefs.h \
     libs/thc-chess-library/util.h \
     gui/main/settingsdialog.h \
-    libs/mini-yaml/Yaml.hpp
+    libs/mini-yaml/Yaml.hpp \
+    gui/positioneditordialog.h \
+    gui/position_editor/positioneditor.h
 
 SOURCES += \
     core/ucienginecommunication.cpp \
     core/uciengineoptionspin.cpp \
-    gui/adapters/thcposition.cpp \
+    core/adapters/thcposition.cpp \
     gui/chessboard/chessboard.cpp \
     gui/chessboard/promotiondialog.cpp \
     gui/history/moveshistory.cpp \
@@ -237,7 +239,9 @@ SOURCES += \
     libs/thc-chess-library/util.cpp \
     main.cpp \
     gui/main/settingsdialog.cpp \
-    libs/mini-yaml/Yaml.cpp
+    libs/mini-yaml/Yaml.cpp \
+    gui/positioneditordialog.cpp \
+    gui/position_editor/positioneditor.cpp
 
 TRANSLATIONS += \
     resources/translations/ChessTrainingVsEngine.en.ts \
