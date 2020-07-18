@@ -1,6 +1,8 @@
 #include "settingsdialog.h"
+#include "../../libs/mini-yaml/Yaml.hpp"
 #include <QFileDialog>
 #include <QMessageBox>
+
 
 SettingsDialog::SettingsDialog(QWidget *parent): QDialog(parent, Qt::WindowTitleHint | Qt::CustomizeWindowHint)
 {
@@ -21,6 +23,8 @@ SettingsDialog::SettingsDialog(QWidget *parent): QDialog(parent, Qt::WindowTitle
         if ( ! choosenFile.isEmpty() ) {
             _uciEngineLineEdit->setText(choosenFile);
         }
+
+        serializeOptionFile();
     });
 
     _engineLineLayout->addWidget(_uciEngineLabel);
@@ -38,7 +42,8 @@ SettingsDialog::SettingsDialog(QWidget *parent): QDialog(parent, Qt::WindowTitle
         close();
     });
 
-    connect(_validationButtons, &QDialogButtonBox::rejected, [this]() {
+    connect(_validationButtons, &QDialogButtonBox::rejected, [this]()
+    {
         close();
     });
 
@@ -46,7 +51,8 @@ SettingsDialog::SettingsDialog(QWidget *parent): QDialog(parent, Qt::WindowTitle
     setModal(true);
 }
 
-SettingsDialog::~SettingsDialog() {
+SettingsDialog::~SettingsDialog()
+{
     delete _uciEngineChooserButton;
     delete _uciEngineLineEdit;
     delete _uciEngineLabel;
@@ -54,4 +60,12 @@ SettingsDialog::~SettingsDialog() {
     delete _validationButtons;
     delete _engineLineLayout;
     delete _mainLayout;
+}
+
+
+void SettingsDialog::serializeOptionFile()
+{
+    Yaml::Node root;
+    root["uci_engine"] = _uciEngineLineEdit->text().toStdString();
+    Yaml::Serialize(root, "ChessTrainingVsEngine.yml");
 }

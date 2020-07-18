@@ -13,6 +13,7 @@ Don't forget to generate translations files, from resources/translations subfold
 * FreeSerif font downloaded from https://fr.fonts2u.com/free-serif.police.
 * Using some code from project [thc-chess-library](https://github.com/billforsternz/thc-chess-library).
 * Using some code from project [chessx](http://chessx.sourceforge.net/).
+* Using project [mini-yaml](https://github.com/jimmiebergmann/mini-yaml).
 * Chess pieces vectors have been downloaded from [Wikimedia Commons](https://commons.wikimedia.org/wiki/Category:SVG_chess_pieces).
 
 ### FlatIcon

@@ -25,6 +25,8 @@ private:
     QLabel * _uciEngineLabel;
     QLineEdit * _uciEngineLineEdit;
     QPushButton * _uciEngineChooserButton;
+
+    void serializeOptionFile();
 };
 
 #endif // SETTINGSDIALOG_H
