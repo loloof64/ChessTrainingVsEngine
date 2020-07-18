@@ -1,4 +1,5 @@
 #include "settingsdialog.h"
+#include <QFileDialog>
 
 SettingsDialog::SettingsDialog(QWidget *parent): QDialog(parent, Qt::WindowTitleHint | Qt::CustomizeWindowHint)
 {
@@ -13,6 +14,13 @@ SettingsDialog::SettingsDialog(QWidget *parent): QDialog(parent, Qt::WindowTitle
     _uciEngineLabel = new QLabel(tr("UCI engine"), this);
     _uciEngineLineEdit = new QLineEdit(this);
     _uciEngineChooserButton = new QPushButton(tr("Choose engine ..."), this);
+
+    connect(_uciEngineChooserButton, &QPushButton::clicked, [this] {
+        auto choosenFile = QFileDialog::getOpenFileName(this, tr("Choose engine"), QString(), tr("All files"));
+        if ( ! choosenFile.isEmpty() ) {
+            _uciEngineLineEdit->setText(choosenFile);
+        }
+    });
 
     _engineLineLayout->addWidget(_uciEngineLabel);
     _engineLineLayout->addWidget(_uciEngineLineEdit);
