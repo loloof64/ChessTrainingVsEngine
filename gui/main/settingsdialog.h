@@ -9,6 +9,7 @@
 #include <QLineEdit>
 #include <QPushButton>
 #include <QDialogButtonBox>
+#include <QString>
 
 class SettingsDialog : public QDialog
 {
@@ -25,6 +26,8 @@ private:
     QLabel * _uciEngineLabel;
     QLineEdit * _uciEngineLineEdit;
     QPushButton * _uciEngineChooserButton;
+
+    QString _fileChooserDir;
 
     void serializeOptionFile();
     void loadOptionsFile();

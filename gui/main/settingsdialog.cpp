@@ -1,12 +1,13 @@
 #include "settingsdialog.h"
 #include "../../libs/mini-yaml/Yaml.hpp"
 #include <QFileDialog>
+#include <QDir>
 #include <QMessageBox>
 #include <QDebug>
 #include <string>
 
 
-SettingsDialog::SettingsDialog(QWidget *parent): QDialog(parent, Qt::WindowTitleHint | Qt::CustomizeWindowHint)
+SettingsDialog::SettingsDialog(QWidget *parent): QDialog(parent, Qt::WindowTitleHint | Qt::CustomizeWindowHint), _fileChooserDir(QString())
 {
     _mainLayout = new QVBoxLayout(this);
     _mainLayout->setSpacing(10);
@@ -21,9 +22,10 @@ SettingsDialog::SettingsDialog(QWidget *parent): QDialog(parent, Qt::WindowTitle
     _uciEngineChooserButton = new QPushButton(tr("Choose engine ..."), this);
 
     connect(_uciEngineChooserButton, &QPushButton::clicked, [this] {
-        auto choosenFile = QFileDialog::getOpenFileName(this, tr("Choose engine"), QString(), tr("All files"));
+        auto choosenFile = QFileDialog::getOpenFileName(this, tr("Choose engine"), _fileChooserDir, tr("All files"));
         if ( ! choosenFile.isEmpty() ) {
             _uciEngineLineEdit->setText(choosenFile);
+            _fileChooserDir = QDir(choosenFile).absolutePath();
         }
     });
 
@@ -82,6 +84,7 @@ void SettingsDialog::loadOptionsFile()
 
         auto uciEnginePath = QString::fromStdString(root["uci_engine"].As<std::string>());
         _uciEngineLineEdit->setText(uciEnginePath);
+        _fileChooserDir = QDir(uciEnginePath).absolutePath();
     }
     catch (Yaml::OperationException &ex) {
         qDebug() << ex.Message();
