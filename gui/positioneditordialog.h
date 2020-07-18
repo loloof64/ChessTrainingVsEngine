@@ -20,6 +20,8 @@ public slots:
 
 private:
     QVBoxLayout * _mainLayout;
+    QHBoxLayout * _mainEditorZone;
+    QVBoxLayout * _piecesButtonsLayout;
     QHBoxLayout * _whitePiecesButtonsLine;
     QHBoxLayout * _blackPiecesButtonsLine;
 

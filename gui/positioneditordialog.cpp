@@ -8,6 +8,12 @@ PositionEditorDialog::PositionEditorDialog(QWidget *parent) : QDialog(parent, Qt
     _mainLayout = new QVBoxLayout(this);
     _mainLayout->setSpacing(10);
 
+    _mainEditorZone = new QHBoxLayout();
+    _mainEditorZone->setSpacing(10);
+
+    _piecesButtonsLayout = new QVBoxLayout();
+    _piecesButtonsLayout->setSpacing(10);
+
     _whitePiecesButtonsLine = new QHBoxLayout();
     _whitePiecesButtonsLine->setSpacing(10);
 
@@ -84,10 +90,14 @@ PositionEditorDialog::PositionEditorDialog(QWidget *parent) : QDialog(parent, Qt
     _blackPiecesButtonsLine->addWidget(_blackQueenButton);
     _blackPiecesButtonsLine->addWidget(_blackKingButton);
 
-    _mainLayout->addWidget(_editorComponent);
-    _mainLayout->addWidget(_trashCanButton);
-    _mainLayout->addLayout(_whitePiecesButtonsLine);
-    _mainLayout->addLayout(_blackPiecesButtonsLine);
+    _piecesButtonsLayout->addWidget(_trashCanButton);
+    _piecesButtonsLayout->addLayout(_whitePiecesButtonsLine);
+    _piecesButtonsLayout->addLayout(_blackPiecesButtonsLine);
+
+    _mainEditorZone->addWidget(_editorComponent);
+    _mainEditorZone->addLayout(_piecesButtonsLayout);
+
+    _mainLayout->addLayout(_mainEditorZone);
     _mainLayout->addWidget(_validationButtons);
 
     connect(_validationButtons, &QDialogButtonBox::accepted, [this]() {
@@ -111,5 +121,8 @@ PositionEditorDialog::~PositionEditorDialog() {
 
     delete _blackPiecesButtonsLine;
     delete _whitePiecesButtonsLine;
+
+    delete _piecesButtonsLayout;
+    delete _mainEditorZone;
     delete _mainLayout;
 }
