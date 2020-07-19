@@ -954,9 +954,97 @@ b%2
 <context>
     <name>PositionEditorDialog</name>
     <message>
-        <location filename="../../gui/positioneditordialog.cpp" line="39"/>
+        <location filename="../../gui/positioneditordialog.cpp" line="86"/>
+        <source>Turn</source>
+        <translation>Trait</translation>
+    </message>
+    <message>
+        <location filename="../../gui/positioneditordialog.cpp" line="89"/>
+        <source>White</source>
+        <translation>Blancs</translation>
+    </message>
+    <message>
+        <location filename="../../gui/positioneditordialog.cpp" line="90"/>
+        <source>Black</source>
+        <translation>Noirs</translation>
+    </message>
+    <message>
+        <location filename="../../gui/positioneditordialog.cpp" line="94"/>
+        <source>Move number</source>
+        <translation>Numéro</translation>
+    </message>
+    <message>
+        <location filename="../../gui/positioneditordialog.cpp" line="103"/>
+        <source>Castles</source>
+        <translation>Roques</translation>
+    </message>
+    <message>
+        <location filename="../../gui/positioneditordialog.cpp" line="106"/>
+        <source>white O-O</source>
+        <translation>O-O blanc</translation>
+    </message>
+    <message>
+        <location filename="../../gui/positioneditordialog.cpp" line="107"/>
+        <source>white O-O-O</source>
+        <translation>O-O-O blanc</translation>
+    </message>
+    <message>
+        <location filename="../../gui/positioneditordialog.cpp" line="108"/>
+        <source>black O-O</source>
+        <translation>O-O noir</translation>
+    </message>
+    <message>
+        <location filename="../../gui/positioneditordialog.cpp" line="109"/>
+        <source>black O-O-O</source>
+        <translation>O-O-O noir</translation>
+    </message>
+    <message>
+        <location filename="../../gui/positioneditordialog.cpp" line="116"/>
+        <source>En-passant square</source>
+        <translation>Case de prise en passant</translation>
+    </message>
+    <message>
+        <location filename="../../gui/positioneditordialog.cpp" line="126"/>
+        <source>50 moves rule counter</source>
+        <translation>Compteur pour la règle des 50 coups</translation>
+    </message>
+    <message>
+        <location filename="../../gui/positioneditordialog.cpp" line="137"/>
+        <source>FEN</source>
+        <translation>FEN</translation>
+    </message>
+    <message>
+        <location filename="../../gui/positioneditordialog.cpp" line="141"/>
+        <source>Copy FEN</source>
+        <translation>Copier FEN</translation>
+    </message>
+    <message>
+        <location filename="../../gui/positioneditordialog.cpp" line="142"/>
+        <source>Paste FEN</source>
+        <translation>Coller FEN</translation>
+    </message>
+    <message>
+        <location filename="../../gui/positioneditordialog.cpp" line="185"/>
+        <source>General</source>
+        <comment>General options of position editor</comment>
+        <translation>General</translation>
+    </message>
+    <message>
+        <location filename="../../gui/positioneditordialog.cpp" line="186"/>
+        <source>Advanced</source>
+        <comment>Advanced options of position editor</comment>
+        <translation>Avancés</translation>
+    </message>
+    <message>
+        <location filename="../../gui/positioneditordialog.cpp" line="187"/>
+        <source>FEN</source>
+        <comment>Fen options of position editor</comment>
+        <translation>FEN</translation>
+    </message>
+    <message>
+        <location filename="../../gui/positioneditordialog.cpp" line="226"/>
         <source>Position editor</source>
-        <translation type="unfinished">Editeur de position</translation>
+        <translation>Editeur de position</translation>
     </message>
 </context>
 <context>
