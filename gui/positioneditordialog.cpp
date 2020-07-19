@@ -220,79 +220,7 @@ PositionEditorDialog::PositionEditorDialog(QWidget *parent) : QDialog(parent, Qt
     _mainLayout->addWidget(_optionsZone);
     _mainLayout->addWidget(_validationButtons);
 
-    connect(_whiteTurnButton, &QRadioButton::clicked, [this]() {
-        _positionBuilder->setTurn(true);
-        synchronizeWithBuilder();
-    });
-
-    connect(_blackTurnButton, &QRadioButton::clicked, [this]() {
-        _positionBuilder->setTurn(false);
-        synchronizeWithBuilder();
-    });
-
-    connect(_moveNumberValue, &QLineEdit::editingFinished, [this]() {
-        bool conversionOk;
-        int newMoveNumber = _moveNumberValue->text().toInt(&conversionOk);
-
-        if (conversionOk) {
-         _positionBuilder->setMoveNumber(newMoveNumber);
-         synchronizeWithBuilder();
-        }
-    });
-
-    connect(_whiteOO, &QRadioButton::clicked, [this]() {
-       bool newValue = _whiteOO->isChecked();
-       _positionBuilder->setWhiteOO(newValue);
-        synchronizeWithBuilder();
-    });
-
-    connect(_whiteOOO, &QRadioButton::clicked, [this]() {
-       bool newValue = _whiteOOO->isChecked();
-       _positionBuilder->setWhiteOOO(newValue);
-        synchronizeWithBuilder();
-    });
-
-    connect(_blackOO, &QRadioButton::clicked, [this]() {
-       bool newValue = _blackOO->isChecked();
-       _positionBuilder->setBlackOO(newValue);
-        synchronizeWithBuilder();
-    });
-
-    connect(_blackOOO, &QRadioButton::clicked, [this]() {
-       bool newValue = _blackOOO->isChecked();
-       _positionBuilder->setBlackOOO(newValue);
-        synchronizeWithBuilder();
-    });
-
-    connect(_enPassantSquareFileCombo, qOverload<int>(&QComboBox::activated), [this](int index) {
-        _positionBuilder->setEnPassantFile(index - 1);
-        synchronizeWithBuilder();
-    });
-
-    connect(_fiftyMovesRuleValue, &QLineEdit::editingFinished, [this]() {
-        bool conversionOk;
-        int newFiftyMovesCount = _fiftyMovesRuleValue->text().toInt(&conversionOk);
-
-        if (conversionOk) {
-         _positionBuilder->setFiftyMovesRuleCount(newFiftyMovesCount);
-         synchronizeWithBuilder();
-        }
-    });
-
-    connect(_pasteFenButton, &QPushButton::clicked, [this]() {
-        const QClipboard *clipboard = QApplication::clipboard();
-        try {
-            _positionBuilder->setFromFen(clipboard->text());
-            synchronizeWithBuilder();
-        } catch (loloof64::IllegalPositionException & /* e */) {
-
-        }
-    });
-
-    connect(_copyFenButton, &QPushButton::clicked, [this]() {
-        QClipboard *clipboard = QApplication::clipboard();
-        clipboard->setText(_positionBuilder->getFen());
-    });
+    connectComponents();
 
     connect(_validationButtons, &QDialogButtonBox::accepted, [this]() {
         close();
@@ -399,4 +327,81 @@ void PositionEditorDialog::synchronizeWithBuilder() {
     _fiftyMovesRuleValue->setText(QString::number(_positionBuilder->getFiftyMovesRuleCount()));
 
     _fenValueValue->setText(_positionBuilder->getFen());
+}
+
+void PositionEditorDialog::connectComponents()
+{
+    connect(_whiteTurnButton, &QRadioButton::clicked, [this]() {
+        _positionBuilder->setTurn(true);
+        synchronizeWithBuilder();
+    });
+
+    connect(_blackTurnButton, &QRadioButton::clicked, [this]() {
+        _positionBuilder->setTurn(false);
+        synchronizeWithBuilder();
+    });
+
+    connect(_moveNumberValue, &QLineEdit::editingFinished, [this]() {
+        bool conversionOk;
+        int newMoveNumber = _moveNumberValue->text().toInt(&conversionOk);
+
+        if (conversionOk) {
+         _positionBuilder->setMoveNumber(newMoveNumber);
+         synchronizeWithBuilder();
+        }
+    });
+
+    connect(_whiteOO, &QRadioButton::clicked, [this]() {
+       bool newValue = _whiteOO->isChecked();
+       _positionBuilder->setWhiteOO(newValue);
+        synchronizeWithBuilder();
+    });
+
+    connect(_whiteOOO, &QRadioButton::clicked, [this]() {
+       bool newValue = _whiteOOO->isChecked();
+       _positionBuilder->setWhiteOOO(newValue);
+        synchronizeWithBuilder();
+    });
+
+    connect(_blackOO, &QRadioButton::clicked, [this]() {
+       bool newValue = _blackOO->isChecked();
+       _positionBuilder->setBlackOO(newValue);
+        synchronizeWithBuilder();
+    });
+
+    connect(_blackOOO, &QRadioButton::clicked, [this]() {
+       bool newValue = _blackOOO->isChecked();
+       _positionBuilder->setBlackOOO(newValue);
+        synchronizeWithBuilder();
+    });
+
+    connect(_enPassantSquareFileCombo, qOverload<int>(&QComboBox::activated), [this](int index) {
+        _positionBuilder->setEnPassantFile(index - 1);
+        synchronizeWithBuilder();
+    });
+
+    connect(_fiftyMovesRuleValue, &QLineEdit::editingFinished, [this]() {
+        bool conversionOk;
+        int newFiftyMovesCount = _fiftyMovesRuleValue->text().toInt(&conversionOk);
+
+        if (conversionOk) {
+         _positionBuilder->setFiftyMovesRuleCount(newFiftyMovesCount);
+         synchronizeWithBuilder();
+        }
+    });
+
+    connect(_pasteFenButton, &QPushButton::clicked, [this]() {
+        const QClipboard *clipboard = QApplication::clipboard();
+        try {
+            _positionBuilder->setFromFen(clipboard->text());
+            synchronizeWithBuilder();
+        } catch (loloof64::IllegalPositionException & /* e */) {
+
+        }
+    });
+
+    connect(_copyFenButton, &QPushButton::clicked, [this]() {
+        QClipboard *clipboard = QApplication::clipboard();
+        clipboard->setText(_positionBuilder->getFen());
+    });
 }

@@ -85,6 +85,7 @@ private:
     loloof64::PositionBuilder * _positionBuilder;
 
     void synchronizeWithBuilder();
+    void connectComponents();
 };
 
 #endif // POSITIONEDITORDIALOG_H
