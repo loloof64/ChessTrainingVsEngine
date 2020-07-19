@@ -128,3 +128,16 @@ void loloof64::PositionEditor::setFromFen(QString positionValue)
         }
     }
 }
+
+void loloof64::PositionEditor::mousePressEvent(QMouseEvent *event)
+{
+    const auto x = event->x();
+    const auto y = event->y();
+
+    const auto file = int(floor((x*1.0 - _cellsSize*0.5) / _cellsSize));
+    const auto rank = 7 - int(floor((y*1.0 - _cellsSize*0.5) / _cellsSize));
+
+    if (file >= 0 && file <= 7 && rank >= 0 && rank <= 7) {
+        emit cellSelected(file, rank);
+    }
+}

@@ -57,6 +57,9 @@ private:
     QHBoxLayout * _moveNumberLayout;
     QLabel * _moveNumberLabel;
     QLineEdit * _moveNumberValue;
+    QHBoxLayout * _easyModificationButtonsLine;
+    QPushButton * _eraseAllButton;
+    QPushButton * _standardPositionButton;
 
     QWidget * _advancedOptions;
     QVBoxLayout * _advancedOptionsLayout;
@@ -83,6 +86,8 @@ private:
     QPushButton * _copyFenButton;
     QPushButton * _pasteFenButton;
     loloof64::PositionBuilder * _positionBuilder;
+
+    char _editingValue = ' ';
 
     void synchronizeWithBuilder();
     void connectComponents();

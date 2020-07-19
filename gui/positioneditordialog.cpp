@@ -98,6 +98,10 @@ PositionEditorDialog::PositionEditorDialog(QWidget *parent) : QDialog(parent, Qt
     _moveNumberValue->setMaxLength(3);
     _moveNumberValue->setFixedWidth(45);
     _moveNumberValue->setText("1");
+    _easyModificationButtonsLine = new QHBoxLayout();
+    _easyModificationButtonsLine->setSpacing(10);
+    _eraseAllButton = new QPushButton(tr("Erase board"));
+    _standardPositionButton = new QPushButton(tr("Standard position"));
 
     _advancedOptions = new QWidget();
     _advancedOptionsLayout = new QVBoxLayout();
@@ -176,6 +180,9 @@ PositionEditorDialog::PositionEditorDialog(QWidget *parent) : QDialog(parent, Qt
     _advancedOptionsLayout->addLayout(_fiftyMovesRuleLayout);
     _advancedOptions->setLayout(_advancedOptionsLayout);
 
+    _easyModificationButtonsLine->addWidget(_eraseAllButton);
+    _easyModificationButtonsLine->addWidget(_standardPositionButton);
+    _easyModificationButtonsLine->addStretch();
     _playerTurnGroupLayout->addWidget(_whiteTurnButton);
     _playerTurnGroupLayout->addWidget(_blackTurnButton);
     _playerTurnGroupLayout->addStretch();
@@ -186,6 +193,7 @@ PositionEditorDialog::PositionEditorDialog(QWidget *parent) : QDialog(parent, Qt
     _moveNumberLayout->addStretch();
     _generalOptionsLayout->addWidget(_playerTurnGroup);
     _generalOptionsLayout->addLayout(_moveNumberLayout);
+    _generalOptionsLayout->addLayout(_easyModificationButtonsLine);
     _generalOptions->setLayout(_generalOptionsLayout);
 
     _optionsZone->addTab(_generalOptions, tr("General", "General options of position editor"));
@@ -263,6 +271,9 @@ PositionEditorDialog::~PositionEditorDialog() {
     delete _advancedOptionsLayout;
     delete _advancedOptions;
 
+    delete _standardPositionButton;
+    delete _eraseAllButton;
+    delete _easyModificationButtonsLine;
     delete _moveNumberValue;
     delete _moveNumberLabel;
     delete _moveNumberLayout;
@@ -331,6 +342,11 @@ void PositionEditorDialog::synchronizeWithBuilder() {
 
 void PositionEditorDialog::connectComponents()
 {
+    connect(_editorComponent, &loloof64::PositionEditor::cellSelected, [this](int file, int rank) {
+        _positionBuilder->setPieceAtSquare(_editingValue, loloof64::BoardSquare(file, rank));
+        synchronizeWithBuilder();
+    });
+
     connect(_whiteTurnButton, &QRadioButton::clicked, [this]() {
         _positionBuilder->setTurn(true);
         synchronizeWithBuilder();
@@ -349,6 +365,16 @@ void PositionEditorDialog::connectComponents()
          _positionBuilder->setMoveNumber(newMoveNumber);
          synchronizeWithBuilder();
         }
+    });
+
+    connect(_eraseAllButton, &QPushButton::clicked, [this]() {
+        _positionBuilder->setFromFen("8/8/8/8/8/8/8/8 w - - 0 1");
+        synchronizeWithBuilder();
+    });
+
+    connect(_standardPositionButton, &QPushButton::clicked, [this]() {
+        _positionBuilder->setFromFen("rnbqkbnr/pppppppp/8/8/8/8/PPPPPPPP/RNBQKBNR w KQkq - 0 1");
+        synchronizeWithBuilder();
     });
 
     connect(_whiteOO, &QRadioButton::clicked, [this]() {

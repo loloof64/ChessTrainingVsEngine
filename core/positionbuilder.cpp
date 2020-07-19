@@ -2,9 +2,6 @@
 #include <QStringList>
 #include <cctype>
 
-#include <QDebug>
-//////////////////////
-
 loloof64::PositionBuilder::PositionBuilder()
 {
     const char NO_PIECE = ' ';
@@ -80,6 +77,12 @@ void loloof64::PositionBuilder::setFromFen(QString fen)
         if (castlesPart.contains("k")) _castles.blackOO = true;
         if (castlesPart.contains("q")) _castles.blackOOO = true;
     }
+    else {
+        _castles.whiteOO = false;
+        _castles.whiteOOO = false;
+        _castles.blackOO = false;
+        _castles.blackOOO = false;
+    }
 
     if (enPassantPart != "-") {
         auto filePart = enPassantPart[0];
@@ -99,6 +102,9 @@ void loloof64::PositionBuilder::setFromFen(QString fen)
         }
 
         _enPassantFile = fileAscii - ascii_lower_a;
+    }
+    else {
+     _enPassantFile = -1;
     }
 
     bool fiftyMovesNumberOk;
