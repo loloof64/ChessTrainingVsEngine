@@ -21,9 +21,6 @@ class PositionEditorDialog : public QDialog
 public:
     explicit PositionEditorDialog(QWidget *parent = nullptr);
     virtual ~PositionEditorDialog() override;
-signals:
-
-public slots:
 
 private:
     QVBoxLayout * _mainLayout;
@@ -85,6 +82,9 @@ private:
     QHBoxLayout * _fenButtonsLine;
     QPushButton * _copyFenButton;
     QPushButton * _pasteFenButton;
+    loloof64::PositionBuilder * _positionBuilder;
+
+    void synchronizeWithBuilder();
 };
 
 #endif // POSITIONEDITORDIALOG_H

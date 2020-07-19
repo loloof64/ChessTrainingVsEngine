@@ -2,7 +2,9 @@
 #define POSITIONEDITOR_H
 
 #include <QWidget>
-#include "../../core/IPosition.h"
+#include <QString>
+#include "../../core/positionbuilder.h"
+#include "../../core/adapters/thcposition.h"
 
 namespace loloof64 {
     class PositionEditor : public QWidget
@@ -12,13 +14,11 @@ namespace loloof64 {
         explicit PositionEditor(int cellsSize, QWidget *parent = nullptr);
         virtual ~PositionEditor() override;
 
-    signals:
-
-    public slots:
+        void setFromFen(QString positionValue);
 
     private:
         int _cellsSize;
-        IPosition *_relatedPosition;
+        loloof64::ThcPosition _position;
 
         void paintEvent(QPaintEvent *event) override;
     };

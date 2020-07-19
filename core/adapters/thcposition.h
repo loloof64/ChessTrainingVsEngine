@@ -9,9 +9,6 @@
 namespace loloof64 {
 
     // Empty structure
-    struct IllegalPositionException {};
-
-    // Empty structure
     struct IllegalMoveException {};
 
     // Structure with fields file and rank

@@ -1,13 +1,12 @@
 #include "positioneditor.h"
 #include "../../core/adapters/thcposition.h"
-#include "../../core/IPosition.h"
 #include <cmath>
 #include <QPainter>
 #include <QSvgRenderer>
 
 loloof64::PositionEditor::PositionEditor(int cellsSize, QWidget *parent) : QWidget(parent), _cellsSize(cellsSize)
 {
-    _relatedPosition = new ThcPosition();
+    _position = ThcPosition();
     setMinimumSize(9*cellsSize, 9*cellsSize);
     setMaximumSize(9*cellsSize, 9*cellsSize);
 }
@@ -44,7 +43,7 @@ void loloof64::PositionEditor::paintEvent(QPaintEvent * /*event*/)
             painter.fillRect(x, y, _cellsSize, _cellsSize, cellColor);
 
             // draw piece
-            const auto pieceValue = _relatedPosition->getPieceFenAt(file, rank);
+            const auto pieceValue = _position.getPieceFenAt(file, rank);
 
             const auto notAnEmptyPiece = QVector<char>{
                 'P', 'N', 'B', 'R', 'Q', 'K',
@@ -104,5 +103,28 @@ void loloof64::PositionEditor::paintEvent(QPaintEvent * /*event*/)
 
 loloof64::PositionEditor::~PositionEditor()
 {
-    delete _relatedPosition;
+
+}
+
+void loloof64::PositionEditor::setFromFen(QString positionValue)
+{
+    try {
+        ThcPosition newPosition(positionValue.toStdString());
+        _position = ThcPosition(newPosition);
+        repaint();
+    } catch (IllegalPositionException & /* e */) {
+        // Try setting the same position, but only keeping the original board part
+        // so, trying to rely only on the board part.
+        // if it fails this time, we don't touch the editor.
+        try {
+            QStringList positionParts = positionValue.split(" ");
+            QString substitutePosition;
+            substitutePosition += positionParts[0];
+            substitutePosition += " w - - 0 1";
+            _position = ThcPosition(substitutePosition.toStdString());
+            repaint();
+        } catch (IllegalPositionException & /* e */) {
+
+        }
+    }
 }

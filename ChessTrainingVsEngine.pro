@@ -165,7 +165,8 @@ HEADERS += \
     gui/main/settingsdialog.h \
     libs/mini-yaml/Yaml.hpp \
     gui/positioneditordialog.h \
-    gui/position_editor/positioneditor.h
+    gui/position_editor/positioneditor.h \
+    core/positionbuilder.h
 
 SOURCES += \
     core/IPosition.cpp \
@@ -242,7 +243,8 @@ SOURCES += \
     gui/main/settingsdialog.cpp \
     libs/mini-yaml/Yaml.cpp \
     gui/positioneditordialog.cpp \
-    gui/position_editor/positioneditor.cpp
+    gui/position_editor/positioneditor.cpp \
+    core/positionbuilder.cpp
 
 TRANSLATIONS += \
     resources/translations/ChessTrainingVsEngine.en.ts \

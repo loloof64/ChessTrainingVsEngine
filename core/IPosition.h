@@ -27,6 +27,12 @@ namespace loloof64 {
         RANK_8
     };
 
+    struct IllegalPositionException {
+        IllegalPositionException(){}
+        IllegalPositionException(QString message): message(message){}
+        QString message;
+    };
+
     struct MoveCoordinates
     {
         explicit MoveCoordinates(int startFile, int startRank,
