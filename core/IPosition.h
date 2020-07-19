@@ -67,6 +67,7 @@ namespace loloof64 {
     class IPosition {
     public:
         virtual ~IPosition();
+        static QString pieceFenToPieceImageReference(char pieceFen);
         // Should return the position in Forsyth-Edwards Notation
         virtual std::string getFen() const { UnimplementedException ex; throw ex; }
 

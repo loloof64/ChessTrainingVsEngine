@@ -1,7 +1,9 @@
 #include "positioneditor.h"
 #include "../../core/adapters/thcposition.h"
+#include "../../core/IPosition.h"
 #include <cmath>
 #include <QPainter>
+#include <QSvgRenderer>
 
 loloof64::PositionEditor::PositionEditor(int cellsSize, QWidget *parent) : QWidget(parent), _cellsSize(cellsSize)
 {
@@ -19,10 +21,6 @@ void loloof64::PositionEditor::paintEvent(QPaintEvent * /*event*/)
     const auto backgroundColor = QColor(108, 93, 167);
     const auto whiteCellsColor = QColor(255, 206, 158);
     const auto blackCellsColor = QColor(209, 139, 71);
-    const auto dndCrossCellColor = QColor(200, 115, 207);
-    const auto dndStartCellColor = Qt::red;
-    const auto dndEndCellColor = Qt::green;
-    const auto lastMoveArrowColor = QColor(0, 0, 255, 200);
 
     QPainter painter(this);
 
@@ -39,8 +37,8 @@ void loloof64::PositionEditor::paintEvent(QPaintEvent * /*event*/)
 
             // draw cell
             const auto isWhiteCell = (row+col) %2 == 0;
-            const auto x = floor(_cellsSize * (0.5 + col));
-            const auto y = floor(_cellsSize * (0.5 + row));
+            const auto x = int(floor(_cellsSize * (0.5 + col)));
+            const auto y = int(floor(_cellsSize * (0.5 + row)));
             auto cellColor = isWhiteCell ? whiteCellsColor : blackCellsColor;
 
             painter.fillRect(x, y, _cellsSize, _cellsSize, cellColor);
@@ -52,6 +50,15 @@ void loloof64::PositionEditor::paintEvent(QPaintEvent * /*event*/)
                 'P', 'N', 'B', 'R', 'Q', 'K',
                 'p', 'n', 'b', 'r', 'q', 'k'
             }.contains(pieceValue);
+
+            if (notAnEmptyPiece)
+            {
+                auto resourceName = QString(":/chess_vectors/");
+                resourceName += IPosition::pieceFenToPieceImageReference(pieceValue);
+                QSvgRenderer pieceImage{resourceName};
+
+                pieceImage.render(&painter, QRect(x, y, _cellsSize, _cellsSize));
+            }
 
         }
     }
@@ -71,11 +78,11 @@ void loloof64::PositionEditor::paintEvent(QPaintEvent * /*event*/)
     for (auto col: colsIndexes)
     {
         const auto file = col;
-        const auto letter = (char) (ascii_a + file);
+        const auto letter = static_cast<char>(ascii_a + file);
 
-        const auto x = floor(_cellsSize * (0.85 + col));
-        const auto y1 = floor(_cellsSize * 0.4);
-        const auto y2 = floor(_cellsSize * 8.9);
+        const auto x = int(floor(_cellsSize * (0.85 + col)));
+        const auto y1 = int(floor(_cellsSize * 0.4));
+        const auto y2 = int(floor(_cellsSize * 8.9));
 
         painter.drawText(x, y1, QString(letter));
         painter.drawText(x, y2, QString(letter));
@@ -84,11 +91,11 @@ void loloof64::PositionEditor::paintEvent(QPaintEvent * /*event*/)
     for (auto row: rowsIndexes)
     {
         const auto rank = 7-row;
-        const auto digit = (char) (ascii_1 + rank);
+        const auto digit = static_cast<char>(ascii_1 + rank);
 
-        const auto x1 = floor(_cellsSize * 0.12);
-        const auto x2 = floor(_cellsSize * 8.62);
-        const auto y = floor(_cellsSize * (1.2 + row));
+        const auto x1 = int(floor(_cellsSize * 0.12));
+        const auto x2 = int(floor(_cellsSize * 8.62));
+        const auto y = int(floor(_cellsSize * (1.2 + row)));
 
         painter.drawText(x1, y, QString(digit));
         painter.drawText(x2, y, QString(digit));
