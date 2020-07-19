@@ -6,6 +6,13 @@
 #include <QHBoxLayout>
 #include <QDialogButtonBox>
 #include <QPushButton>
+#include <QGroupBox>
+#include <QRadioButton>
+#include <QTabWidget>
+#include <QLabel>
+#include <QLineEdit>
+#include <QCheckBox>
+#include <QComboBox>
 #include "position_editor/positioneditor.h"
 
 class PositionEditorDialog : public QDialog
@@ -20,7 +27,8 @@ public slots:
 
 private:
     QVBoxLayout * _mainLayout;
-    QHBoxLayout * _mainEditorZone;
+    QWidget * _mainEditorZone;
+    QHBoxLayout * _mainEditorZoneLayout;
     QVBoxLayout * _piecesButtonsLayout;
     QHBoxLayout * _whitePiecesButtonsLine;
     QHBoxLayout * _blackPiecesButtonsLine;
@@ -40,6 +48,43 @@ private:
     QPushButton * _blackRookButton;
     QPushButton * _blackQueenButton;
     QPushButton * _blackKingButton;
+
+    QTabWidget * _optionsZone;
+
+    QWidget * _generalOptions;
+    QVBoxLayout * _generalOptionsLayout;
+    QGroupBox * _playerTurnGroup;
+    QHBoxLayout * _playerTurnGroupLayout;
+    QRadioButton * _whiteTurnButton;
+    QRadioButton * _blackTurnButton;
+    QHBoxLayout * _moveNumberLayout;
+    QLabel * _moveNumberLabel;
+    QLineEdit * _moveNumberValue;
+
+    QWidget * _advancedOptions;
+    QVBoxLayout * _advancedOptionsLayout;
+    QGroupBox * _castlesGroup;
+    QHBoxLayout * _castlesGroupLayout;
+    QCheckBox * _whiteOO;
+    QCheckBox * _whiteOOO;
+    QCheckBox * _blackOO;
+    QCheckBox * _blackOOO;
+    QHBoxLayout * _enPassantSquareLayout;
+    QLabel * _enPassantLabel;
+    QComboBox * _enPassantSquareFileCombo;
+    QLabel * _enPassantSquareRankLabel;
+    QHBoxLayout * _fiftyMovesRuleLayout;
+    QLabel * _fiftyMovesRuleLabel;
+    QLineEdit * _fiftyMovesRuleValue;
+
+    QWidget * _fenOptions;
+    QVBoxLayout * _fenOptionsLayout;
+    QHBoxLayout * _fenValueLineLayout;
+    QLabel * _fenValueLabel;
+    QLineEdit * _fenValueValue;
+    QHBoxLayout * _fenButtonsLine;
+    QPushButton * _copyFenButton;
+    QPushButton * _pasteFenButton;
 };
 
 #endif // POSITIONEDITORDIALOG_H

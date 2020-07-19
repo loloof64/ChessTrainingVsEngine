@@ -8,8 +8,10 @@ PositionEditorDialog::PositionEditorDialog(QWidget *parent) : QDialog(parent, Qt
     _mainLayout = new QVBoxLayout(this);
     _mainLayout->setSpacing(10);
 
-    _mainEditorZone = new QHBoxLayout();
-    _mainEditorZone->setSpacing(10);
+    _mainEditorZone = new QWidget();
+
+    _mainEditorZoneLayout = new QHBoxLayout();
+    _mainEditorZoneLayout->setSpacing(10);
 
     _piecesButtonsLayout = new QVBoxLayout();
     _piecesButtonsLayout->setSpacing(10);
@@ -76,6 +78,114 @@ PositionEditorDialog::PositionEditorDialog(QWidget *parent) : QDialog(parent, Qt
     _blackKingButton->setIcon(QIcon(":/chess_vectors/kd.svg"));
     _blackKingButton->setIconSize(QSize(50, 50));
 
+    _optionsZone = new QTabWidget();
+
+    _generalOptions = new QWidget();
+    _generalOptionsLayout = new QVBoxLayout();
+    _generalOptionsLayout->setSpacing(10);
+    _playerTurnGroup = new QGroupBox(tr("Turn"));
+    _playerTurnGroupLayout = new QHBoxLayout();
+    _playerTurnGroupLayout->setSpacing(10);
+    _whiteTurnButton = new QRadioButton(tr("White"));
+    _blackTurnButton = new QRadioButton(tr("Black"));
+    _whiteTurnButton->setChecked(true);
+    _moveNumberLayout = new QHBoxLayout();
+    _moveNumberLayout->setSpacing(10);
+    _moveNumberLabel = new QLabel(tr("Move number"));
+    _moveNumberValue = new QLineEdit();
+    _moveNumberValue->setMaxLength(3);
+    _moveNumberValue->setFixedWidth(45);
+    _moveNumberValue->setText("1");
+
+    _advancedOptions = new QWidget();
+    _advancedOptionsLayout = new QVBoxLayout();
+    _advancedOptionsLayout->setSpacing(10);
+    _castlesGroup = new QGroupBox(tr("Castles"));
+    _castlesGroupLayout = new QHBoxLayout();
+    _castlesGroupLayout->setSpacing(10);
+    _whiteOO = new QCheckBox(tr("white O-O"));
+    _whiteOOO = new QCheckBox(tr("white O-O-O"));
+    _blackOO = new QCheckBox(tr("black O-O"));
+    _blackOOO = new QCheckBox(tr("black O-O-O"));
+    _whiteOO->setChecked(true);
+    _whiteOOO->setChecked(true);
+    _blackOO->setChecked(true);
+    _blackOOO->setChecked(true);
+    _enPassantSquareLayout = new QHBoxLayout();
+    _enPassantSquareLayout->setSpacing(10);
+    _enPassantLabel = new QLabel(tr("En-passant square"));
+    _enPassantSquareFileCombo = new QComboBox();
+    int ascii_lower_a = 97;
+    for (auto val = 0; val < 8; val++) {
+        auto letter = val + ascii_lower_a;
+        auto letterString = QString(letter);
+        _enPassantSquareFileCombo->addItem(letterString);
+    }
+    _enPassantSquareRankLabel = new QLabel("8");
+    _fiftyMovesRuleLayout = new QHBoxLayout();
+    _fiftyMovesRuleLabel = new QLabel(tr("50 moves rule counter"));
+    _fiftyMovesRuleValue = new QLineEdit();
+    _fiftyMovesRuleValue->setMaxLength(2);
+    _fiftyMovesRuleValue->setFixedWidth(38);
+    _fiftyMovesRuleValue->setText("0");
+
+    _fenOptions = new QWidget();
+    _fenOptionsLayout = new QVBoxLayout();
+    _fenOptionsLayout->setSpacing(10);
+    _fenValueLineLayout = new QHBoxLayout();
+    _fenValueLineLayout->setSpacing(10);
+    _fenValueLabel = new QLabel(tr("FEN"));
+    _fenValueValue = new QLineEdit();
+    _fenButtonsLine = new QHBoxLayout();
+    _fenButtonsLine->setSpacing(10);
+    _copyFenButton = new QPushButton(tr("Copy FEN"));
+    _pasteFenButton = new QPushButton(tr("Paste FEN"));
+
+    _fenButtonsLine->addWidget(_copyFenButton);
+    _fenButtonsLine->addWidget(_pasteFenButton);
+    _fenButtonsLine->addStretch();
+    _fenValueLineLayout->addWidget(_fenValueLabel);
+    _fenValueLineLayout->addWidget(_fenValueValue);
+    _fenValueLineLayout->addStretch();
+    _fenOptionsLayout->addLayout(_fenValueLineLayout);
+    _fenOptionsLayout->addLayout(_fenButtonsLine);
+    _fenOptions->setLayout(_fenOptionsLayout);
+
+    _fiftyMovesRuleLayout->addWidget(_fiftyMovesRuleLabel);
+    _fiftyMovesRuleLayout->addWidget(_fiftyMovesRuleValue);
+    _fiftyMovesRuleLayout->addStretch();
+    _enPassantSquareLayout->addWidget(_enPassantLabel);
+    _enPassantSquareLayout->addWidget(_enPassantSquareFileCombo);
+    _enPassantSquareLayout->addWidget(_enPassantSquareRankLabel);
+    _enPassantSquareLayout->addStretch();
+    _castlesGroupLayout->addWidget(_whiteOO);
+    _castlesGroupLayout->addWidget(_whiteOOO);
+    _castlesGroupLayout->addWidget(_blackOO);
+    _castlesGroupLayout->addWidget(_blackOOO);
+    _castlesGroupLayout->addStretch();
+    _castlesGroup->setLayout(_castlesGroupLayout);
+    _castlesGroup->setStyleSheet("QGroupBox::title {position: left; margin: 5px;}");
+    _advancedOptionsLayout->addWidget(_castlesGroup);
+    _advancedOptionsLayout->addLayout(_enPassantSquareLayout);
+    _advancedOptionsLayout->addLayout(_fiftyMovesRuleLayout);
+    _advancedOptions->setLayout(_advancedOptionsLayout);
+
+    _playerTurnGroupLayout->addWidget(_whiteTurnButton);
+    _playerTurnGroupLayout->addWidget(_blackTurnButton);
+    _playerTurnGroupLayout->addStretch();
+    _playerTurnGroup->setLayout(_playerTurnGroupLayout);
+    _playerTurnGroup->setStyleSheet("QGroupBox::title {position: left; margin: 5px;}");
+    _moveNumberLayout->addWidget(_moveNumberLabel);
+    _moveNumberLayout->addWidget(_moveNumberValue);
+    _moveNumberLayout->addStretch();
+    _generalOptionsLayout->addWidget(_playerTurnGroup);
+    _generalOptionsLayout->addLayout(_moveNumberLayout);
+    _generalOptions->setLayout(_generalOptionsLayout);
+
+    _optionsZone->addTab(_generalOptions, tr("General", "General options of position editor"));
+    _optionsZone->addTab(_advancedOptions, tr("Advanced", "Advanced options of position editor"));
+    _optionsZone->addTab(_fenOptions, tr("FEN", "Fen options of position editor"));
+
     _whitePiecesButtonsLine->addWidget(_whitePawnButton);
     _whitePiecesButtonsLine->addWidget(_whiteKnightButton);
     _whitePiecesButtonsLine->addWidget(_whiteBishopButton);
@@ -90,14 +200,18 @@ PositionEditorDialog::PositionEditorDialog(QWidget *parent) : QDialog(parent, Qt
     _blackPiecesButtonsLine->addWidget(_blackQueenButton);
     _blackPiecesButtonsLine->addWidget(_blackKingButton);
 
+    _piecesButtonsLayout->addStretch();
     _piecesButtonsLayout->addWidget(_trashCanButton);
     _piecesButtonsLayout->addLayout(_whitePiecesButtonsLine);
     _piecesButtonsLayout->addLayout(_blackPiecesButtonsLine);
+    _piecesButtonsLayout->addStretch();
 
-    _mainEditorZone->addWidget(_editorComponent);
-    _mainEditorZone->addLayout(_piecesButtonsLayout);
+    _mainEditorZoneLayout->addWidget(_editorComponent);
+    _mainEditorZoneLayout->addLayout(_piecesButtonsLayout);
+    _mainEditorZone->setLayout(_mainEditorZoneLayout);
 
-    _mainLayout->addLayout(_mainEditorZone);
+    _mainLayout->addWidget(_mainEditorZone);
+    _mainLayout->addWidget(_optionsZone);
     _mainLayout->addWidget(_validationButtons);
 
     connect(_validationButtons, &QDialogButtonBox::accepted, [this]() {
@@ -114,6 +228,56 @@ PositionEditorDialog::PositionEditorDialog(QWidget *parent) : QDialog(parent, Qt
 }
 
 PositionEditorDialog::~PositionEditorDialog() {
+    delete _pasteFenButton;
+    delete _copyFenButton;
+    delete _fenButtonsLine;
+    delete _fenValueValue;
+    delete _fenValueLabel;
+    delete _fenValueLineLayout;
+    delete _fenOptionsLayout;
+    delete _fenOptions;
+
+    delete _fiftyMovesRuleValue;
+    delete _fiftyMovesRuleLabel;
+    delete _fiftyMovesRuleLayout;
+    delete _enPassantSquareRankLabel;
+    delete _enPassantSquareFileCombo;
+    delete _enPassantLabel;
+    delete _enPassantSquareLayout;
+    delete _blackOOO;
+    delete _blackOO;
+    delete _whiteOOO;
+    delete _whiteOO;
+    delete _castlesGroupLayout;
+    delete _castlesGroup;
+    delete _advancedOptionsLayout;
+    delete _advancedOptions;
+
+    delete _moveNumberValue;
+    delete _moveNumberLabel;
+    delete _moveNumberLayout;
+    delete _blackTurnButton;
+    delete _whiteTurnButton;
+    delete _playerTurnGroupLayout;
+    delete _playerTurnGroup;
+    delete _generalOptionsLayout;
+    delete _generalOptions;
+    delete _optionsZone;
+
+    delete _blackKingButton;
+    delete _blackQueenButton;
+    delete _blackRookButton;
+    delete _blackBishopButton;
+    delete _blackKnightButton;
+    delete _blackPawnButton;
+
+    delete _whiteKingButton;
+    delete _whiteQueenButton;
+    delete _whiteRookButton;
+    delete _whiteBishopButton;
+    delete _whiteKnightButton;
+    delete _whitePawnButton;
+
     delete _trashCanButton;
 
     delete _editorComponent;
@@ -123,6 +287,7 @@ PositionEditorDialog::~PositionEditorDialog() {
     delete _whitePiecesButtonsLine;
 
     delete _piecesButtonsLayout;
+    delete _mainEditorZoneLayout;
     delete _mainEditorZone;
     delete _mainLayout;
 }
