@@ -168,6 +168,7 @@ HEADERS += \
     gui/position_editor/positioneditor.h
 
 SOURCES += \
+    core/IPosition.cpp \
     core/ucienginecommunication.cpp \
     core/uciengineoptionspin.cpp \
     core/adapters/thcposition.cpp \

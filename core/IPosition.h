@@ -46,9 +46,9 @@ namespace loloof64 {
 
     struct HistoryItem
     {
-        HistoryItem(): lastMove(MoveCoordinates(-1,-1,-1,-1)){};
+        HistoryItem(): lastMove(MoveCoordinates(-1,-1,-1,-1)){}
         HistoryItem(QString moveFan, QString newPositionFen, MoveCoordinates lastMove):
-            moveFan(moveFan), newPositionFen(newPositionFen), lastMove(lastMove){};
+            moveFan(moveFan), newPositionFen(newPositionFen), lastMove(lastMove){}
 
         bool operator==(HistoryItem other)
         {
@@ -66,7 +66,7 @@ namespace loloof64 {
 
     class IPosition {
     public:
-        virtual ~IPosition(){}
+        virtual ~IPosition();
         // Should return the position in Forsyth-Edwards Notation
         virtual std::string getFen() const { UnimplementedException ex; throw ex; }
 
@@ -113,12 +113,12 @@ namespace loloof64 {
         // Should return the Short Algebraic Notation of the given move, for the current position.
         virtual QString getMoveSan(
                 int /*startFile*/, int /*startRank*/, int /*endFile*/, int /*endRank*/, char /* promotionFen*/ = 0) const
-        { UnimplementedException ex; throw ex;};
+        { UnimplementedException ex; throw ex;}
 
         // Should return the Figurine Algebraic Notation of the given move, for the current position.
         virtual QString getMoveFan(
                 int /*startFile*/, int /*startRank*/, int /*endFile*/, int /*endRank*/, char /* promotionFen*/ = 0) const
-        { UnimplementedException ex; throw ex;};
+        { UnimplementedException ex; throw ex;}
     };
 }
 
