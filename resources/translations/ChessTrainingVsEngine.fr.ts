@@ -954,95 +954,120 @@ b%2
 <context>
     <name>PositionEditorDialog</name>
     <message>
-        <location filename="../../gui/positioneditordialog.cpp" line="86"/>
+        <location filename="../../gui/positioneditordialog.cpp" line="88"/>
+        <source>Current selection</source>
+        <translation>Position actuelle</translation>
+    </message>
+    <message>
+        <location filename="../../gui/positioneditordialog.cpp" line="98"/>
         <source>Turn</source>
         <translation>Trait</translation>
     </message>
     <message>
-        <location filename="../../gui/positioneditordialog.cpp" line="89"/>
+        <location filename="../../gui/positioneditordialog.cpp" line="101"/>
         <source>White</source>
         <translation>Blancs</translation>
     </message>
     <message>
-        <location filename="../../gui/positioneditordialog.cpp" line="90"/>
+        <location filename="../../gui/positioneditordialog.cpp" line="102"/>
         <source>Black</source>
         <translation>Noirs</translation>
     </message>
     <message>
-        <location filename="../../gui/positioneditordialog.cpp" line="94"/>
+        <location filename="../../gui/positioneditordialog.cpp" line="106"/>
         <source>Move number</source>
         <translation>Numéro</translation>
     </message>
     <message>
-        <location filename="../../gui/positioneditordialog.cpp" line="103"/>
+        <location filename="../../gui/positioneditordialog.cpp" line="113"/>
+        <source>Erase board</source>
+        <translation>Effacer</translation>
+    </message>
+    <message>
+        <location filename="../../gui/positioneditordialog.cpp" line="114"/>
+        <source>Standard position</source>
+        <translation>Position standard</translation>
+    </message>
+    <message>
+        <location filename="../../gui/positioneditordialog.cpp" line="119"/>
         <source>Castles</source>
         <translation>Roques</translation>
     </message>
     <message>
-        <location filename="../../gui/positioneditordialog.cpp" line="106"/>
+        <location filename="../../gui/positioneditordialog.cpp" line="122"/>
         <source>white O-O</source>
         <translation>O-O blanc</translation>
     </message>
     <message>
-        <location filename="../../gui/positioneditordialog.cpp" line="107"/>
+        <location filename="../../gui/positioneditordialog.cpp" line="123"/>
         <source>white O-O-O</source>
         <translation>O-O-O blanc</translation>
     </message>
     <message>
-        <location filename="../../gui/positioneditordialog.cpp" line="108"/>
+        <location filename="../../gui/positioneditordialog.cpp" line="124"/>
         <source>black O-O</source>
         <translation>O-O noir</translation>
     </message>
     <message>
-        <location filename="../../gui/positioneditordialog.cpp" line="109"/>
+        <location filename="../../gui/positioneditordialog.cpp" line="125"/>
         <source>black O-O-O</source>
         <translation>O-O-O noir</translation>
     </message>
     <message>
-        <location filename="../../gui/positioneditordialog.cpp" line="116"/>
+        <location filename="../../gui/positioneditordialog.cpp" line="132"/>
         <source>En-passant square</source>
         <translation>Case de prise en passant</translation>
     </message>
     <message>
-        <location filename="../../gui/positioneditordialog.cpp" line="126"/>
+        <location filename="../../gui/positioneditordialog.cpp" line="143"/>
         <source>50 moves rule counter</source>
         <translation>Compteur pour la règle des 50 coups</translation>
     </message>
     <message>
-        <location filename="../../gui/positioneditordialog.cpp" line="137"/>
+        <location filename="../../gui/positioneditordialog.cpp" line="154"/>
         <source>FEN</source>
         <translation>FEN</translation>
     </message>
     <message>
-        <location filename="../../gui/positioneditordialog.cpp" line="141"/>
+        <location filename="../../gui/positioneditordialog.cpp" line="159"/>
         <source>Copy FEN</source>
         <translation>Copier FEN</translation>
     </message>
     <message>
-        <location filename="../../gui/positioneditordialog.cpp" line="142"/>
+        <location filename="../../gui/positioneditordialog.cpp" line="160"/>
         <source>Paste FEN</source>
         <translation>Coller FEN</translation>
     </message>
     <message>
-        <location filename="../../gui/positioneditordialog.cpp" line="185"/>
+        <location filename="../../gui/positioneditordialog.cpp" line="209"/>
         <source>General</source>
         <comment>General options of position editor</comment>
         <translation>General</translation>
     </message>
     <message>
-        <location filename="../../gui/positioneditordialog.cpp" line="186"/>
+        <location filename="../../gui/positioneditordialog.cpp" line="210"/>
         <source>Advanced</source>
         <comment>Advanced options of position editor</comment>
         <translation>Avancés</translation>
     </message>
     <message>
-        <location filename="../../gui/positioneditordialog.cpp" line="187"/>
+        <location filename="../../gui/positioneditordialog.cpp" line="211"/>
         <source>FEN</source>
         <comment>Fen options of position editor</comment>
         <translation>FEN</translation>
     </message>
     <message>
-        <location filename="../../gui/positioneditordialog.cpp" line="226"/>
+        <location filename="../../gui/positioneditordialog.cpp" line="255"/>
+        <source>Illegal position</source>
+        <translation>Position illégale</translation>
+    </message>
+    <message>
+        <location filename="../../gui/positioneditordialog.cpp" line="255"/>
+        <source>Cannot start a new game with this illegal position.</source>
+        <translation>Impossible de démarrer une partie avec cette position illégale.</translation>
+    </message>
+    <message>
+        <location filename="../../gui/positioneditordialog.cpp" line="266"/>
         <source>Position editor</source>
         <translation>Editeur de position</translation>
     </message>
@@ -1104,37 +1129,37 @@ b%2
 <context>
     <name>loloof64::ChessBoard</name>
     <message>
-        <location filename="../../gui/chessboard/chessboard.cpp" line="595"/>
-        <location filename="../../gui/chessboard/chessboard.cpp" line="598"/>
-        <location filename="../../gui/chessboard/chessboard.cpp" line="601"/>
-        <location filename="../../gui/chessboard/chessboard.cpp" line="604"/>
-        <location filename="../../gui/chessboard/chessboard.cpp" line="607"/>
+        <location filename="../../gui/chessboard/chessboard.cpp" line="574"/>
+        <location filename="../../gui/chessboard/chessboard.cpp" line="577"/>
+        <location filename="../../gui/chessboard/chessboard.cpp" line="580"/>
+        <location filename="../../gui/chessboard/chessboard.cpp" line="583"/>
+        <location filename="../../gui/chessboard/chessboard.cpp" line="586"/>
         <source>Game finished</source>
         <comment>Game finished modal title</comment>
         <translation>Fin de partie</translation>
     </message>
     <message>
-        <location filename="../../gui/chessboard/chessboard.cpp" line="595"/>
+        <location filename="../../gui/chessboard/chessboard.cpp" line="574"/>
         <source>Checkmate</source>
         <translation>Echec et mat</translation>
     </message>
     <message>
-        <location filename="../../gui/chessboard/chessboard.cpp" line="598"/>
+        <location filename="../../gui/chessboard/chessboard.cpp" line="577"/>
         <source>Stalemate</source>
         <translation>Pat</translation>
     </message>
     <message>
-        <location filename="../../gui/chessboard/chessboard.cpp" line="601"/>
+        <location filename="../../gui/chessboard/chessboard.cpp" line="580"/>
         <source>Draw by 3-folds repetition</source>
         <translation>Nulle par triple répétition</translation>
     </message>
     <message>
-        <location filename="../../gui/chessboard/chessboard.cpp" line="604"/>
+        <location filename="../../gui/chessboard/chessboard.cpp" line="583"/>
         <source>Draw by insuficient material</source>
         <translation>Nulle par manque de matériel</translation>
     </message>
     <message>
-        <location filename="../../gui/chessboard/chessboard.cpp" line="607"/>
+        <location filename="../../gui/chessboard/chessboard.cpp" line="586"/>
         <source>Draw by the 50 moves rule</source>
         <translation>Nulle par la règle des 50 coups</translation>
     </message>
