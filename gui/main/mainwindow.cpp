@@ -1,6 +1,6 @@
 #include "mainwindow.h"
 #include "settingsdialog.h"
-#include "../positioneditordialog.h"
+#include "../position_editor/positioneditordialog.h"
 
 #include <QMessageBox>
 

@@ -164,7 +164,7 @@ HEADERS += \
     libs/thc-chess-library/util.h \
     gui/main/settingsdialog.h \
     libs/mini-yaml/Yaml.hpp \
-    gui/positioneditordialog.h \
+    gui/position_editor/positioneditordialog.h \
     gui/position_editor/positioneditor.h \
     core/positionbuilder.h
 
@@ -242,7 +242,7 @@ SOURCES += \
     main.cpp \
     gui/main/settingsdialog.cpp \
     libs/mini-yaml/Yaml.cpp \
-    gui/positioneditordialog.cpp \
+    gui/position_editor/positioneditordialog.cpp \
     gui/position_editor/positioneditor.cpp \
     core/positionbuilder.cpp
 

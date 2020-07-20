@@ -15,7 +15,7 @@
 #include <QComboBox>
 #include <QPixmap>
 #include <QMessageBox>
-#include "position_editor/positioneditor.h"
+#include "positioneditor.h"
 
 class PositionEditorDialog : public QDialog
 {

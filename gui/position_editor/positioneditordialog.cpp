@@ -1,5 +1,5 @@
 #include "positioneditordialog.h"
-#include "../core/adapters/thcposition.h"
+#include "../../core/adapters/thcposition.h"
 
 #include <QHeaderView>
 #include <QIcon>
