@@ -24,6 +24,9 @@ PositionEditorDialog::PositionEditorDialog(QWidget *parent) : QDialog(parent, Qt
     _blackPiecesButtonsLine = new QHBoxLayout();
     _blackPiecesButtonsLine->setSpacing(10);
 
+    _selectedPieceLine = new QHBoxLayout();
+    _selectedPieceLine->setSpacing(10);
+
     _validationButtons = new QDialogButtonBox(QDialogButtonBox::Ok | QDialogButtonBox::Cancel, this);
 
     _editorComponent = new loloof64::PositionEditor(45, this);
@@ -79,6 +82,11 @@ PositionEditorDialog::PositionEditorDialog(QWidget *parent) : QDialog(parent, Qt
     _blackKingButton = new QPushButton();
     _blackKingButton->setIcon(QIcon(":/chess_vectors/kd.svg"));
     _blackKingButton->setIconSize(QSize(50, 50));
+
+    _currentSelectionLabel = new QLabel(tr("Current selection"));
+    _currentSelectionComponent = new QLabel();
+    QPixmap selectionImage(":/icons/trashCan.svg");
+    _currentSelectionComponent->setPixmap(selectionImage.scaled(30, 30));
 
     _optionsZone = new QTabWidget();
 
@@ -214,10 +222,15 @@ PositionEditorDialog::PositionEditorDialog(QWidget *parent) : QDialog(parent, Qt
     _blackPiecesButtonsLine->addWidget(_blackQueenButton);
     _blackPiecesButtonsLine->addWidget(_blackKingButton);
 
+    _selectedPieceLine->addWidget(_currentSelectionLabel);
+    _selectedPieceLine->addWidget(_currentSelectionComponent);
+    _selectedPieceLine->addStretch();
+
     _piecesButtonsLayout->addStretch();
     _piecesButtonsLayout->addWidget(_trashCanButton);
     _piecesButtonsLayout->addLayout(_whitePiecesButtonsLine);
     _piecesButtonsLayout->addLayout(_blackPiecesButtonsLine);
+    _piecesButtonsLayout->addLayout(_selectedPieceLine);
     _piecesButtonsLayout->addStretch();
 
     _mainEditorZoneLayout->addWidget(_editorComponent);
@@ -285,6 +298,9 @@ PositionEditorDialog::~PositionEditorDialog() {
     delete _generalOptions;
     delete _optionsZone;
 
+    delete _currentSelectionComponent;
+    delete _currentSelectionLabel;
+
     delete _blackKingButton;
     delete _blackQueenButton;
     delete _blackRookButton;
@@ -304,6 +320,7 @@ PositionEditorDialog::~PositionEditorDialog() {
     delete _editorComponent;
     delete _validationButtons;
 
+    delete _selectedPieceLine;
     delete _blackPiecesButtonsLine;
     delete _whitePiecesButtonsLine;
 
@@ -430,4 +447,92 @@ void PositionEditorDialog::connectComponents()
         QClipboard *clipboard = QApplication::clipboard();
         clipboard->setText(_positionBuilder->getFen());
     });
+
+    connect(_trashCanButton, &QPushButton::clicked, [this]() {
+        _editingValue = ' ';
+        updateSelectedPiece();
+    });
+
+    connect(_whitePawnButton, &QPushButton::clicked, [this]() {
+        _editingValue = 'P';
+        updateSelectedPiece();
+    });
+
+    connect(_whiteKnightButton, &QPushButton::clicked, [this]() {
+        _editingValue = 'N';
+        updateSelectedPiece();
+    });
+
+    connect(_whiteBishopButton, &QPushButton::clicked, [this]() {
+        _editingValue = 'B';
+        updateSelectedPiece();
+    });
+
+    connect(_whiteRookButton, &QPushButton::clicked, [this]() {
+        _editingValue = 'R';
+        updateSelectedPiece();
+    });
+
+    connect(_whiteQueenButton, &QPushButton::clicked, [this]() {
+        _editingValue = 'Q';
+        updateSelectedPiece();
+    });
+
+    connect(_whiteKingButton, &QPushButton::clicked, [this]() {
+        _editingValue = 'K';
+        updateSelectedPiece();
+    });
+
+    connect(_blackPawnButton, &QPushButton::clicked, [this]() {
+        _editingValue = 'p';
+        updateSelectedPiece();
+    });
+
+    connect(_blackKnightButton, &QPushButton::clicked, [this]() {
+        _editingValue = 'n';
+        updateSelectedPiece();
+    });
+
+    connect(_blackBishopButton, &QPushButton::clicked, [this]() {
+        _editingValue = 'b';
+        updateSelectedPiece();
+    });
+
+    connect(_blackRookButton, &QPushButton::clicked, [this]() {
+        _editingValue = 'r';
+        updateSelectedPiece();
+    });
+
+    connect(_blackQueenButton, &QPushButton::clicked, [this]() {
+        _editingValue = 'q';
+        updateSelectedPiece();
+    });
+
+    connect(_blackKingButton, &QPushButton::clicked, [this]() {
+        _editingValue = 'k';
+        updateSelectedPiece();
+    });
+}
+
+void PositionEditorDialog::updateSelectedPiece()
+{
+    auto image = ":/icons/trashCan.svg";
+    switch (_editingValue) {
+    case 'P': image = ":/chess_vectors/pl.svg"; break;
+    case 'N': image = ":/chess_vectors/nl.svg"; break;
+    case 'B': image = ":/chess_vectors/bl.svg"; break;
+    case 'R': image = ":/chess_vectors/rl.svg"; break;
+    case 'Q': image = ":/chess_vectors/ql.svg"; break;
+    case 'K': image = ":/chess_vectors/kl.svg"; break;
+
+    case 'p': image = ":/chess_vectors/pd.svg"; break;
+    case 'n': image = ":/chess_vectors/nd.svg"; break;
+    case 'b': image = ":/chess_vectors/bd.svg"; break;
+    case 'r': image = ":/chess_vectors/rd.svg"; break;
+    case 'q': image = ":/chess_vectors/qd.svg"; break;
+    case 'k': image = ":/chess_vectors/kd.svg"; break;
+    }
+
+    QPixmap selectionImage(image);
+    _currentSelectionComponent->setPixmap(selectionImage.scaled(30, 30));
 }

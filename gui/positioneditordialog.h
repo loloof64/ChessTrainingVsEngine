@@ -13,6 +13,7 @@
 #include <QLineEdit>
 #include <QCheckBox>
 #include <QComboBox>
+#include <QPixmap>
 #include "position_editor/positioneditor.h"
 
 class PositionEditorDialog : public QDialog
@@ -29,6 +30,7 @@ private:
     QVBoxLayout * _piecesButtonsLayout;
     QHBoxLayout * _whitePiecesButtonsLine;
     QHBoxLayout * _blackPiecesButtonsLine;
+    QHBoxLayout * _selectedPieceLine;
 
     QDialogButtonBox * _validationButtons;
     loloof64::PositionEditor * _editorComponent;
@@ -45,6 +47,8 @@ private:
     QPushButton * _blackRookButton;
     QPushButton * _blackQueenButton;
     QPushButton * _blackKingButton;
+    QLabel * _currentSelectionLabel;
+    QLabel * _currentSelectionComponent;
 
     QTabWidget * _optionsZone;
 
@@ -91,6 +95,7 @@ private:
 
     void synchronizeWithBuilder();
     void connectComponents();
+    void updateSelectedPiece();
 };
 
 #endif // POSITIONEDITORDIALOG_H
