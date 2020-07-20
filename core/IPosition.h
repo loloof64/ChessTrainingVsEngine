@@ -74,6 +74,10 @@ namespace loloof64 {
     public:
         virtual ~IPosition();
         static QString pieceFenToPieceImageReference(char pieceFen);
+
+        // Should return true if position is legal, false otherwise.
+        virtual bool isLegalPosition() const { UnimplementedException ex; throw ex; };
+
         // Should return the position in Forsyth-Edwards Notation
         virtual std::string getFen() const { UnimplementedException ex; throw ex; }
 

@@ -23,6 +23,10 @@ namespace loloof64 {
         // Takes an option string of the Forsyth-Edwards Notation of the position,
         // sets to standard if no given.
         ThcPosition(std::string fen="rnbqkbnr/pppppppp/8/8/8/8/PPPPPPPP/RNBQKBNR w KQkq - 0 1");
+
+        // Returns true is it is a legal position, false otherwise.
+        bool isLegalPosition() const override;
+
         // Gets the Forsyth-Edwards Notation of the position
         std::string getFen() const override;
 

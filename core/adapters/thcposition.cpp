@@ -5,16 +5,19 @@
 #include <cctype>
 #include <string>
 
-#include <QMessageLogger>
-
 namespace loloof64 {
 
     ThcPosition::ThcPosition(std::string fen) : IPosition()
     {
         _position = thc::ChessRules();
         _recordedPositions = QMap<std::string, int>();
-        auto success = _position.Forsyth(fen.c_str());
-        if (!success) throw IllegalPositionException();
+        _position.Forsyth(fen.c_str());
+    }
+
+    bool ThcPosition::isLegalPosition() const
+    {
+        thc::ILLEGAL_REASON illegalReason;
+        return _position.IsLegal(illegalReason);
     }
 
     std::string ThcPosition::getFen() const
@@ -40,10 +43,10 @@ namespace loloof64 {
     bool ThcPosition::isLegalMove(int startFile, int startRank, int endFile, int endRank) const
     {
         QString moveStr;
-        char startFileChar = 97 + startFile;
-        char startRankChar = 49 + startRank;
-        char endFileChar = 97 + endFile;
-        char endRankChar = 49 + endRank;
+        char startFileChar = static_cast<char>(97 + startFile);
+        char startRankChar = static_cast<char>(49 + startRank);
+        char endFileChar = static_cast<char>(97 + endFile);
+        char endRankChar = static_cast<char>(49 + endRank);
 
         moveStr += startFileChar;
         moveStr += startRankChar;
@@ -61,10 +64,10 @@ namespace loloof64 {
     bool ThcPosition::isPromotionMove(int startFile, int startRank, int endFile, int endRank) const
     {
         QString moveStr;
-        char startFileChar = 97 + startFile;
-        char startRankChar = 49 + startRank;
-        char endFileChar = 97 + endFile;
-        char endRankChar = 49 + endRank;
+        char startFileChar = static_cast<char>(97 + startFile);
+        char startRankChar = static_cast<char>(49 + startRank);
+        char endFileChar = static_cast<char>(97 + endFile);
+        char endRankChar = static_cast<char>(49 + endRank);
 
         moveStr += startFileChar;
         moveStr += startRankChar;
@@ -99,16 +102,16 @@ namespace loloof64 {
     std::string ThcPosition::makeMove(int startFile, int startRank, int endFile, int endRank, char promotionFen)
     {
         QString moveStr;
-        char startFileChar = 97 + startFile;
-        char startRankChar = 49 + startRank;
-        char endFileChar = 97 + endFile;
-        char endRankChar = 49 + endRank;
+        char startFileChar = static_cast<char>(97 + startFile);
+        char startRankChar = static_cast<char>(49 + startRank);
+        char endFileChar = static_cast<char>(97 + endFile);
+        char endRankChar = static_cast<char>(49 + endRank);
 
         moveStr += startFileChar;
         moveStr += startRankChar;
         moveStr += endFileChar;
         moveStr += endRankChar;
-        if (promotionFen) moveStr += tolower(promotionFen);
+        if (promotionFen) moveStr += static_cast<char>(tolower(promotionFen));
 
         thc::ChessRules copy =_position;
         thc::Move moveToTest;
@@ -236,16 +239,16 @@ bool loloof64::ThcPosition::isThreeFoldRepetitionsDraw() const
 QString loloof64::ThcPosition::getMoveSan(int startFile, int startRank, int endFile, int endRank, char promotionFen) const
 {
     QString moveStr;
-    char startFileChar = 97 + startFile;
-    char startRankChar = 49 + startRank;
-    char endFileChar = 97 + endFile;
-    char endRankChar = 49 + endRank;
+    char startFileChar = static_cast<char>(97 + startFile);
+    char startRankChar = static_cast<char>(49 + startRank);
+    char endFileChar = static_cast<char>(97 + endFile);
+    char endRankChar = static_cast<char>(49 + endRank);
 
     moveStr += startFileChar;
     moveStr += startRankChar;
     moveStr += endFileChar;
     moveStr += endRankChar;
-    moveStr += tolower(promotionFen);
+    moveStr += static_cast<char>(tolower(promotionFen));
 
     thc::ChessRules copy = _position;
     thc::Move moveToTest;

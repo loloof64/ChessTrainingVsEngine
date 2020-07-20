@@ -1,9 +1,11 @@
 #include "positioneditordialog.h"
+#include "../core/adapters/thcposition.h"
 
 #include <QHeaderView>
 #include <QIcon>
 #include <QApplication>
 #include <QClipboard>
+#include <QMessageBox>
 
 PositionEditorDialog::PositionEditorDialog(QWidget *parent) : QDialog(parent, Qt::WindowTitleHint | Qt::CustomizeWindowHint)
 {
@@ -244,7 +246,14 @@ PositionEditorDialog::PositionEditorDialog(QWidget *parent) : QDialog(parent, Qt
     connectComponents();
 
     connect(_validationButtons, &QDialogButtonBox::accepted, [this]() {
-        close();
+        const auto positionFen = _positionBuilder->getFen();
+            loloof64::ThcPosition position(positionFen.toStdString());
+        if (position.isLegalPosition()) {
+            emit newGamePosition(positionFen);
+            close();
+        } else {
+            QMessageBox::critical(this, tr("Illegal position"), tr("Cannot start a new game with this illegal position."));
+        }
     });
 
     connect(_validationButtons, &QDialogButtonBox::rejected, [this]()

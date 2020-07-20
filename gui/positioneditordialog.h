@@ -14,6 +14,7 @@
 #include <QCheckBox>
 #include <QComboBox>
 #include <QPixmap>
+#include <QMessageBox>
 #include "position_editor/positioneditor.h"
 
 class PositionEditorDialog : public QDialog
@@ -22,6 +23,9 @@ class PositionEditorDialog : public QDialog
 public:
     explicit PositionEditorDialog(QWidget *parent = nullptr);
     virtual ~PositionEditorDialog() override;
+
+signals:
+    void newGamePosition(QString positionFen);
 
 private:
     QVBoxLayout * _mainLayout;
