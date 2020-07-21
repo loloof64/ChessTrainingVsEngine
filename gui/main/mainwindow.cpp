@@ -67,7 +67,7 @@ MainWindow::~MainWindow()
 
 void MainWindow::startNewGame(QString positionFen, bool playerHasWhite)
 {
-
+    _componentsZone->startNewGame(positionFen, playerHasWhite);
 }
 
 void MainWindow::loadRegisteredEnginePath()

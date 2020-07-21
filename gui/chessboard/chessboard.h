@@ -14,11 +14,11 @@ namespace loloof64 {
             pieceX(pieceX), pieceY(pieceY){};
         DndData(const DndData&) = delete;
         DndData(const DndData&&) = delete;
-        char pieceFen;
-        bool pointerInBounds;
-        int startFile, startRank;
-        int endFile, endRank;
-        int pieceX, pieceY;
+        char pieceFen = 0;
+        bool pointerInBounds = false;
+        int startFile = -1, startRank = -1;
+        int endFile = -1, endRank = -1;
+        int pieceX = -1, pieceY = -1;
     };
 
     enum class GameFinishedStatus
@@ -46,6 +46,7 @@ namespace loloof64 {
         virtual ~ChessBoard() override;
         inline bool gameInProgress(){ return _gameFinishedStatus == GameFinishedStatus::NOT_FINISHED; }
         inline bool isWhiteTurn(){ return _relatedPosition->isWhiteTurn(); }
+        QString getCurrentPosition() const;
         void setWhitePlayerType(PlayerType playerType);
         void setBlackPlayerType(PlayerType playerType);
         inline PlayerType getWhitePlayerType() const { return _whitePlayer; };

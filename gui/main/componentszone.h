@@ -25,6 +25,7 @@ namespace loloof64 {
         ~ComponentsZone();
         inline bool gameInProgress(){ return _chessBoard->gameInProgress(); }
         void setEnginePath(QString enginePath);
+        void startNewGame(QString positionFen, bool playerHasWhite);
 
     public slots:
         void reverseBoard();
@@ -47,6 +48,7 @@ namespace loloof64 {
         void makeComputerPlayNextMove();
         char promotionPieceToPromotionFen(Piece promotion) const;
         QString moveToMoveFan(Move moveId);
+        void reactToEngineMoveIfPossible(QString bestMove);
     };
 }
 

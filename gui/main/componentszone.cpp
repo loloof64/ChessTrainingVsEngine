@@ -12,10 +12,6 @@
 #include <QDataStream>
 #include <QTimer>
 
-/////////////////////////////////////////////////////////////////////////////
-#include <QDebug>
-/////////////////////////////////////////////////////////////////////////////
-
 loloof64::ComponentsZone::ComponentsZone(QWidget *parent) : QWidget(parent)
 {
     _mainLayout = new QHBoxLayout(this);
@@ -103,6 +99,10 @@ void loloof64::ComponentsZone::setEnginePath(QString enginePath)
     _engineCommunication = new UCIEngineCommunication();
     _engineCommunication->setExecutablePath(enginePath);
 
+    connect(_engineCommunication, &loloof64::UCIEngineCommunication::computedBestMove, [this](QString bestMove) {
+        reactToEngineMoveIfPossible(bestMove);
+    });
+
     connect(_engineCommunication, &UCIEngineCommunication::isNotReady, [this]() {
         emit engineNotReady();
     });
@@ -158,25 +158,12 @@ void loloof64::ComponentsZone::makeComputerPlayNextMove()
     const auto isExternalTurn = (whiteTurn && _chessBoard->getWhitePlayerType() == PlayerType::EXTERNAL) ||
             (!whiteTurn && _chessBoard->getBlackPlayerType() == PlayerType::EXTERNAL);
     if (!isExternalTurn) return;
-    auto nextMoveId = _currentGame.nextMove();
 
-    const auto move = _currentGame.move(nextMoveId);
-    _currentGame.findNextMove(move);
+    QString uciPositionCommand("position fen ");
+    uciPositionCommand += _chessBoard->getCurrentPosition();
+    _engineCommunication->sendCommand(uciPositionCommand);
 
-    const auto startFile = move.from() % 8;
-    const auto startRank = move.from() / 8;
-    const auto endFile = move.to() % 8;
-    const auto endRank = move.to() / 8;
-
-    if (move.isPromotion())
-    {
-        const auto promotion = move.promotedPiece();
-        char promotionFen = promotionPieceToPromotionFen(promotion);
-        _chessBoard->playMove(startFile, startRank, endFile, endRank, promotionFen);
-    }
-    else {
-        _chessBoard->playMove(startFile, startRank, endFile, endRank);
-    }
+    _engineCommunication->sendCommand("go movetime 1000");
 }
 
 char loloof64::ComponentsZone::promotionPieceToPromotionFen(Piece promotion) const
@@ -213,4 +200,34 @@ QString loloof64::ComponentsZone::moveToMoveFan(Move move)
     }
     const auto moveFan = _chessBoard->getMoveFan(startFile, startRank, endFile, endRank, nextMovePromotionFen);
     return moveFan;
+}
+
+void loloof64::ComponentsZone::startNewGame(QString positionFen, bool playerHasWhite)
+{
+    _movesHistory->newGame(positionFen);
+    _chessBoard->setWhitePlayerType(playerHasWhite ? loloof64::PlayerType::HUMAN : loloof64::PlayerType::EXTERNAL);
+    _chessBoard->setBlackPlayerType(playerHasWhite ? loloof64::PlayerType::EXTERNAL : loloof64::PlayerType::HUMAN);
+
+    _chessBoard->newGame(positionFen);
+}
+
+void loloof64::ComponentsZone::reactToEngineMoveIfPossible(QString bestMove)
+{
+    const auto ascii_lower_a = 97;
+    const auto ascii_1 = 49;
+
+    const auto startFile = bestMove[0].toLatin1() - ascii_lower_a;
+    const auto startRank = bestMove[1].toLatin1() - ascii_1;
+    const auto endFile = bestMove[2].toLatin1() - ascii_lower_a;
+    const auto endRank = bestMove[3].toLatin1() - ascii_1;
+    const auto isPromotion = bestMove.size() >= 5;
+
+    if (isPromotion)
+    {
+        const auto promotion = bestMove[4].toLatin1();
+        _chessBoard->playMove(startFile, startRank, endFile, endRank, promotion);
+    }
+    else {
+        _chessBoard->playMove(startFile, startRank, endFile, endRank);
+    }
 }

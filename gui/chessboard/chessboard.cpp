@@ -654,3 +654,8 @@ QString loloof64::ChessBoard::getMoveFan(int startFile, int startRank, int endFi
 {
     return _relatedPosition->getMoveFan(startFile, startRank, endFile, endRank, promotionFen);
 }
+
+QString loloof64::ChessBoard::getCurrentPosition() const
+{
+    return QString::fromStdString(_relatedPosition->getFen());
+}
