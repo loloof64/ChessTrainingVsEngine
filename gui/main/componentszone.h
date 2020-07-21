@@ -29,6 +29,10 @@ namespace loloof64 {
     public slots:
         void reverseBoard();
 
+    signals:
+        void engineReady();
+        void engineNotReady();
+
     private:
         QList<QString> _expectedMovesFanList;
         QHBoxLayout *_mainLayout;

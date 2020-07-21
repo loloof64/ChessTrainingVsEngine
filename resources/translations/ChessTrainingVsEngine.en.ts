@@ -309,22 +309,48 @@ b%2
 <context>
     <name>MainWindow</name>
     <message>
-        <location filename="../../gui/main/mainwindow.cpp" line="13"/>
+        <location filename="../../gui/main/mainwindow.cpp" line="14"/>
         <source>New game</source>
         <comment>Caption for the button &apos;new game&apos;</comment>
         <translation>New game</translation>
     </message>
     <message>
-        <location filename="../../gui/main/mainwindow.cpp" line="22"/>
+        <location filename="../../gui/main/mainwindow.cpp" line="16"/>
+        <source>Engine not set</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../../gui/main/mainwindow.cpp" line="16"/>
+        <source>You must configure the engine first</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../../gui/main/mainwindow.cpp" line="33"/>
         <source>Toggle side</source>
         <comment>Caption for the button &apos;toggle side&apos;</comment>
         <translation>Toggle side</translation>
     </message>
     <message>
-        <location filename="../../gui/main/mainwindow.cpp" line="25"/>
+        <location filename="../../gui/main/mainwindow.cpp" line="36"/>
         <source>Settings</source>
         <comment>Caption for the button &apos;settings&apos;</comment>
         <translation>Settings</translation>
+    </message>
+    <message>
+        <location filename="../../gui/main/mainwindow.cpp" line="84"/>
+        <location filename="../../gui/main/mainwindow.cpp" line="88"/>
+        <source>Loading error</source>
+        <translation type="unfinished">Loading error</translation>
+    </message>
+    <message>
+        <location filename="../../gui/main/mainwindow.cpp" line="84"/>
+        <source>No configuration file !</source>
+        <translation type="unfinished">No configuration file !</translation>
+    </message>
+    <message>
+        <location filename="../../gui/main/mainwindow.cpp" line="88"/>
+        <source>Failed reading configuration file !</source>
+        <translation type="unfinished">Failed reading configuration file !</translation>
     </message>
 </context>
 <context>
@@ -903,6 +929,24 @@ b%2
     </message>
 </context>
 <context>
+    <name>NewGameParametersDialog</name>
+    <message>
+        <location filename="../../gui/newgameparametersdialog.cpp" line="17"/>
+        <source>Player side</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../../gui/newgameparametersdialog.cpp" line="20"/>
+        <source>White</source>
+        <translation type="unfinished">White</translation>
+    </message>
+    <message>
+        <location filename="../../gui/newgameparametersdialog.cpp" line="21"/>
+        <source>Black</source>
+        <translation type="unfinished">Black</translation>
+    </message>
+</context>
+<context>
     <name>PlayerInfo</name>
     <message>
         <location filename="../../libs/chessx-pgn/database/playerinfo.cpp" line="194"/>
@@ -954,120 +998,120 @@ b%2
 <context>
     <name>PositionEditorDialog</name>
     <message>
-        <location filename="../../gui/positioneditordialog.cpp" line="88"/>
+        <location filename="../../gui/position_editor/positioneditordialog.cpp" line="88"/>
         <source>Current selection</source>
         <translation>Current selection</translation>
     </message>
     <message>
-        <location filename="../../gui/positioneditordialog.cpp" line="98"/>
+        <location filename="../../gui/position_editor/positioneditordialog.cpp" line="98"/>
         <source>Turn</source>
         <translation>Turn</translation>
     </message>
     <message>
-        <location filename="../../gui/positioneditordialog.cpp" line="101"/>
+        <location filename="../../gui/position_editor/positioneditordialog.cpp" line="101"/>
         <source>White</source>
         <translation>White</translation>
     </message>
     <message>
-        <location filename="../../gui/positioneditordialog.cpp" line="102"/>
+        <location filename="../../gui/position_editor/positioneditordialog.cpp" line="102"/>
         <source>Black</source>
         <translation>Black</translation>
     </message>
     <message>
-        <location filename="../../gui/positioneditordialog.cpp" line="106"/>
+        <location filename="../../gui/position_editor/positioneditordialog.cpp" line="106"/>
         <source>Move number</source>
         <translation>Move number</translation>
     </message>
     <message>
-        <location filename="../../gui/positioneditordialog.cpp" line="113"/>
+        <location filename="../../gui/position_editor/positioneditordialog.cpp" line="113"/>
         <source>Erase board</source>
         <translation>Erase board</translation>
     </message>
     <message>
-        <location filename="../../gui/positioneditordialog.cpp" line="114"/>
+        <location filename="../../gui/position_editor/positioneditordialog.cpp" line="114"/>
         <source>Standard position</source>
         <translation>Standard position</translation>
     </message>
     <message>
-        <location filename="../../gui/positioneditordialog.cpp" line="119"/>
+        <location filename="../../gui/position_editor/positioneditordialog.cpp" line="119"/>
         <source>Castles</source>
         <translation>Castles</translation>
     </message>
     <message>
-        <location filename="../../gui/positioneditordialog.cpp" line="122"/>
+        <location filename="../../gui/position_editor/positioneditordialog.cpp" line="122"/>
         <source>white O-O</source>
         <translation>white O-O</translation>
     </message>
     <message>
-        <location filename="../../gui/positioneditordialog.cpp" line="123"/>
+        <location filename="../../gui/position_editor/positioneditordialog.cpp" line="123"/>
         <source>white O-O-O</source>
         <translation>white O-O-O</translation>
     </message>
     <message>
-        <location filename="../../gui/positioneditordialog.cpp" line="124"/>
+        <location filename="../../gui/position_editor/positioneditordialog.cpp" line="124"/>
         <source>black O-O</source>
         <translation>black O-O</translation>
     </message>
     <message>
-        <location filename="../../gui/positioneditordialog.cpp" line="125"/>
+        <location filename="../../gui/position_editor/positioneditordialog.cpp" line="125"/>
         <source>black O-O-O</source>
         <translation>black O-O-O</translation>
     </message>
     <message>
-        <location filename="../../gui/positioneditordialog.cpp" line="132"/>
+        <location filename="../../gui/position_editor/positioneditordialog.cpp" line="132"/>
         <source>En-passant square</source>
         <translation>En-passant square</translation>
     </message>
     <message>
-        <location filename="../../gui/positioneditordialog.cpp" line="143"/>
+        <location filename="../../gui/position_editor/positioneditordialog.cpp" line="143"/>
         <source>50 moves rule counter</source>
         <translation>50 moves rule counter</translation>
     </message>
     <message>
-        <location filename="../../gui/positioneditordialog.cpp" line="154"/>
+        <location filename="../../gui/position_editor/positioneditordialog.cpp" line="154"/>
         <source>FEN</source>
         <translation>FEN</translation>
     </message>
     <message>
-        <location filename="../../gui/positioneditordialog.cpp" line="159"/>
+        <location filename="../../gui/position_editor/positioneditordialog.cpp" line="159"/>
         <source>Copy FEN</source>
         <translation>Copy FEN</translation>
     </message>
     <message>
-        <location filename="../../gui/positioneditordialog.cpp" line="160"/>
+        <location filename="../../gui/position_editor/positioneditordialog.cpp" line="160"/>
         <source>Paste FEN</source>
         <translation>Paste FEN</translation>
     </message>
     <message>
-        <location filename="../../gui/positioneditordialog.cpp" line="209"/>
+        <location filename="../../gui/position_editor/positioneditordialog.cpp" line="209"/>
         <source>General</source>
         <comment>General options of position editor</comment>
         <translation>General</translation>
     </message>
     <message>
-        <location filename="../../gui/positioneditordialog.cpp" line="210"/>
+        <location filename="../../gui/position_editor/positioneditordialog.cpp" line="210"/>
         <source>Advanced</source>
         <comment>Advanced options of position editor</comment>
         <translation>Advanced</translation>
     </message>
     <message>
-        <location filename="../../gui/positioneditordialog.cpp" line="211"/>
+        <location filename="../../gui/position_editor/positioneditordialog.cpp" line="211"/>
         <source>FEN</source>
         <comment>Fen options of position editor</comment>
         <translation>FEN</translation>
     </message>
     <message>
-        <location filename="../../gui/positioneditordialog.cpp" line="255"/>
+        <location filename="../../gui/position_editor/positioneditordialog.cpp" line="255"/>
         <source>Illegal position</source>
         <translation>Illegal position</translation>
     </message>
     <message>
-        <location filename="../../gui/positioneditordialog.cpp" line="255"/>
+        <location filename="../../gui/position_editor/positioneditordialog.cpp" line="255"/>
         <source>Cannot start a new game with this illegal position.</source>
         <translation>Cannot start a new game with this illegal position.</translation>
     </message>
     <message>
-        <location filename="../../gui/positioneditordialog.cpp" line="266"/>
+        <location filename="../../gui/position_editor/positioneditordialog.cpp" line="266"/>
         <source>Position editor</source>
         <translation>Position editor</translation>
     </message>
@@ -1110,18 +1154,18 @@ b%2
         <translation>Settings</translation>
     </message>
     <message>
-        <location filename="../../gui/main/settingsdialog.cpp" line="91"/>
         <location filename="../../gui/main/settingsdialog.cpp" line="95"/>
+        <location filename="../../gui/main/settingsdialog.cpp" line="99"/>
         <source>Loading error</source>
         <translation>Loading error</translation>
     </message>
     <message>
-        <location filename="../../gui/main/settingsdialog.cpp" line="91"/>
+        <location filename="../../gui/main/settingsdialog.cpp" line="95"/>
         <source>No configuration file !</source>
         <translation>No configuration file !</translation>
     </message>
     <message>
-        <location filename="../../gui/main/settingsdialog.cpp" line="95"/>
+        <location filename="../../gui/main/settingsdialog.cpp" line="99"/>
         <source>Failed reading configuration file !</source>
         <translation>Failed reading configuration file !</translation>
     </message>
@@ -1129,37 +1173,37 @@ b%2
 <context>
     <name>loloof64::ChessBoard</name>
     <message>
-        <location filename="../../gui/chessboard/chessboard.cpp" line="574"/>
-        <location filename="../../gui/chessboard/chessboard.cpp" line="577"/>
-        <location filename="../../gui/chessboard/chessboard.cpp" line="580"/>
-        <location filename="../../gui/chessboard/chessboard.cpp" line="583"/>
-        <location filename="../../gui/chessboard/chessboard.cpp" line="586"/>
+        <location filename="../../gui/chessboard/chessboard.cpp" line="576"/>
+        <location filename="../../gui/chessboard/chessboard.cpp" line="579"/>
+        <location filename="../../gui/chessboard/chessboard.cpp" line="582"/>
+        <location filename="../../gui/chessboard/chessboard.cpp" line="585"/>
+        <location filename="../../gui/chessboard/chessboard.cpp" line="588"/>
         <source>Game finished</source>
         <comment>Game finished modal title</comment>
         <translation>Game finished</translation>
     </message>
     <message>
-        <location filename="../../gui/chessboard/chessboard.cpp" line="574"/>
+        <location filename="../../gui/chessboard/chessboard.cpp" line="576"/>
         <source>Checkmate</source>
         <translation>Checkmate</translation>
     </message>
     <message>
-        <location filename="../../gui/chessboard/chessboard.cpp" line="577"/>
+        <location filename="../../gui/chessboard/chessboard.cpp" line="579"/>
         <source>Stalemate</source>
         <translation>Stalemate</translation>
     </message>
     <message>
-        <location filename="../../gui/chessboard/chessboard.cpp" line="580"/>
+        <location filename="../../gui/chessboard/chessboard.cpp" line="582"/>
         <source>Draw by 3-folds repetition</source>
         <translation>Draw by 3-folds repetition</translation>
     </message>
     <message>
-        <location filename="../../gui/chessboard/chessboard.cpp" line="583"/>
+        <location filename="../../gui/chessboard/chessboard.cpp" line="585"/>
         <source>Draw by insuficient material</source>
         <translation>Draw by insuficient material</translation>
     </message>
     <message>
-        <location filename="../../gui/chessboard/chessboard.cpp" line="586"/>
+        <location filename="../../gui/chessboard/chessboard.cpp" line="588"/>
         <source>Draw by the 50 moves rule</source>
         <translation>Draw by the 50 moves rule</translation>
     </message>

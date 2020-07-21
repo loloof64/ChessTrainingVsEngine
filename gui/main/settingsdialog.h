@@ -18,6 +18,9 @@ public:
     explicit SettingsDialog(QWidget *parent = nullptr);
     ~SettingsDialog();
 
+signals:
+    void enginePathChanged(QString newPath);
+
 private:
     QVBoxLayout * _mainLayout;
     QHBoxLayout * _engineLineLayout;

@@ -14,6 +14,8 @@ using namespace loloof64;
 
 ChessBoard::ChessBoard(int cellsSize, QWidget* parent) : QWidget(parent), _cellsSize(cellsSize)
 {
+    setMinimumSize(9*cellsSize, 9*cellsSize);
+    setMaximumSize(9*cellsSize, 9*cellsSize);
     _relatedPosition = new ThcPosition("8/8/8/8/8/8/8/8 w - - 0 1");
     _dndData = nullptr;
     _gameFinishedStatus = GameFinishedStatus::STOPPED;

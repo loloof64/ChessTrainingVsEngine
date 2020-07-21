@@ -72,8 +72,12 @@ SettingsDialog::~SettingsDialog()
 void SettingsDialog::serializeOptionFile()
 {
     Yaml::Node root;
-    root["uci_engine"] = _uciEngineLineEdit->text().toStdString();
+
+    auto newEnginePath = _uciEngineLineEdit->text();
+    root["uci_engine"] = newEnginePath.toStdString();
     Yaml::Serialize(root, "ChessTrainingVsEngine.yml");
+
+    emit enginePathChanged(newEnginePath);
 }
 
 void SettingsDialog::loadOptionsFile()

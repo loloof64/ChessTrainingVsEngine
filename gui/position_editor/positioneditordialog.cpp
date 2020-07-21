@@ -249,8 +249,8 @@ PositionEditorDialog::PositionEditorDialog(QWidget *parent) : QDialog(parent, Qt
         const auto positionFen = _positionBuilder->getFen();
             loloof64::ThcPosition position(positionFen.toStdString());
         if (position.isLegalPosition()) {
-            emit newGamePosition(positionFen);
             close();
+            emit newGamePosition(positionFen);
         } else {
             QMessageBox::critical(this, tr("Illegal position"), tr("Cannot start a new game with this illegal position."));
         }

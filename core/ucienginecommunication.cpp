@@ -3,43 +3,9 @@
 #include <QDebug>
 #include <QRegExp>
 
-loloof64::UCIEngineCommunication::UCIEngineCommunication(QString executablePath)
+loloof64::UCIEngineCommunication::UCIEngineCommunication()
 {
-    _relatedProcess = new QProcess();
-    connect(_relatedProcess, &QProcess::readyRead,
-            [this]()
-    {
-        auto stdOutputBytes = _relatedProcess->readAllStandardOutput();
-        auto stdOutput = QString::fromStdString(stdOutputBytes.toStdString());
-        auto stdOutputLines = stdOutput.split('\n');
 
-        for (auto it = stdOutputLines.begin(); it != stdOutputLines.end(); ++it)
-        {
-            auto line = *it;
-
-            if (UCIEngineOptionSpin::canParse(line))
-            {
-                UCIEngineOptionSpin option(line);
-                _spinOptions.insert(option.getName(), option);
-            }
-            if (line == "uciok") {
-                _uciOk = true;
-                setOptions();
-            }
-            if (line == "readyok") {
-                _readyOk = true;
-                emit isReady();
-            }
-            if (line.startsWith("bestmove")) {
-                auto parts = line.split(QRegExp("\\s+"));
-                auto move = parts[1];
-                emit computedBestMove(move);
-            }
-        }
-    });
-
-    _relatedProcess->start(executablePath);
-    _relatedProcess->write("uci\n");
 }
 
 
@@ -91,4 +57,47 @@ void loloof64::UCIEngineCommunication::sendCommand(QString command)
         QString cmd;
         _relatedProcess->write(cmd.sprintf("%s\n", command.toStdString().c_str()).toStdString().c_str());
     }
+}
+
+void loloof64::UCIEngineCommunication::setExecutablePath(QString executablePath)
+{
+    _uciOk = false;
+    _readyOk = false;
+    emit isNotReady();
+
+    _relatedProcess = new QProcess();
+    connect(_relatedProcess, &QProcess::readyRead,
+            [this]()
+    {
+        auto stdOutputBytes = _relatedProcess->readAllStandardOutput();
+        auto stdOutput = QString::fromStdString(stdOutputBytes.toStdString());
+        auto stdOutputLines = stdOutput.split('\n');
+
+        for (auto it = stdOutputLines.begin(); it != stdOutputLines.end(); ++it)
+        {
+            auto line = *it;
+
+            if (UCIEngineOptionSpin::canParse(line))
+            {
+                UCIEngineOptionSpin option(line);
+                _spinOptions.insert(option.getName(), option);
+            }
+            if (line == "uciok") {
+                _uciOk = true;
+                setOptions();
+            }
+            if (line == "readyok") {
+                _readyOk = true;
+                emit isReady();
+            }
+            if (line.startsWith("bestmove")) {
+                auto parts = line.split(QRegExp("\\s+"));
+                auto move = parts[1];
+                emit computedBestMove(move);
+            }
+        }
+    });
+
+    _relatedProcess->start(executablePath);
+    _relatedProcess->write("uci\n");
 }

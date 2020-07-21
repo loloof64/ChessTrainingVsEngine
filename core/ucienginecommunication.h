@@ -14,13 +14,15 @@ namespace loloof64 {
         Q_OBJECT
 
     public:
-        UCIEngineCommunication(QString executablePath);
+        UCIEngineCommunication();
         ~UCIEngineCommunication();
         void close();
         void sendCommand(QString command);
+        void setExecutablePath(QString executablePath);
 
     signals:
         void isReady();
+        void isNotReady();
         void computedBestMove(QString moveString);
 
     private:
