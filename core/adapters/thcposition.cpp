@@ -177,7 +177,7 @@ bool loloof64::ThcPosition::isFiftyMovesRuleDraw() const
     auto halfMovesPart = fen.substr(previous, current);
     halfMovesCount = stoi(halfMovesPart);
 
-    return halfMovesCount >= 50;
+    return halfMovesCount >= 100;
 }
 
 bool loloof64::ThcPosition::isInsuficientMaterialDraw() const
