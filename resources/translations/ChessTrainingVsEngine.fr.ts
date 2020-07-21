@@ -317,12 +317,12 @@ b%2
     <message>
         <location filename="../../gui/main/mainwindow.cpp" line="16"/>
         <source>Engine not set</source>
-        <translation type="unfinished"></translation>
+        <translation>Moteur non configuré</translation>
     </message>
     <message>
         <location filename="../../gui/main/mainwindow.cpp" line="16"/>
         <source>You must configure the engine first</source>
-        <translation type="unfinished"></translation>
+        <translation>Vous devez d&apos;abord configurer le moteur</translation>
     </message>
     <message>
         <location filename="../../gui/main/mainwindow.cpp" line="33"/>
@@ -340,17 +340,17 @@ b%2
         <location filename="../../gui/main/mainwindow.cpp" line="84"/>
         <location filename="../../gui/main/mainwindow.cpp" line="88"/>
         <source>Loading error</source>
-        <translation type="unfinished">Erreur de chargement</translation>
+        <translation>Erreur de chargement</translation>
     </message>
     <message>
         <location filename="../../gui/main/mainwindow.cpp" line="84"/>
         <source>No configuration file !</source>
-        <translation type="unfinished">Pas de fichier de configuration !</translation>
+        <translation>Pas de fichier de configuration !</translation>
     </message>
     <message>
         <location filename="../../gui/main/mainwindow.cpp" line="88"/>
         <source>Failed reading configuration file !</source>
-        <translation type="unfinished">Echec de lecture du fichier de configuration !</translation>
+        <translation>Echec de lecture du fichier de configuration !</translation>
     </message>
 </context>
 <context>
@@ -933,17 +933,17 @@ b%2
     <message>
         <location filename="../../gui/newgameparametersdialog.cpp" line="17"/>
         <source>Player side</source>
-        <translation type="unfinished"></translation>
+        <translation>Côté du joueur</translation>
     </message>
     <message>
         <location filename="../../gui/newgameparametersdialog.cpp" line="20"/>
         <source>White</source>
-        <translation type="unfinished">Blancs</translation>
+        <translation>Blancs</translation>
     </message>
     <message>
         <location filename="../../gui/newgameparametersdialog.cpp" line="21"/>
         <source>Black</source>
-        <translation type="unfinished">Noirs</translation>
+        <translation>Noirs</translation>
     </message>
 </context>
 <context>
