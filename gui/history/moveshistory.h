@@ -24,6 +24,7 @@ namespace loloof64 {
     protected:
       virtual void paintEvent(QPaintEvent* ) override;
     private:
+        int _itemToHighlightIndex = -1;
         QString _startPosition = "";
         bool _blackToMoveFirst = false;
         bool _nextMoveIsForBlack = false;
@@ -34,6 +35,7 @@ namespace loloof64 {
         void clearMoves();
         void addMoveComponent(QPushButton *moveComponent, bool gameFinished = false);
         QLabel *buildMoveNumber();
+        void updateItemHighlightingTo(int newItemToHighlightIndex);
     };
 }
 

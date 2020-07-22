@@ -12,7 +12,7 @@ loloof64::MovesHistory::MovesHistory(QWidget *parent) : QWidget(parent)
     setLayout(_mainLayout);
 
     setStyleSheet("background-color: white");
-    setMinimumSize(340, 400);
+    setMinimumSize(360, 400);
 }
 
 loloof64::MovesHistory::~MovesHistory()
@@ -23,6 +23,7 @@ loloof64::MovesHistory::~MovesHistory()
 
 void loloof64::MovesHistory::newGame(QString startPosition)
 {
+    _itemToHighlightIndex = -1;
     _startPosition = startPosition;
     clearMoves();
 
@@ -35,12 +36,14 @@ void loloof64::MovesHistory::newGame(QString startPosition)
     auto moveNumberComponent = buildMoveNumber();
     _mainLayout->addWidget(moveNumberComponent);
     _widgetsItems.push_back(moveNumberComponent);
+
+    updateItemHighlightingTo(0);
 }
 
 void loloof64::MovesHistory::addHistoryItem(HistoryItem item, bool gameFinished)
 {
     auto moveButton = new QPushButton(item.moveFan, this);
-    moveButton->setFlat(true);
+    //moveButton->setFlat(true);
     moveButton->setStyleSheet("margin: 0px 5px; font-size: 22px;");
     moveButton->setFont(QFont("Free Serif"));
 
@@ -69,10 +72,12 @@ void loloof64::MovesHistory::clearMoves()
 
 void loloof64::MovesHistory::addMoveComponent(QPushButton *moveComponent, bool gameFinished)
 {
-    auto needToAddMoveNumber =  (_blackToMoveFirst && ! _nextMoveIsForBlack && _mainLayout->count() > 1)
+   auto needToAddMoveNumber =  (_blackToMoveFirst && ! _nextMoveIsForBlack && _mainLayout->count() > 1)
             || (! _blackToMoveFirst && _nextMoveIsForBlack && _mainLayout->count() > 1);
-    _mainLayout->addWidget(moveComponent);
-    _widgetsItems.push_back(moveComponent);
+   _mainLayout->addWidget(moveComponent);
+   _widgetsItems.push_back(moveComponent);
+   updateItemHighlightingTo(_widgetsItems.size() - 1);
+
    if (needToAddMoveNumber && !gameFinished)
    {
        _moveNumber++;
@@ -107,4 +112,23 @@ void loloof64::MovesHistory::paintEvent(QPaintEvent *)
     opt.init(this);
     QPainter p(this);
     style()->drawPrimitive(QStyle::PE_Widget, &opt, &p, this);
+}
+
+void loloof64::MovesHistory::updateItemHighlightingTo(int newItemToHighlightIndex)
+{
+    // Clearing current highlighting if necessary
+    if (_itemToHighlightIndex >= 0)
+    {
+        auto wigdetToUpdate = _widgetsItems[_itemToHighlightIndex];
+        wigdetToUpdate->setStyleSheet("QPushButton { background-color: transparent; margin: 0px 5px; font-size: 22px; }");
+    }
+
+    _itemToHighlightIndex = newItemToHighlightIndex;
+
+    // Setting current highlighting if possible
+    if (_itemToHighlightIndex >= 0)
+    {
+        auto wigdetToUpdate = _widgetsItems[_itemToHighlightIndex];
+        wigdetToUpdate->setStyleSheet("QPushButton { background-color: #70d123; margin: 0px 5px; font-size: 22px; }");
+    }
 }
