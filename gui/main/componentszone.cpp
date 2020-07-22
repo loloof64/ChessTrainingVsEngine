@@ -63,19 +63,19 @@ loloof64::ComponentsZone::ComponentsZone(QWidget *parent) : QWidget(parent)
 
     connect(_movesHistory->getButtonsZone(), &MovesHistoryButtons::requestFirstPosition,
             [this](){
-        //_movesHistory->getMovesHistoryMainComponent()->gotoFirstPosition();
+        _movesHistory->getMovesHistoryMainComponent()->gotoFirstPosition();
     });
     connect(_movesHistory->getButtonsZone(), &MovesHistoryButtons::requestLastPosition,
             [this](){
-        //_movesHistory->getMovesHistoryMainComponent()->gotoLastPosition();
+        _movesHistory->getMovesHistoryMainComponent()->gotoLastPosition();
     });
     connect(_movesHistory->getButtonsZone(), &MovesHistoryButtons::requestPreviousPosition,
             [this](){
-        //_movesHistory->getMovesHistoryMainComponent()->gotoPreviousPosition();
+        _movesHistory->getMovesHistoryMainComponent()->gotoPreviousPosition();
     });
     connect(_movesHistory->getButtonsZone(), &MovesHistoryButtons::requestNextPosition,
             [this](){
-        //_movesHistory->getMovesHistoryMainComponent()->gotoNextPosition();
+        _movesHistory->getMovesHistoryMainComponent()->gotoNextPosition();
     });
 }
 
