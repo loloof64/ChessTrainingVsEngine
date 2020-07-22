@@ -5,7 +5,6 @@
 #include <QPushButton>
 #include <string>
 #include <QPainter>
-#include <type_traits>
 
 loloof64::MovesHistory::MovesHistory(QWidget *parent) : QWidget(parent)
 {
@@ -95,6 +94,7 @@ void loloof64::MovesHistory::addMoveComponent(QPushButton *moveComponent, Histor
        _widgetsItems.push_back(numberComponent);
        _dataItems.push_back(HistoryItem("", "", MoveCoordinates(-1,-1,-1,-1)));
    }
+   emit scrollToSelectedItemRequest(_itemToHighlightIndex);
 
    _nextMoveIsForBlack = ! _nextMoveIsForBlack;
 }
@@ -221,4 +221,6 @@ void loloof64::MovesHistory::commitHistoryNodeSelection()
         _pendingNodeSelectionIndex = -1;
         _hasPendingNodeSelection = false;
     }
+
+    emit scrollToSelectedItemRequest(_itemToHighlightIndex);
 }

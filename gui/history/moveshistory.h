@@ -25,6 +25,7 @@ namespace loloof64 {
         void commitHistoryNodeSelection();
     signals:
         void requestPositionOnBoard(HistoryItem item);
+        void scrollToSelectedItemRequest(int itemIndex);
 
     protected:
       virtual void paintEvent(QPaintEvent* ) override;
