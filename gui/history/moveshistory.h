@@ -1,13 +1,15 @@
 #ifndef MOVESHISTORY_H
 #define MOVESHISTORY_H
 
-#include <QTableWidget>
+#include <QWidget>
 #include <QVector>
 #include <QLabel>
+#include <QPushButton>
 #include "../../core/IPosition.h"
+#include "../../libs/FlowLayout/flowlayout.h"
 
 namespace loloof64 {
-    class MovesHistory : public QTableWidget
+    class MovesHistory : public QWidget
     {
         Q_OBJECT
     public:
@@ -16,24 +18,21 @@ namespace loloof64 {
         void newGame(QString startPosition);
         void addHistoryItem(HistoryItem item, bool gameFinished = false);
 
-        void gotoFirstPosition();
-        void gotoLastPosition();
-        void gotoPreviousPosition();
-        void gotoNextPosition();
-
-        void commitHistoryNodeSelection();
     signals:
         void requestPositionOnBoard(HistoryItem item);
+
+    protected:
+      virtual void paintEvent(QPaintEvent* ) override;
     private:
-        QString _startPosition;
+        QString _startPosition = "";
+        bool _blackToMoveFirst = false;
+        bool _nextMoveIsForBlack = false;
         int _moveNumber = 1;
-        int _currentWorkingRow = -1, _currentWorkingCol = -1;
-        int _rowToHighlight = -1, _colToHighlight = -1;
+        FlowLayout * _mainLayout;
         QVector<QWidget *> _widgetsItems;
         QVector<HistoryItem> _dataItems;
         void clearMoves();
-        void addComponent(QWidget *component, bool gameFinished = false);
-        HistoryItem itemToSet() const;
+        void addMoveComponent(QPushButton *moveComponent, bool gameFinished = false);
         QLabel *buildMoveNumber();
     };
 }

@@ -3,18 +3,23 @@
 loloof64::MovesHistoryFullComponent::MovesHistoryFullComponent(QWidget *parent): QWidget(parent)
 {
     _mainLayout = new QVBoxLayout(this);
-    _historyZone = new MovesHistory(this);
     _buttonsZone = new MovesHistoryButtons(this);
+    _mainZoneScrollArea = new QScrollArea(this);
+    _historyZone = new MovesHistory();
 
     setLayout(_mainLayout);
     _mainLayout->addWidget(_buttonsZone);
-    _mainLayout->addWidget(_historyZone);
+    _mainLayout->addWidget(_mainZoneScrollArea);
+
+    _mainZoneScrollArea->setWidget(_historyZone);
+    _mainZoneScrollArea->setWidgetResizable( true );
 }
 
 loloof64::MovesHistoryFullComponent::~MovesHistoryFullComponent()
 {
-    delete _buttonsZone;
     delete _historyZone;
+    delete _mainZoneScrollArea;
+    delete _buttonsZone;
     delete _mainLayout;
 }
 
@@ -40,5 +45,5 @@ loloof64::MovesHistoryButtons* loloof64::MovesHistoryFullComponent::getButtonsZo
 
 void loloof64::MovesHistoryFullComponent::commitHistoryNodeSelection()
 {
-    _historyZone->commitHistoryNodeSelection();
+    //_historyZone->commitHistoryNodeSelection();
 }

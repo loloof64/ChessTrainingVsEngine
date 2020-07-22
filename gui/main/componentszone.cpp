@@ -62,13 +62,21 @@ loloof64::ComponentsZone::ComponentsZone(QWidget *parent) : QWidget(parent)
     });
 
     connect(_movesHistory->getButtonsZone(), &MovesHistoryButtons::requestFirstPosition,
-            [this](){ _movesHistory->getMovesHistoryMainComponent()->gotoFirstPosition(); });
+            [this](){
+        //_movesHistory->getMovesHistoryMainComponent()->gotoFirstPosition();
+    });
     connect(_movesHistory->getButtonsZone(), &MovesHistoryButtons::requestLastPosition,
-            [this](){ _movesHistory->getMovesHistoryMainComponent()->gotoLastPosition(); });
+            [this](){
+        //_movesHistory->getMovesHistoryMainComponent()->gotoLastPosition();
+    });
     connect(_movesHistory->getButtonsZone(), &MovesHistoryButtons::requestPreviousPosition,
-            [this](){ _movesHistory->getMovesHistoryMainComponent()->gotoPreviousPosition(); });
+            [this](){
+        //_movesHistory->getMovesHistoryMainComponent()->gotoPreviousPosition();
+    });
     connect(_movesHistory->getButtonsZone(), &MovesHistoryButtons::requestNextPosition,
-            [this](){ _movesHistory->getMovesHistoryMainComponent()->gotoNextPosition(); });
+            [this](){
+        //_movesHistory->getMovesHistoryMainComponent()->gotoNextPosition();
+    });
 }
 
 loloof64::ComponentsZone::~ComponentsZone()

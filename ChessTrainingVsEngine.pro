@@ -167,7 +167,8 @@ HEADERS += \
     gui/position_editor/positioneditordialog.h \
     gui/position_editor/positioneditor.h \
     core/positionbuilder.h \
-    gui/newgameparametersdialog.h
+    gui/newgameparametersdialog.h \
+    libs/FlowLayout/flowlayout.h
 
 SOURCES += \
     core/IPosition.cpp \
@@ -246,7 +247,8 @@ SOURCES += \
     gui/position_editor/positioneditordialog.cpp \
     gui/position_editor/positioneditor.cpp \
     core/positionbuilder.cpp \
-    gui/newgameparametersdialog.cpp
+    gui/newgameparametersdialog.cpp \
+    libs/FlowLayout/flowlayout.cpp
 
 TRANSLATIONS += \
     resources/translations/ChessTrainingVsEngine.en.ts \

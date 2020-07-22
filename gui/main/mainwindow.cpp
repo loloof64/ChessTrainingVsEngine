@@ -56,7 +56,7 @@ MainWindow::MainWindow(QWidget *parent)
     addToolBar(_mainToolBar);
     setCentralWidget(_componentsZone);
 
-    setFixedSize(755, 600);
+    setFixedSize(795, 600);
 }
 
 MainWindow::~MainWindow()
