@@ -3,8 +3,11 @@
 #include "../position_editor/positioneditordialog.h"
 #include "../newgameparametersdialog.h"
 #include "../../libs/mini-yaml/Yaml.hpp"
+#include "../../libs/chessx-pgn/database/pgndatabase.h"
+#include "../game_selection/gameselectiondialog.h"
 #include <QMessageBox>
 #include <QFileDialog>
+#include <QDebug>
 
 MainWindow::MainWindow(QWidget *parent)
     : QMainWindow(parent)
@@ -40,6 +43,44 @@ MainWindow::MainWindow(QWidget *parent)
         auto choosenFile = QFileDialog::getOpenFileName(this, tr("Choose pgn"), _fileChooserDir, tr("Pgn file (*.pgn)"));
         if ( ! choosenFile.isEmpty() ) {
             _fileChooserDir = QDir(choosenFile).absolutePath();
+
+            try  {
+                auto pgnDatabase = new PgnDatabase(false);
+                pgnDatabase->open(choosenFile, true);
+
+                loloof64::GameSelectionDialog gameSelectionDialog;
+                gameSelectionDialog.setPgnDatabase(pgnDatabase);
+                if (gameSelectionDialog.exec() != QDialog::Accepted)
+                {
+                    return;
+                }
+
+                auto selectedGameIndex = static_cast<GameId>(gameSelectionDialog.getSelectedGameIndex());
+
+                Game currentGame;
+
+                pgnDatabase->loadGame(selectedGameIndex, currentGame);
+                currentGame.moveToStart();
+
+                NewGameParametersDialog gameParametersDialog(currentGame.toFen(), this);
+                connect(&gameParametersDialog, &NewGameParametersDialog::newGameRequest, [this](QString positionFen, bool playerHasWhite) {
+                    startNewGame(positionFen, playerHasWhite);
+                });
+                gameParametersDialog.exec();
+            }
+            catch (loloof64::IllegalPositionException const &/* e */)
+            {
+                QMessageBox::information(this, tr("Unable to open file"),
+                                tr("Wrong game data"));
+                            return;
+            }
+            catch (std::exception const &e)
+            {
+                QMessageBox::information(this, tr("Unable to open file"),
+                                tr("Misc reading error"));
+                            return;
+                qDebug() << "Pgn file reading error : " << e.what();
+            }
 
         }
     });
