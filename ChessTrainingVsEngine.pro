@@ -171,10 +171,11 @@ HEADERS += \
     gui/position_editor/positioneditordialog.h \
     gui/position_editor/positioneditor.h \
     core/positionbuilder.h \
-    gui/newgameparametersdialog.h \
+    gui/main/newgameparametersdialog.h \
     libs/FlowLayout/flowlayout.h \
     gui/game_selection/gameselectiondialog.h \
-    gui/game_selection/gameselectionmainzone.h
+    gui/game_selection/gameselectionmainzone.h \
+    gui/main/gametimer.h
 
 SOURCES += \
     core/IPosition.cpp \
@@ -253,10 +254,11 @@ SOURCES += \
     gui/position_editor/positioneditordialog.cpp \
     gui/position_editor/positioneditor.cpp \
     core/positionbuilder.cpp \
-    gui/newgameparametersdialog.cpp \
+    gui/main/newgameparametersdialog.cpp \
     libs/FlowLayout/flowlayout.cpp \
     gui/game_selection/gameselectiondialog.cpp \
-    gui/game_selection/gameselectionmainzone.cpp
+    gui/game_selection/gameselectionmainzone.cpp \
+    gui/main/gametimer.cpp
 
 TRANSLATIONS += \
     resources/translations/ChessTrainingVsEngine.en.ts \

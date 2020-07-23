@@ -14,20 +14,35 @@
 
 loloof64::ComponentsZone::ComponentsZone(QWidget *parent) : QWidget(parent)
 {
-    _mainLayout = new QHBoxLayout(this);
+    _mainLayout = new QHBoxLayout();
+    _boardAndTimerLayout = new QVBoxLayout();
+    _timerLayout = new QHBoxLayout();
+    _chessBoardLayout = new QHBoxLayout();
     _mainLayout->setSpacing(20);
-    _chessBoard = new ChessBoard(45, this);
-    _movesHistory = new MovesHistoryFullComponent(this);
+    _gameTimer = new GameTimer();
+    _chessBoard = new ChessBoard(45);
+    _movesHistory = new MovesHistoryFullComponent();
     _pgnDatabase = new PgnDatabase(false);
     _engineCommunication = nullptr;
 
-    QFont font;
-    font.setPointSize(20);
+    _timerLayout->addStretch();
+    _timerLayout->addWidget(_gameTimer);
+    _timerLayout->addStretch();
 
-    _mainLayout->addWidget(_chessBoard);
+    _chessBoardLayout->addStretch();
+    _chessBoardLayout->addWidget(_chessBoard);
+    _chessBoardLayout->addStretch();
+
+    _boardAndTimerLayout->addStretch();
+    _boardAndTimerLayout->addLayout(_timerLayout);
+    _boardAndTimerLayout->addLayout(_chessBoardLayout);
+    _boardAndTimerLayout->addStretch();
+
+    _mainLayout->addLayout(_boardAndTimerLayout);
     _mainLayout->addWidget(_movesHistory);
+
     setLayout(_mainLayout);
-    resize(600, 540);
+    setMinimumSize(600, 600);
 
     connect(_chessBoard, &loloof64::ChessBoard::moveDoneAsFan,
             [this](QString moveFan, QString newPositionFen, MoveCoordinates lastMove, bool gameFinished)
@@ -51,14 +66,7 @@ loloof64::ComponentsZone::ComponentsZone(QWidget *parent) : QWidget(parent)
     connect(_chessBoard, &loloof64::ChessBoard::moveDoneAsSan,
             [this](QString moveSan, QString /*newPositionFen*/, MoveCoordinates moveCoordinates, bool /*gameFinished*/)
     {
-        const auto stdMoveSan = moveSan.toStdString();
-        char promotion = 0;
-        const auto equalSignPos = stdMoveSan.find("=");
-        if (equalSignPos != std::string::npos) {
-            const auto promotionPart = stdMoveSan.substr(equalSignPos+1);
-            promotion = promotionPart[0];
-        }
-        handleMoveVerification(moveCoordinates, promotion);
+
     });
 
     connect(_movesHistory->getButtonsZone(), &MovesHistoryButtons::requestFirstPosition,
@@ -94,6 +102,10 @@ loloof64::ComponentsZone::~ComponentsZone()
     }
     delete _movesHistory;
     delete _chessBoard;
+    delete _gameTimer;
+    delete _chessBoardLayout;
+    delete _timerLayout;
+    delete _boardAndTimerLayout;
     delete _mainLayout;
 }
 
@@ -123,40 +135,6 @@ void loloof64::ComponentsZone::setEnginePath(QString enginePath)
 void loloof64::ComponentsZone::reverseBoard()
 {
     _chessBoard->reverse();
-}
-
-void loloof64::ComponentsZone::handleMoveVerification(MoveCoordinates moveCoordinates, char promotion)
-{
-    const auto whiteTurnBeforeMove = ! _chessBoard->isWhiteTurn();
-    const auto externalPlayerTurn = (whiteTurnBeforeMove && (_chessBoard->getWhitePlayerType() == PlayerType::EXTERNAL)) ||
-            (!whiteTurnBeforeMove && (_chessBoard->getBlackPlayerType() == PlayerType::EXTERNAL));
-
-    if (externalPlayerTurn) {
-        return;
-    }
-    else {
-        auto promotionPiece = PieceType::None;
-        const auto fromSquare = SquareFromRankAndFile((unsigned char) moveCoordinates.startRank, (unsigned char) moveCoordinates.startFile);
-        const auto toSquare = SquareFromRankAndFile((unsigned char) moveCoordinates.endRank, (unsigned char) moveCoordinates.endFile);
-        switch (promotion) {
-        case 'Q':
-        case 'q':
-            promotionPiece = PieceType::Queen;
-            break;
-        case 'R':
-        case 'r':
-            promotionPiece = PieceType::Rook;
-            break;
-        case 'B':
-        case 'b':
-            promotionPiece = PieceType::Bishop;
-            break;
-        case 'N':
-        case 'n':
-            promotionPiece = PieceType::Knight;
-            break;
-        }
-    }
 }
 
 void loloof64::ComponentsZone::makeComputerPlayNextMove()

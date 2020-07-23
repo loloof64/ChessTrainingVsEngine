@@ -1,7 +1,7 @@
 #include "mainwindow.h"
 #include "settingsdialog.h"
 #include "../position_editor/positioneditordialog.h"
-#include "../newgameparametersdialog.h"
+#include "newgameparametersdialog.h"
 #include "../../libs/mini-yaml/Yaml.hpp"
 #include "../../libs/chessx-pgn/database/pgndatabase.h"
 #include "../game_selection/gameselectiondialog.h"
@@ -69,7 +69,7 @@ MainWindow::MainWindow(QWidget *parent)
     addToolBar(_mainToolBar);
     setCentralWidget(_componentsZone);
 
-    setFixedSize(795, 600);
+    setFixedSize(895, 680);
 }
 
 MainWindow::~MainWindow()

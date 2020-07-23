@@ -9,7 +9,7 @@
 #include <QHBoxLayout>
 #include <QDialogButtonBox>
 
-#include "chessboard/chessboard.h"
+#include "../chessboard/chessboard.h"
 
 class NewGameParametersDialog : public QDialog
 {

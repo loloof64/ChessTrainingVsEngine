@@ -15,6 +15,7 @@
 #include "../history/moveshistoryfullcomponent.h"
 #include "../../libs/chessx-pgn/database/pgndatabase.h"
 #include "core/ucienginecommunication.h"
+#include "gametimer.h"
 
 namespace loloof64 {
     class ComponentsZone : public QWidget
@@ -36,7 +37,11 @@ namespace loloof64 {
 
     private:
         QList<QString> _expectedMovesFanList;
+        QVBoxLayout * _boardAndTimerLayout;
+        QHBoxLayout * _timerLayout;
+        QHBoxLayout * _chessBoardLayout;
         QHBoxLayout *_mainLayout;
+        GameTimer * _gameTimer;
         ChessBoard *_chessBoard;
         MovesHistoryFullComponent *_movesHistory;
         PgnDatabase *_pgnDatabase;
@@ -44,7 +49,6 @@ namespace loloof64 {
         Game _currentGame;
         bool _isWhitePly;
 
-        void handleMoveVerification(MoveCoordinates moveCoordinates, char promotion = 0);
         void makeComputerPlayNextMove();
         char promotionPieceToPromotionFen(Piece promotion) const;
         QString moveToMoveFan(Move moveId);
