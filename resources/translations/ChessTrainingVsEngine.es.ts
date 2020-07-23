@@ -309,48 +309,92 @@ b%2
 <context>
     <name>MainWindow</name>
     <message>
-        <location filename="../../gui/main/mainwindow.cpp" line="14"/>
+        <location filename="../../gui/main/mainwindow.cpp" line="18"/>
         <source>New game</source>
         <comment>Caption for the button &apos;new game&apos;</comment>
         <translation>Nueva partida</translation>
     </message>
     <message>
-        <location filename="../../gui/main/mainwindow.cpp" line="16"/>
+        <location filename="../../gui/main/mainwindow.cpp" line="20"/>
+        <location filename="../../gui/main/mainwindow.cpp" line="39"/>
         <source>Engine not set</source>
         <translation>Motor no configurado</translation>
     </message>
     <message>
-        <location filename="../../gui/main/mainwindow.cpp" line="16"/>
+        <location filename="../../gui/main/mainwindow.cpp" line="20"/>
+        <location filename="../../gui/main/mainwindow.cpp" line="39"/>
         <source>You must configure the engine first</source>
         <translation>Primero debe configurar el motor</translation>
     </message>
     <message>
-        <location filename="../../gui/main/mainwindow.cpp" line="33"/>
+        <location filename="../../gui/main/mainwindow.cpp" line="37"/>
+        <source>New game from PGN file</source>
+        <comment>Caption for the button &apos;new game from PGN&apos;</comment>
+        <translation>Nuevo juego de uno archivo pgn</translation>
+    </message>
+    <message>
+        <location filename="../../gui/main/mainwindow.cpp" line="46"/>
         <source>Toggle side</source>
         <comment>Caption for the button &apos;toggle side&apos;</comment>
         <translation>Cambiar el lado</translation>
     </message>
     <message>
-        <location filename="../../gui/main/mainwindow.cpp" line="36"/>
+        <location filename="../../gui/main/mainwindow.cpp" line="49"/>
         <source>Settings</source>
         <comment>Caption for the button &apos;settings&apos;</comment>
         <translation>Opciones</translation>
     </message>
     <message>
-        <location filename="../../gui/main/mainwindow.cpp" line="84"/>
-        <location filename="../../gui/main/mainwindow.cpp" line="88"/>
+        <location filename="../../gui/main/mainwindow.cpp" line="97"/>
+        <location filename="../../gui/main/mainwindow.cpp" line="101"/>
         <source>Loading error</source>
         <translation>Error de carga</translation>
     </message>
     <message>
-        <location filename="../../gui/main/mainwindow.cpp" line="84"/>
+        <location filename="../../gui/main/mainwindow.cpp" line="97"/>
         <source>No configuration file !</source>
         <translation>Sin archivo de configuracion !</translation>
     </message>
     <message>
-        <location filename="../../gui/main/mainwindow.cpp" line="88"/>
+        <location filename="../../gui/main/mainwindow.cpp" line="101"/>
         <source>Failed reading configuration file !</source>
         <translation>Error al leer el archivo de configuracion !</translation>
+    </message>
+    <message>
+        <location filename="../../gui/main/mainwindow.cpp" line="107"/>
+        <source>Choose pgn</source>
+        <translation>Elige el PGN</translation>
+    </message>
+    <message>
+        <location filename="../../gui/main/mainwindow.cpp" line="107"/>
+        <source>Pgn file (*.pgn)</source>
+        <translation>Archivo PGN (*.pgn)</translation>
+    </message>
+    <message>
+        <location filename="../../gui/main/mainwindow.cpp" line="131"/>
+        <source>Game already over</source>
+        <translation>Juego ya terminado</translation>
+    </message>
+    <message>
+        <location filename="../../gui/main/mainwindow.cpp" line="131"/>
+        <source>The game is already over. You can&apos;t play it.</source>
+        <translation>El juego ya este terminado. No puede juegar con eso.</translation>
+    </message>
+    <message>
+        <location filename="../../gui/main/mainwindow.cpp" line="143"/>
+        <location filename="../../gui/main/mainwindow.cpp" line="149"/>
+        <source>Unable to open file</source>
+        <translation>No puede abrir el archivo</translation>
+    </message>
+    <message>
+        <location filename="../../gui/main/mainwindow.cpp" line="144"/>
+        <source>Wrong game data</source>
+        <translation>Datos de juego incorrectos</translation>
+    </message>
+    <message>
+        <location filename="../../gui/main/mainwindow.cpp" line="150"/>
+        <source>Misc reading error</source>
+        <translation>Error de lectura miscelaneo</translation>
     </message>
 </context>
 <context>
@@ -1209,21 +1253,66 @@ b%2
     </message>
 </context>
 <context>
+    <name>loloof64::GameSelectionDialog</name>
+    <message>
+        <location filename="../../gui/game_selection/gameselectiondialog.cpp" line="38"/>
+        <location filename="../../gui/game_selection/gameselectiondialog.cpp" line="41"/>
+        <location filename="../../gui/game_selection/gameselectiondialog.cpp" line="50"/>
+        <location filename="../../gui/game_selection/gameselectiondialog.cpp" line="53"/>
+        <location filename="../../gui/game_selection/gameselectiondialog.cpp" line="62"/>
+        <location filename="../../gui/game_selection/gameselectiondialog.cpp" line="65"/>
+        <location filename="../../gui/game_selection/gameselectiondialog.cpp" line="68"/>
+        <location filename="../../gui/game_selection/gameselectiondialog.cpp" line="77"/>
+        <location filename="../../gui/game_selection/gameselectiondialog.cpp" line="80"/>
+        <location filename="../../gui/game_selection/gameselectiondialog.cpp" line="83"/>
+        <location filename="../../gui/game_selection/gameselectiondialog.cpp" line="92"/>
+        <location filename="../../gui/game_selection/gameselectiondialog.cpp" line="95"/>
+        <location filename="../../gui/game_selection/gameselectiondialog.cpp" line="98"/>
+        <source>Unknown</source>
+        <translation>Desconocido(a)</translation>
+    </message>
+</context>
+<context>
+    <name>loloof64::GameSelectionMainZone</name>
+    <message>
+        <location filename="../../gui/game_selection/gameselectionmainzone.cpp" line="16"/>
+        <source>Goto first</source>
+        <translation>Ir a la primera posicion</translation>
+    </message>
+    <message>
+        <location filename="../../gui/game_selection/gameselectionmainzone.cpp" line="19"/>
+        <source>Goto previous</source>
+        <translation>Anterior</translation>
+    </message>
+    <message>
+        <location filename="../../gui/game_selection/gameselectionmainzone.cpp" line="22"/>
+        <source>Goto next</source>
+        <translation>Siguiente</translation>
+    </message>
+    <message>
+        <location filename="../../gui/game_selection/gameselectionmainzone.cpp" line="25"/>
+        <source>Goto last</source>
+        <translation>Ultimo</translation>
+    </message>
+    <message>
+        <location filename="../../gui/game_selection/gameselectionmainzone.cpp" line="35"/>
+        <source>This game is already over ! You can&apos;t play it !</source>
+        <translation>Este juego ya esta terminado. No puede juegar can eso !</translation>
+    </message>
+</context>
+<context>
     <name>loloof64::MovesHistory</name>
     <message>
-        <location filename="../../gui/history/moveshistory.cpp" line="11"/>
         <source>Move number</source>
-        <translation>Nombre</translation>
+        <translation type="vanished">Nombre</translation>
     </message>
     <message>
-        <location filename="../../gui/history/moveshistory.cpp" line="11"/>
         <source>White</source>
-        <translation>Blanco</translation>
+        <translation type="vanished">Blanco</translation>
     </message>
     <message>
-        <location filename="../../gui/history/moveshistory.cpp" line="11"/>
         <source>Black</source>
-        <translation>Negro</translation>
+        <translation type="vanished">Negro</translation>
     </message>
 </context>
 <context>
