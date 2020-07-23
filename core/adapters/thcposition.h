@@ -82,7 +82,7 @@ namespace loloof64 {
 
     private:
         thc::ChessRules _position;
-        QMap<std::string, int> _recordedPositions;
+        QMap<QString, int> _recordedPositions;
     };
 
 }

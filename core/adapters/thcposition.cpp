@@ -10,7 +10,7 @@ namespace loloof64 {
     ThcPosition::ThcPosition(std::string fen) : IPosition()
     {
         _position = thc::ChessRules();
-        _recordedPositions = QMap<std::string, int>();
+        _recordedPositions = QMap<QString, int>();
         _position.Forsyth(fen.c_str());
     }
 
@@ -123,16 +123,12 @@ namespace loloof64 {
         copy.PlayMove(moveToTest);
 
         _position = copy;
-        auto positionToRecord = _position.ForsythPublish();
+        auto positionToRecordFen = QString::fromStdString(_position.ForsythPublish());
         // Strip both moves count from the position
-        auto previous = positionToRecord.find(" ");
-        auto current = previous;
-        for (auto partIndex = 0; partIndex < 4; partIndex++)
-        {
-            previous = current+1;
-            current = positionToRecord.find(" ", previous);
-        }
-        positionToRecord = positionToRecord.substr(0, current-2);
+        auto parts = positionToRecordFen.split(" ");
+        parts.removeLast();
+        parts.removeLast();
+        auto positionToRecord = parts.join(" ");
         _recordedPositions[positionToRecord]++;
 
         return copy.ForsythPublish();
@@ -222,16 +218,11 @@ bool loloof64::ThcPosition::isThreeFoldRepetitionsDraw() const
     // because not well suited
 
     auto positionCopy = _position;
-
-    auto positionWithStrippedMoveCounts = positionCopy.ForsythPublish();
-    auto previous = positionWithStrippedMoveCounts.find(" ");
-    unsigned long current = previous;
-    for (auto partIndex = 0; partIndex < 4; partIndex++)
-    {
-        previous = current+1;
-        current = positionWithStrippedMoveCounts.find(" ", previous);
-    }
-    positionWithStrippedMoveCounts = positionWithStrippedMoveCounts.substr(0, current-2);
+    auto positionCopyFen = QString::fromStdString(positionCopy.ForsythPublish());
+    auto parts = positionCopyFen.split(" ");
+    parts.removeLast();
+    parts.removeLast();
+    auto positionWithStrippedMoveCounts = parts.join(" ");
 
     return _recordedPositions[positionWithStrippedMoveCounts] >= 3;
 }
