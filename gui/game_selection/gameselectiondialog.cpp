@@ -11,19 +11,18 @@ loloof64::GameSelectionDialog::GameSelectionDialog(QWidget *parent) : QDialog(pa
 
     _mainZone = new GameSelectionMainZone(this);
 
-    _validateButton = new QPushButton(tr("Validate"), this);
+    _validationButtons = new QDialogButtonBox(QDialogButtonBox::Ok | QDialogButtonBox::Cancel, this);
 
     _layout->addWidget(_gameIndexLabel);
     _layout->addWidget(_mainZone);
     _layout->addWidget(_playersLabel);
     _layout->addWidget(_eventLabel);
-    _layout->addWidget(_validateButton);
+    _layout->addWidget(_validationButtons);
 
     _layout->setAlignment(_gameIndexLabel, Qt::AlignHCenter);
     _layout->setAlignment(_mainZone, Qt::AlignHCenter);
     _layout->setAlignment(_playersLabel, Qt::AlignHCenter);
     _layout->setAlignment(_eventLabel, Qt::AlignHCenter);
-    _layout->setAlignment(_validateButton, Qt::AlignHCenter);
 
     setLayout(_layout);
 
@@ -101,17 +100,22 @@ loloof64::GameSelectionDialog::GameSelectionDialog(QWidget *parent) : QDialog(pa
         _eventLabel->setText(QString("%1 - %2 (%3)").arg(newEventName).arg(newSite).arg(newDate));
     });
 
-    connect(_validateButton, &QPushButton::clicked, this, [this]()
-    {
+    connect(_validationButtons, &QDialogButtonBox::accepted, [this]() {
         accept();
     });
+
+    connect(_validationButtons, &QDialogButtonBox::rejected, [this]()
+    {
+        close();
+    });
+
 
     setModal(true);
 }
 
 loloof64::GameSelectionDialog::~GameSelectionDialog()
 {
-    delete _validateButton;
+    delete _validationButtons;
 
     delete _mainZone;
 
