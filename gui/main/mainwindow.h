@@ -19,6 +19,7 @@ private:
     QToolBar *_mainToolBar;
     loloof64::ComponentsZone *_componentsZone;
     bool _engineReady;
+    QString _fileChooserDir;
     void startNewGame(QString positionFen, bool playerHasWhite);
     void loadRegisteredEnginePath();
 };

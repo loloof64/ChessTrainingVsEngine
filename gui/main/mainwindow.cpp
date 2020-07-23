@@ -4,6 +4,7 @@
 #include "../newgameparametersdialog.h"
 #include "../../libs/mini-yaml/Yaml.hpp"
 #include <QMessageBox>
+#include <QFileDialog>
 
 MainWindow::MainWindow(QWidget *parent)
     : QMainWindow(parent)
@@ -28,6 +29,19 @@ MainWindow::MainWindow(QWidget *parent)
         });
 
         editorDialog.exec();
+    });
+
+    _mainToolBar->addAction(QIcon(QPixmap(":/icons/folder.svg")), QString(tr("New game from PGN file", "Caption for the button 'new game from PGN'")), [this](){
+        if (!_engineReady) {
+            QMessageBox::critical(this, tr("Engine not set"), tr("You must configure the engine first"));
+            return;
+        }
+
+        auto choosenFile = QFileDialog::getOpenFileName(this, tr("Choose pgn"), _fileChooserDir, tr("Pgn file (*.pgn)"));
+        if ( ! choosenFile.isEmpty() ) {
+            _fileChooserDir = QDir(choosenFile).absolutePath();
+
+        }
     });
 
     _mainToolBar->addAction(QIcon(QPixmap(":/icons/swap.svg")), QString(tr("Toggle side", "Caption for the button 'toggle side'")), [this](){

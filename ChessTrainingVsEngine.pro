@@ -57,6 +57,9 @@ DISTFILES += \
     resources/icons/start.svg \
     resources/icons/stop.svg \
     resources/icons/swap.svg \
+    resources/icons/trashCan.svg \
+    resources/icons/settings.svg \
+    resources/icons/folder.svg \
     resources/fonts/FreeSerif.ttf \
     chess.ico \
     windows_build.iss \

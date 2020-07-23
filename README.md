@@ -22,7 +22,7 @@ Don't forget to generate translations files, from resources/translations subfold
 Using some icon resources from [FlatIcon](https://www.flaticon.com/).
 
 * swap svg by Good Ware
-* start svg by SmashIcons
+* start, folder svg by SmashIcons
 * stop, settings, recycle-bin svg by FreePik
 * previous, next, left-arrow, right-arrow svg by Roundicons
 * male svg by Pixelmeetup
