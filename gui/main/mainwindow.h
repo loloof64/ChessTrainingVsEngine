@@ -21,6 +21,7 @@ private:
     bool _engineReady;
     QString _fileChooserDir;
     void startNewGame(QString positionFen, bool playerHasWhite);
+    void loadGameFromPgn();
     void loadRegisteredEnginePath();
 };
 #endif // MAINWINDOW_H
