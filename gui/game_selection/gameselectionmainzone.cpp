@@ -35,7 +35,7 @@ loloof64::GameSelectionMainZone::GameSelectionMainZone(QWidget *parent) : QWidge
 
        _selectedGameIndex = 0;
        _gameTextSelection->setText(QString("%1").arg(_selectedGameIndex+1));
-       loadGameStart();
+       loadGameEnd();
     });
 
     connect(_goPreviousButton, &QPushButton::clicked, [this]()
@@ -45,7 +45,7 @@ loloof64::GameSelectionMainZone::GameSelectionMainZone(QWidget *parent) : QWidge
 
         _selectedGameIndex--;
         _gameTextSelection->setText(QString("%1").arg(_selectedGameIndex+1));
-        loadGameStart();
+        loadGameEnd();
     });
 
     connect(_goNextButton, &QPushButton::clicked, [this]()
@@ -55,7 +55,7 @@ loloof64::GameSelectionMainZone::GameSelectionMainZone(QWidget *parent) : QWidge
 
         _selectedGameIndex++;
         _gameTextSelection->setText(QString("%1").arg(_selectedGameIndex+1));
-        loadGameStart();
+        loadGameEnd();
     });
 
     connect(_goLastButton, &QPushButton::clicked, [this]()
@@ -64,7 +64,7 @@ loloof64::GameSelectionMainZone::GameSelectionMainZone(QWidget *parent) : QWidge
 
         _selectedGameIndex = _pgnDatabase->count() - 1;
         _gameTextSelection->setText(QString("%1").arg(_selectedGameIndex+1));
-        loadGameStart();
+        loadGameEnd();
     });
 
     connect(_gameTextSelection, &QLineEdit::textChanged, this, [this](QString)
@@ -77,7 +77,7 @@ loloof64::GameSelectionMainZone::GameSelectionMainZone(QWidget *parent) : QWidge
         if (inBounds)
         {
             _selectedGameIndex = valuetoSet;
-            loadGameStart();
+            loadGameEnd();
         }
     });
 
@@ -116,23 +116,23 @@ void loloof64::GameSelectionMainZone::setPgnDatabase(PgnDatabase *database)
 
     if (_pgnDatabase != nullptr)
     {
-        _gameTextValidator = new QIntValidator(1, _pgnDatabase->count(), this);
+        _gameTextValidator = new QIntValidator(1, static_cast<int>(_pgnDatabase->count()), this);
         _gameTextSelection->setValidator(_gameTextValidator);
 
         _selectedGameIndex = 0;
         _gameTextSelection->setText(QString("%1").arg(_selectedGameIndex+1));
-        loadGameStart();
+        loadGameEnd();
 
         emit gameIndexChanged(_selectedGameIndex);
     }
 }
 
-void loloof64::GameSelectionMainZone::loadGameStart()
+void loloof64::GameSelectionMainZone::loadGameEnd()
 {
     if (_pgnDatabase == nullptr) return;
 
-    _pgnDatabase->loadGame(_selectedGameIndex, _currentBaseGame);
-    _currentBaseGame.moveToStart();
+    _pgnDatabase->loadGame(static_cast<GameId>(_selectedGameIndex), _currentBaseGame);
+    _currentBaseGame.moveToEnd();
 
     auto gameStartPosition = _currentBaseGame.toFen();
     _board->setPosition(HistoryItem(QString(), gameStartPosition, MoveCoordinates(-1, -1, -1, -1)));

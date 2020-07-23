@@ -60,7 +60,7 @@ MainWindow::MainWindow(QWidget *parent)
                 Game currentGame;
 
                 pgnDatabase->loadGame(selectedGameIndex, currentGame);
-                currentGame.moveToStart();
+                currentGame.moveToEnd();
 
                 NewGameParametersDialog gameParametersDialog(currentGame.toFen(), this);
                 connect(&gameParametersDialog, &NewGameParametersDialog::newGameRequest, [this](QString positionFen, bool playerHasWhite) {

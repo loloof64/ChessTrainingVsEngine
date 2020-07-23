@@ -47,7 +47,7 @@ namespace loloof64 {
         PgnDatabase *_pgnDatabase;
         Game _currentBaseGame;
 
-        void loadGameStart();
+        void loadGameEnd();
     };
 };
 
