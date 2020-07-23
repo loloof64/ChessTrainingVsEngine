@@ -27,6 +27,7 @@ namespace loloof64 {
         inline bool gameInProgress(){ return _chessBoard->gameInProgress(); }
         void setEnginePath(QString enginePath);
         void startNewGame(QString positionFen, bool playerHasWhite);
+        void startNewTimedGame(QString positionFen, bool playerHasWhite, int whiteTimeMs, int blackTimeMs);
 
     public slots:
         void reverseBoard();

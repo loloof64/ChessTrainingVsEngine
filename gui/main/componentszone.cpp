@@ -48,6 +48,7 @@ loloof64::ComponentsZone::ComponentsZone(QWidget *parent) : QWidget(parent)
             [this](QString moveFan, QString newPositionFen, MoveCoordinates lastMove, bool gameFinished)
     {
         _movesHistory->addHistoryItem(HistoryItem(moveFan, newPositionFen, lastMove), gameFinished);
+        _gameTimer->toggleClockSide();
     });
     connect(_movesHistory->getMovesHistoryMainComponent(), &loloof64::MovesHistory::requestPositionOnBoard,
             [this](HistoryItem item)
@@ -62,11 +63,6 @@ loloof64::ComponentsZone::ComponentsZone(QWidget *parent) : QWidget(parent)
             [this](QString /*currentPosition*/)
     {
         makeComputerPlayNextMove();
-    });
-    connect(_chessBoard, &loloof64::ChessBoard::moveDoneAsSan,
-            [this](QString moveSan, QString /*newPositionFen*/, MoveCoordinates moveCoordinates, bool /*gameFinished*/)
-    {
-
     });
 
     connect(_movesHistory->getButtonsZone(), &MovesHistoryButtons::requestFirstPosition,
@@ -194,6 +190,19 @@ void loloof64::ComponentsZone::startNewGame(QString positionFen, bool playerHasW
     _chessBoard->setWhitePlayerType(playerHasWhite ? loloof64::PlayerType::HUMAN : loloof64::PlayerType::EXTERNAL);
     _chessBoard->setBlackPlayerType(playerHasWhite ? loloof64::PlayerType::EXTERNAL : loloof64::PlayerType::HUMAN);
 
+    _gameTimer->startNewIllimitedGame(playerHasWhite);
+    _chessBoard->newGame(positionFen);
+}
+
+void loloof64::ComponentsZone::startNewTimedGame(QString positionFen, bool playerHasWhite, int whiteTimeMs, int blackTimeMs)
+{
+    _movesHistory->newGame(positionFen);
+    _chessBoard->setWhitePlayerType(playerHasWhite ? loloof64::PlayerType::HUMAN : loloof64::PlayerType::EXTERNAL);
+    _chessBoard->setBlackPlayerType(playerHasWhite ? loloof64::PlayerType::EXTERNAL : loloof64::PlayerType::HUMAN);
+
+    bool blackStartTheGame = positionFen.split(" ")[1] == "b";
+
+    _gameTimer->startNewTimedGame(playerHasWhite, whiteTimeMs, blackTimeMs, blackStartTheGame);
     _chessBoard->newGame(positionFen);
 }
 

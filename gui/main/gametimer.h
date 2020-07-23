@@ -4,6 +4,7 @@
 #include <QWidget>
 #include <QHBoxLayout>
 #include <QLabel>
+#include <QTimer>
 
 namespace loloof64 {
 class GameTimer : public QWidget
@@ -13,12 +14,32 @@ public:
     explicit GameTimer(QWidget *parent = nullptr);
     ~GameTimer() override;
 
+    void startNewTimedGame(bool playerHasWhite, int whiteTimeMs, int blackTimeMs, bool blackStartGame = false);
+    void startNewIllimitedGame(bool playerHasWhite);
+
+    int getRemainingWhiteTimeMs() const { return _remainingWhiteTimeMs; }
+    int getRemainingBlackTimeMs() const { return _remainingBlackTimeMs; }
+    void toggleClockSide();
+
+signals:
+    void whiteLostOnTime();
+    void blackLostOnTime();
+
 private:
+    bool _isActive = false;
+    bool _blackTimerActive = false;
+    int _remainingWhiteTimeMs = 0;
+    int _remainingBlackTimeMs = 0;
     QHBoxLayout * _mainLayout;
     QLabel * _whiteSideLabel;
     QLabel * _blackSideLabel;
     QLabel * _whiteTime;
     QLabel * _blackTime;
+
+    QTimer * _whiteTimerComp;
+    QTimer * _blackTimerComp;
+
+    void updateTimerTexts();
 };
 }
 
