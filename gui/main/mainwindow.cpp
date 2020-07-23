@@ -125,6 +125,12 @@ void MainWindow::loadGameFromPgn()
 
             pgnDatabase->loadGame(selectedGameIndex, currentGame);
             currentGame.moveToEnd();
+            auto isOver = currentGame.result() != Result::ResultUnknown;
+            if (isOver)
+            {
+                QMessageBox::critical(this, tr("Game already over"), tr("The game is already over. You can't play it."));
+                return;
+            }
 
             NewGameParametersDialog gameParametersDialog(currentGame.toFen(), this);
             connect(&gameParametersDialog, &NewGameParametersDialog::newGameRequest, [this](QString positionFen, bool playerHasWhite) {
