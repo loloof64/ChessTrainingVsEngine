@@ -26,6 +26,7 @@
         <file alias="settings.svg">resources/icons/settings.svg</file>
         <file alias="trashCan.svg">resources/icons/recycle-bin.svg</file>
         <file alias="folder.svg">resources/icons/folder.svg</file>
+        <file alias="warning.svg">resources/icons/warning.svg</file>
     </qresource>
     <qresource prefix="/fonts">
         <file alias="FreeSerif.ttf">resources/fonts/FreeSerif.ttf</file>

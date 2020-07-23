@@ -59,6 +59,7 @@ DISTFILES += \
     resources/icons/swap.svg \
     resources/icons/trashCan.svg \
     resources/icons/settings.svg \
+    resources/icons/warning.svg \
     resources/icons/folder.svg \
     resources/fonts/FreeSerif.ttf \
     chess.ico \

@@ -28,6 +28,17 @@ loloof64::GameSelectionMainZone::GameSelectionMainZone(QWidget *parent) : QWidge
     _board->setWhitePlayerType(PlayerType::EXTERNAL);
     _board->setBlackPlayerType(PlayerType::EXTERNAL);
 
+    _warningLine = new QHBoxLayout();
+    _warningImage = new QLabel();
+    QPixmap warningPixmap(":/icons/warning.svg");
+    _warningImage->setPixmap(warningPixmap.scaled(20, 20));
+    _warningMessage = new QLabel(tr("This game is already over ! You can't play it !"));
+    _warningLine->addWidget(_warningImage);
+    _warningLine->addWidget(_warningMessage);
+    _warningLine->addStretch();
+    _warningImage->hide();
+    _warningMessage->hide();
+
     connect(_goFirstButton, &QPushButton::clicked,
             [this]()
     {
@@ -36,6 +47,7 @@ loloof64::GameSelectionMainZone::GameSelectionMainZone(QWidget *parent) : QWidge
        _selectedGameIndex = 0;
        _gameTextSelection->setText(QString("%1").arg(_selectedGameIndex+1));
        loadGameEnd();
+       updateWarningMessageVisibility();
     });
 
     connect(_goPreviousButton, &QPushButton::clicked, [this]()
@@ -46,6 +58,7 @@ loloof64::GameSelectionMainZone::GameSelectionMainZone(QWidget *parent) : QWidge
         _selectedGameIndex--;
         _gameTextSelection->setText(QString("%1").arg(_selectedGameIndex+1));
         loadGameEnd();
+        updateWarningMessageVisibility();
     });
 
     connect(_goNextButton, &QPushButton::clicked, [this]()
@@ -56,6 +69,7 @@ loloof64::GameSelectionMainZone::GameSelectionMainZone(QWidget *parent) : QWidge
         _selectedGameIndex++;
         _gameTextSelection->setText(QString("%1").arg(_selectedGameIndex+1));
         loadGameEnd();
+        updateWarningMessageVisibility();
     });
 
     connect(_goLastButton, &QPushButton::clicked, [this]()
@@ -65,6 +79,7 @@ loloof64::GameSelectionMainZone::GameSelectionMainZone(QWidget *parent) : QWidge
         _selectedGameIndex = _pgnDatabase->count() - 1;
         _gameTextSelection->setText(QString("%1").arg(_selectedGameIndex+1));
         loadGameEnd();
+        updateWarningMessageVisibility();
     });
 
     connect(_gameTextSelection, &QLineEdit::textChanged, this, [this](QString)
@@ -78,6 +93,7 @@ loloof64::GameSelectionMainZone::GameSelectionMainZone(QWidget *parent) : QWidge
         {
             _selectedGameIndex = valuetoSet;
             loadGameEnd();
+            updateWarningMessageVisibility();
         }
     });
 
@@ -89,6 +105,7 @@ loloof64::GameSelectionMainZone::GameSelectionMainZone(QWidget *parent) : QWidge
 
     _overallLayout->addWidget(_gameTextSelection);
     _overallLayout->addWidget(_mainZone);
+    _overallLayout->addLayout(_warningLine);
     _overallLayout->setAlignment(_gameTextSelection, Qt::AlignHCenter);
     _overallLayout->setAlignment(_mainZone, Qt::AlignHCenter);
 
@@ -97,6 +114,10 @@ loloof64::GameSelectionMainZone::GameSelectionMainZone(QWidget *parent) : QWidge
 
 loloof64::GameSelectionMainZone::~GameSelectionMainZone()
 {
+    delete _warningMessage;
+    delete _warningImage;
+    delete _warningLine;
+
     delete _board;
     delete _goLastButton;
     delete _goNextButton;
@@ -108,6 +129,19 @@ loloof64::GameSelectionMainZone::~GameSelectionMainZone()
     if (_gameTextValidator != nullptr) delete _gameTextValidator;
     delete _gameTextSelection;
     delete _overallLayout;
+}
+
+void loloof64::GameSelectionMainZone::updateWarningMessageVisibility()
+{
+    auto gameIsOver = _currentBaseGame.result() != Result::ResultUnknown;
+    if (gameIsOver) {
+        _warningImage->show();
+        _warningMessage->show();
+    }
+    else {
+        _warningImage->hide();
+        _warningMessage->hide();
+    }
 }
 
 void loloof64::GameSelectionMainZone::setPgnDatabase(PgnDatabase *database)

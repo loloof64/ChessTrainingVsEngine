@@ -20,8 +20,6 @@ namespace loloof64
         void setPgnDatabase(PgnDatabase *database);
         quint64 getSelectedGameIndex() const;
 
-    signals:
-
     private:
         int _gamesCount;
 
@@ -30,6 +28,7 @@ namespace loloof64
         QLabel *_playersLabel;
         QLabel *_eventLabel;
         GameSelectionMainZone *_mainZone;
+
         QPushButton *_validateButton;
 
         QString _whitePlayerName;

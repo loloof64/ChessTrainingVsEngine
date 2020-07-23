@@ -23,7 +23,7 @@ Using some icon resources from [FlatIcon](https://www.flaticon.com/).
 
 * swap svg by Good Ware
 * start, folder svg by SmashIcons
-* stop, settings, recycle-bin svg by FreePik
+* stop, settings, recycle-bin, warning svg by FreePik
 * previous, next, left-arrow, right-arrow svg by Roundicons
 * male svg by Pixelmeetup
 * computer svg by Eucalyp

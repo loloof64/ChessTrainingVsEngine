@@ -8,6 +8,7 @@
 #include <QFrame>
 #include <QLineEdit>
 #include <QValidator>
+#include <QLabel>
 #include "../chessboard/chessboard.h"
 #include "../../libs/chessx-pgn/database/pgndatabase.h"
 
@@ -43,11 +44,17 @@ namespace loloof64 {
         QPushButton *_goLastButton;
         ChessBoard *_board;
 
+        QHBoxLayout *_warningLine;
+        QLabel *_warningImage;
+        QLabel *_warningMessage;
+
+
         // Not to be released in the destructor, just borrowed
         PgnDatabase *_pgnDatabase;
         Game _currentBaseGame;
 
         void loadGameEnd();
+        void updateWarningMessageVisibility();
     };
 };
 
