@@ -25,9 +25,15 @@ MainWindow::MainWindow(QWidget *parent)
 
         connect(&editorDialog, &PositionEditorDialog::newGamePosition, [this](QString positionFen) {
             NewGameParametersDialog gameParametersDialog(positionFen, this);
+
             connect(&gameParametersDialog, &NewGameParametersDialog::newGameRequest, [this](QString positionFen, bool playerHasWhite) {
                 startNewGame(positionFen, playerHasWhite);
             });
+
+            connect(&gameParametersDialog, &NewGameParametersDialog::newTimedGameRequest, [this](QString positionFen, bool playerHasWhite, int whiteTimeMs, int blackTimeMs) {
+               startNewTimedGame(positionFen, playerHasWhite, whiteTimeMs, blackTimeMs);
+            });
+
             gameParametersDialog.exec();
         });
 
@@ -153,4 +159,9 @@ void MainWindow::loadGameFromPgn()
         }
 
     }
+}
+
+void MainWindow::startNewTimedGame(QString positionFen, bool playerHasWhite, int whiteTimeMs, int blackTimeMs)
+{
+    _componentsZone->startNewTimedGame(positionFen, playerHasWhite, whiteTimeMs, blackTimeMs);
 }

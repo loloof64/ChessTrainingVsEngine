@@ -1,4 +1,5 @@
 #include "newgameparametersdialog.h"
+#include <QMessageBox>
 
 NewGameParametersDialog::NewGameParametersDialog(QString positionFen, QWidget *parent)
     : QDialog(parent, Qt::WindowTitleHint | Qt::CustomizeWindowHint), _positionFen(positionFen)
@@ -90,9 +91,17 @@ NewGameParametersDialog::NewGameParametersDialog(QString positionFen, QWidget *p
     });
 
     connect(_validationButtons, &QDialogButtonBox::accepted, [this]() {
-        bool playerHasWhite = _playerTypeSelectionCombo->currentIndex() == 0;
-        emit newGameRequest(_positionFen, playerHasWhite);
-        close();
+        auto timedGame = _mustUseTimer->isChecked();
+        if (timedGame)
+        {
+            emitNewTimedGameRequest();
+        }
+        else
+        {
+            bool playerHasWhite = _playerTypeSelectionCombo->currentIndex() == 0;
+            emit newGameRequest(_positionFen, playerHasWhite);
+            close();
+        }
     });
 
     connect(_validationButtons, &QDialogButtonBox::rejected, [this]() {
@@ -171,4 +180,60 @@ void NewGameParametersDialog::updateTimeComponentsVisibility()
         _cpuSecondsVal->setEnabled(false);
         _cpuSecondsLabel->setEnabled(false);
     }
+}
+
+void NewGameParametersDialog::emitNewTimedGameRequest()
+{
+    bool playerHasWhite = _playerTypeSelectionCombo->currentIndex() == 0;
+    bool playerMinutesOk;
+    auto playerMinutes = _playerMinutesVal->text().toInt(&playerMinutesOk);
+    if (! playerMinutesOk || playerMinutes < 0) {
+        QMessageBox::critical(this, tr("Time value error"), tr("Player minutes must be a positive number"));
+        return;
+    }
+
+    bool playerSecondsOk;
+    auto playerSeconds = _playerSecondsVal->text().toInt(&playerSecondsOk);
+    if (! playerSecondsOk || playerSeconds < 0) {
+        QMessageBox::critical(this, tr("Time value error"), tr("Player seconds must be a positive number"));
+        return;
+    }
+
+    auto isAsymetricalTime = _mustUseAsymetricTiming->isChecked();
+    if (isAsymetricalTime)
+    {
+        bool computerMinutesOk;
+        auto computerMinutes = _cpuMinutesVal->text().toInt(&computerMinutesOk);
+        if (! computerMinutesOk || computerMinutes < 0) {
+            QMessageBox::critical(this, tr("Time value error"), tr("Computer minutes must be a positive number"));
+            return;
+        }
+
+        bool computerSecondsOk;
+        auto computerSeconds = _cpuSecondsVal->text().toInt(&computerSecondsOk);
+        if (! computerSecondsOk || computerSeconds < 0) {
+            QMessageBox::critical(this, tr("Time value error"), tr("Computer seconds must be a positive number"));
+            return;
+        }
+
+        int totalPlayerTimeSeconds = playerMinutes * 60 + playerSeconds;
+        int totalPlayerTimeMs = totalPlayerTimeSeconds * 1000;
+
+        int totalComputerTimeSeconds = computerMinutes * 60 + computerSeconds;
+        int totalComputerTimeMs = totalComputerTimeSeconds * 1000;
+
+        int whiteTimeMs = playerHasWhite ? totalPlayerTimeMs : totalComputerTimeMs;
+        int blackTimeMs = playerHasWhite ? totalComputerTimeMs : totalPlayerTimeMs;
+
+        emit newTimedGameRequest(_positionFen, playerHasWhite, whiteTimeMs, blackTimeMs);
+    }
+    else
+    {
+        int totalTimeSeconds = playerMinutes * 60 + playerSeconds;
+        int totalTimeMs = totalTimeSeconds * 1000;
+
+        emit newTimedGameRequest(_positionFen, playerHasWhite, totalTimeMs, totalTimeMs);
+    }
+
+    close();
 }

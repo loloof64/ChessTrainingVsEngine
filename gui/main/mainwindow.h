@@ -21,6 +21,7 @@ private:
     bool _engineReady;
     QString _fileChooserDir;
     void startNewGame(QString positionFen, bool playerHasWhite);
+    void startNewTimedGame(QString positionFen, bool playerHasWhite, int whiteTimeMs, int blackTimeMs);
     void loadGameFromPgn();
     void loadRegisteredEnginePath();
 };

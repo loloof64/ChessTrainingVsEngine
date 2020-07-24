@@ -22,6 +22,7 @@ public:
 
 signals:
     void newGameRequest(QString positionFen, bool playerHasWhite);
+    void newTimedGameRequest(QString positionFen, bool playerHasWhite, int whiteTimeMs, int blackTimeMs);
 
 private:
     QVBoxLayout * _mainLayout;
@@ -52,6 +53,7 @@ private:
     QString _positionFen;
 
     void updateTimeComponentsVisibility();
+    void emitNewTimedGameRequest();
 };
 
 #endif // NEWGAMEPARAMETERSDIALOG_H
