@@ -1,7 +1,5 @@
 #include "gametimer.h"
 
-#include <QDebug>
-
 loloof64::GameTimer::GameTimer(QWidget *parent) : QWidget(parent)
 {
     _mainLayout = new QHBoxLayout();
@@ -162,10 +160,6 @@ void loloof64::GameTimer::updateTimerTexts()
 
 void loloof64::GameTimer::stop()
 {
-    /////////////////////////////////////
-    qDebug() << "Stopping game timer";
-    /////////////////////////////////////
-
     _whiteTimerComp->stop();
     _blackTimerComp->stop();
     _isActive = false;

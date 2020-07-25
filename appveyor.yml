@@ -1,0 +1,45 @@
+branches:
+  only:
+    - master
+
+image: Visual Studio 2019
+
+configuration: Release
+platform: x64
+
+skip_non_tags: true
+
+environment:
+  QTDIR: C:\Qt\5.14.2\mingw73_64
+
+install:
+  - choco install -y InnoSetup
+  - set PATH=%QTDIR%\bin;C:\Qt\Tools\mingw730_64\bin;"C:\Program Files (x86)\Inno Setup 6";C:\MinGW\bin;%PATH%
+  - set CC=C:\Qt\Tools\mingw730_64\bin\gcc.exe
+  - set CXX=C:\Qt\Tools\mingw730_64\bin\g++.exe
+  - lupdate ChessTrainingVsEngine.pro
+  - lrelease ChessTrainingVsEngine.pro
+
+build_script:
+  - qmake ChessTrainingVsEngine.pro
+  - mingw32-make -j4
+  - windeployqt release/ChessTrainingVsEngine.exe
+  - rm release/*.cpp
+  - rm release/*.o
+  - dir release
+  - iscc windows_build.iss /DPWD=%CD% /OOutput
+  - cd Output
+  - copy ChessTrainingVsEngine.exe ChessTrainingVsEngine-windows-x86_64.exe
+  - appveyor PushArtifact ChessTrainingVsEngine-windows-x86_64.exe
+
+artifacts:
+  path: Output\ChessTrainingVsEngine-windows-x86_64.exe
+  name: ChessTrainingVsEngine
+
+deploy:
+  description: 'ChessTrainingVsEngine'
+  artifact: ChessTrainingVsEngine
+  provider: GitHub
+  auth_token:
+    secure: /ZFMrtWy/BftMA/Bc9tJ9Az3zw+6OriwVIWy0f2F82x/bjsBmVMLdx9y4V2JDsZa
+  skip_clean: true

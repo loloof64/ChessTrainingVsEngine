@@ -64,7 +64,9 @@ DISTFILES += \
     resources/fonts/FreeSerif.ttf \
     chess.ico \
     windows_build.iss \
-    resources/icons/settings.svg
+    resources/icons/settings.svg \
+    .travis.yml \
+    appveyor.yml
 
 RESOURCES += \
     resources.qrc \

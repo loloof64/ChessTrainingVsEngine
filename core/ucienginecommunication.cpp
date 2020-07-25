@@ -1,6 +1,5 @@
 #include "ucienginecommunication.h"
 
-#include <QDebug>
 #include <QRegExp>
 
 loloof64::UCIEngineCommunication::UCIEngineCommunication()
