@@ -2,6 +2,7 @@
 
 #include <QRegExp>
 
+
 loloof64::UCIEngineCommunication::UCIEngineCommunication()
 {
 
@@ -30,8 +31,7 @@ void loloof64::UCIEngineCommunication::setOptions()
         auto option = _spinOptions["UCI_Elo"];
         option.setToMaximum();
 
-        QString optionCommand;
-        _relatedProcess->write(optionCommand.sprintf(
+        _relatedProcess->write(QString::asprintf(
                                    "setoption name %s value %d\n",
                                    option.getName().toStdString().c_str(), option.getValue())
                                .toStdString().c_str());
@@ -40,8 +40,7 @@ void loloof64::UCIEngineCommunication::setOptions()
         auto option = _spinOptions["Skill Level"];
         option.setToMaximum();
 
-        QString optionCommand;
-        _relatedProcess->write(optionCommand.sprintf(
+        _relatedProcess->write(QString::asprintf(
                                    "setoption name %s value %d\n",
                                    option.getName().toStdString().c_str(), option.getValue())
                                .toStdString().c_str());
@@ -53,8 +52,7 @@ void loloof64::UCIEngineCommunication::sendCommand(QString command)
 {
     if (_readyOk)
     {
-        QString cmd;
-        _relatedProcess->write(cmd.sprintf("%s\n", command.toStdString().c_str()).toStdString().c_str());
+        _relatedProcess->write(QString::asprintf("%s\n", command.toStdString().c_str()).toStdString().c_str());
     }
 }
 

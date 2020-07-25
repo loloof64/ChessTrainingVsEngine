@@ -18,7 +18,7 @@ public:
 private:
     QToolBar *_mainToolBar;
     loloof64::ComponentsZone *_componentsZone;
-    bool _engineReady;
+    bool _engineReady = false;
     QString _fileChooserDir;
     void startNewGame(QString positionFen, bool playerHasWhite);
     void startNewTimedGame(QString positionFen, bool playerHasWhite, int whiteTimeMs, int blackTimeMs);

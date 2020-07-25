@@ -153,9 +153,8 @@ void loloof64::GameTimer::updateTimerTexts()
     int blackMinutes = blackSeconds / 60;
     blackSeconds = blackSeconds - 60 * blackMinutes;
 
-    QString whiteTimeStr;
-    _whiteTime->setText(whiteTimeStr.sprintf("%02d:%02d", whiteMinutes, whiteSeconds));
-    _blackTime->setText(whiteTimeStr.sprintf("%02d:%02d", blackMinutes, blackSeconds));
+    _whiteTime->setText(QString::asprintf("%02d:%02d", whiteMinutes, whiteSeconds));
+    _blackTime->setText(QString::asprintf("%02d:%02d", blackMinutes, blackSeconds));
 }
 
 void loloof64::GameTimer::stop()

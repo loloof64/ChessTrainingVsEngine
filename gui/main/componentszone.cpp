@@ -161,10 +161,9 @@ void loloof64::ComponentsZone::makeComputerPlayNextMove()
 
     if (_gameTimer->isActive())
     {
-        QString uciMoveCommand;
         int wTimeMs = _gameTimer->getRemainingWhiteTimeMs();
         int bTimeMs = _gameTimer->getRemainingBlackTimeMs();
-        _engineCommunication->sendCommand(uciMoveCommand.sprintf("go wtime %d btime %d", wTimeMs, bTimeMs));
+        _engineCommunication->sendCommand(QString::asprintf("go wtime %d btime %d", wTimeMs, bTimeMs));
     }
     else {
         _engineCommunication->sendCommand("go movetime 1000");

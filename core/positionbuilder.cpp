@@ -24,8 +24,7 @@ void loloof64::PositionBuilder::setFromFen(QString fen)
 
     QStringList parts = fen.split(" ");
     if (parts.size() < 6) {
-        QString errorMsg;
-        throw IllegalPositionException(errorMsg.sprintf("%s : missing data", fen.toStdString().c_str()));
+        throw IllegalPositionException(QString::asprintf("%s : missing data", fen.toStdString().c_str()));
     }
 
     QString boardPart = parts[0];
@@ -37,8 +36,7 @@ void loloof64::PositionBuilder::setFromFen(QString fen)
 
     QStringList boardLines = boardPart.split("/");
     if (boardLines.size() != 8) {
-        QString errorMsg;
-        throw IllegalPositionException(errorMsg.sprintf("%s : do not have 8 pieces lines", fen.toStdString().c_str()));
+        throw IllegalPositionException(QString::asprintf("%s : do not have 8 pieces lines", fen.toStdString().c_str()));
     }
     auto currentRank = 7;
     for (auto it = boardLines.begin(); it != boardLines.end(); ++it) {
@@ -89,16 +87,14 @@ void loloof64::PositionBuilder::setFromFen(QString fen)
         auto fileAscii = filePart.unicode();
         auto notAFileChar = fileAscii < ascii_lower_a || fileAscii > ascii_lower_h;
         if (notAFileChar) {
-            QString errorMsg;
-            throw IllegalPositionException(errorMsg.sprintf("%s : en-passant square has incorrect file", fen.toStdString().c_str()));
+            throw IllegalPositionException(QString::asprintf("%s : en-passant square has incorrect file", fen.toStdString().c_str()));
         }
 
         auto rankPart = enPassantPart[1];
         auto rankAscii = rankPart.unicode();
         auto incorrectRank = ((rankAscii != ascii_3) && !_whiteTurn) && ((rankAscii != ascii_6) && _whiteTurn);
         if (incorrectRank) {
-            QString errorMsg;
-            throw IllegalPositionException(errorMsg.sprintf("%s : en-passant square has incorrect rank", fen.toStdString().c_str()));
+            throw IllegalPositionException(QString::asprintf("%s : en-passant square has incorrect rank", fen.toStdString().c_str()));
         }
 
         _enPassantFile = fileAscii - ascii_lower_a;
@@ -110,16 +106,14 @@ void loloof64::PositionBuilder::setFromFen(QString fen)
     bool fiftyMovesNumberOk;
     int fiftyMovesNumber = fiftyMovesPart.toInt(&fiftyMovesNumberOk);
     if (! fiftyMovesNumberOk) {
-        QString errorMsg;
-        throw IllegalPositionException(errorMsg.sprintf("%s : fifty moves rule counter field is not a number", fen.toStdString().c_str()));
+        throw IllegalPositionException(QString::asprintf("%s : fifty moves rule counter field is not a number", fen.toStdString().c_str()));
     }
     _fiftyMovesRuleCount = fiftyMovesNumber;
 
     bool moveNumberOk;
     int moveNumber = moveNumberPart.toInt(&moveNumberOk);
     if (! moveNumberOk) {
-        QString errorMsg;
-        throw IllegalPositionException(errorMsg.sprintf("%s : move number field is not a number", fen.toStdString().c_str()));
+        throw IllegalPositionException(QString::asprintf("%s : move number field is not a number", fen.toStdString().c_str()));
     }
     _moveNumber = moveNumber;
 }
