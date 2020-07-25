@@ -103,20 +103,34 @@ void loloof64::GameTimer::toggleClockSide()
     if (!_isActive) return;
     if (_blackTimerActive)
     {
+        // Caution : timer must not be stopped before getting remaining time !
+        _remainingBlackTimeMs -= _blackTimerComp->remainingTime();
         _blackTimerComp->stop();
+
+        if (_remainingBlackTimeMs <= 0)
+        {
+            emit blackLostOnTime();
+            return;
+        }
+
         _whiteTimerComp->start(1000);
-        int remainingInterval = _blackTimerComp->remainingTime();
-        _remainingBlackTimeMs -= 1000 - remainingInterval;
         _blackTimerActive = false;
 
         updateTimerTexts();
     }
     else
     {
+        // Caution : timer must not be stopped before getting remaining time !
+        _remainingWhiteTimeMs -= _whiteTimerComp->remainingTime();
         _whiteTimerComp->stop();
+
+        if (_remainingWhiteTimeMs <= 0)
+        {
+            emit whiteLostOnTime();
+            return;
+        }
+
         _blackTimerComp->start(1000);
-        int remainingInterval = _whiteTimerComp->remainingTime();
-        _remainingWhiteTimeMs -= 1000 - remainingInterval;
         _blackTimerActive = true;
 
         updateTimerTexts();
@@ -136,4 +150,11 @@ void loloof64::GameTimer::updateTimerTexts()
     QString whiteTimeStr;
     _whiteTime->setText(whiteTimeStr.sprintf("%02d:%02d", whiteMinutes, whiteSeconds));
     _blackTime->setText(whiteTimeStr.sprintf("%02d:%02d", blackMinutes, blackSeconds));
+}
+
+void loloof64::GameTimer::stop()
+{
+    _whiteTimerComp->stop();
+    _blackTimerComp->stop();
+    _isActive = false;
 }

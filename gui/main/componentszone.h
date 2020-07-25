@@ -49,6 +49,7 @@ namespace loloof64 {
         UCIEngineCommunication * _engineCommunication;
         Game _currentGame;
         bool _isWhitePly;
+        bool _playerHasWhite;
 
         void makeComputerPlayNextMove();
         char promotionPieceToPromotionFen(Piece promotion) const;

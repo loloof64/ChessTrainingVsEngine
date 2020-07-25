@@ -81,6 +81,18 @@ loloof64::ComponentsZone::ComponentsZone(QWidget *parent) : QWidget(parent)
             [this](){
         _movesHistory->getMovesHistoryMainComponent()->gotoNextPosition();
     });
+
+    connect(_gameTimer, &loloof64::GameTimer::whiteLostOnTime, [this]() {
+        _gameTimer->stop();
+        _chessBoard->stopGame();
+        QMessageBox::information(this, tr("Game finished"), tr(_playerHasWhite ? "You run into timeout" : "Computer run into timeout"));
+    });
+
+    connect(_gameTimer, &loloof64::GameTimer::blackLostOnTime, [this]() {
+        _gameTimer->stop();
+        _chessBoard->stopGame();
+        QMessageBox::information(this, tr("Game finished"), tr(_playerHasWhite ? "Computer run into timeout" :  "You run into timeout"));
+    });
 }
 
 loloof64::ComponentsZone::~ComponentsZone()
@@ -195,6 +207,8 @@ QString loloof64::ComponentsZone::moveToMoveFan(Move move)
 
 void loloof64::ComponentsZone::startNewGame(QString positionFen, bool playerHasWhite)
 {
+    _playerHasWhite = playerHasWhite;
+
     _movesHistory->newGame(positionFen);
     _chessBoard->setWhitePlayerType(playerHasWhite ? loloof64::PlayerType::HUMAN : loloof64::PlayerType::EXTERNAL);
     _chessBoard->setBlackPlayerType(playerHasWhite ? loloof64::PlayerType::EXTERNAL : loloof64::PlayerType::HUMAN);
@@ -205,6 +219,8 @@ void loloof64::ComponentsZone::startNewGame(QString positionFen, bool playerHasW
 
 void loloof64::ComponentsZone::startNewTimedGame(QString positionFen, bool playerHasWhite, int whiteTimeMs, int blackTimeMs)
 {
+    _playerHasWhite = playerHasWhite;
+
     _movesHistory->newGame(positionFen);
     _chessBoard->setWhitePlayerType(playerHasWhite ? loloof64::PlayerType::HUMAN : loloof64::PlayerType::EXTERNAL);
     _chessBoard->setBlackPlayerType(playerHasWhite ? loloof64::PlayerType::EXTERNAL : loloof64::PlayerType::HUMAN);
