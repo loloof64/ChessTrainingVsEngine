@@ -427,7 +427,7 @@ void PositionEditorDialog::connectComponents()
         synchronizeWithBuilder();
     });
 
-    connect(_enPassantSquareFileCombo, qOverload<int>(&QComboBox::activated), [this](int index) {
+    connect(_enPassantSquareFileCombo, static_cast<void (QComboBox::*)(int)>(&QComboBox::activated), [this](int index) {
         _positionBuilder->setEnPassantFile(index - 1);
         synchronizeWithBuilder();
     });
