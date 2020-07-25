@@ -316,83 +316,83 @@ b%2
     </message>
     <message>
         <location filename="../../gui/main/mainwindow.cpp" line="20"/>
-        <location filename="../../gui/main/mainwindow.cpp" line="39"/>
+        <location filename="../../gui/main/mainwindow.cpp" line="45"/>
         <source>Engine not set</source>
         <translation>Engine not set</translation>
     </message>
     <message>
         <location filename="../../gui/main/mainwindow.cpp" line="20"/>
-        <location filename="../../gui/main/mainwindow.cpp" line="39"/>
+        <location filename="../../gui/main/mainwindow.cpp" line="45"/>
         <source>You must configure the engine first</source>
         <translation>You must configure the engine first</translation>
     </message>
     <message>
-        <location filename="../../gui/main/mainwindow.cpp" line="37"/>
+        <location filename="../../gui/main/mainwindow.cpp" line="43"/>
         <source>New game from PGN file</source>
         <comment>Caption for the button &apos;new game from PGN&apos;</comment>
         <translation>New game from PGN file</translation>
     </message>
     <message>
-        <location filename="../../gui/main/mainwindow.cpp" line="46"/>
+        <location filename="../../gui/main/mainwindow.cpp" line="52"/>
         <source>Toggle side</source>
         <comment>Caption for the button &apos;toggle side&apos;</comment>
         <translation>Toggle side</translation>
     </message>
     <message>
-        <location filename="../../gui/main/mainwindow.cpp" line="49"/>
+        <location filename="../../gui/main/mainwindow.cpp" line="55"/>
         <source>Settings</source>
         <comment>Caption for the button &apos;settings&apos;</comment>
         <translation>Settings</translation>
     </message>
     <message>
-        <location filename="../../gui/main/mainwindow.cpp" line="97"/>
-        <location filename="../../gui/main/mainwindow.cpp" line="101"/>
+        <location filename="../../gui/main/mainwindow.cpp" line="103"/>
+        <location filename="../../gui/main/mainwindow.cpp" line="107"/>
         <source>Loading error</source>
         <translation>Loading error</translation>
     </message>
     <message>
-        <location filename="../../gui/main/mainwindow.cpp" line="97"/>
+        <location filename="../../gui/main/mainwindow.cpp" line="103"/>
         <source>No configuration file !</source>
         <translation>No configuration file !</translation>
     </message>
     <message>
-        <location filename="../../gui/main/mainwindow.cpp" line="101"/>
+        <location filename="../../gui/main/mainwindow.cpp" line="107"/>
         <source>Failed reading configuration file !</source>
         <translation>Failed reading configuration file !</translation>
     </message>
     <message>
-        <location filename="../../gui/main/mainwindow.cpp" line="107"/>
+        <location filename="../../gui/main/mainwindow.cpp" line="113"/>
         <source>Choose pgn</source>
         <translation>Choose PGN</translation>
     </message>
     <message>
-        <location filename="../../gui/main/mainwindow.cpp" line="107"/>
+        <location filename="../../gui/main/mainwindow.cpp" line="113"/>
         <source>Pgn file (*.pgn)</source>
         <translation>Pgn file (*.pgn)</translation>
     </message>
     <message>
-        <location filename="../../gui/main/mainwindow.cpp" line="131"/>
+        <location filename="../../gui/main/mainwindow.cpp" line="137"/>
         <source>Game already over</source>
         <translation>Game already over</translation>
     </message>
     <message>
-        <location filename="../../gui/main/mainwindow.cpp" line="131"/>
+        <location filename="../../gui/main/mainwindow.cpp" line="137"/>
         <source>The game is already over. You can&apos;t play it.</source>
         <translation>The game is already over. You can&apos;t play it.</translation>
     </message>
     <message>
-        <location filename="../../gui/main/mainwindow.cpp" line="143"/>
-        <location filename="../../gui/main/mainwindow.cpp" line="149"/>
+        <location filename="../../gui/main/mainwindow.cpp" line="152"/>
+        <location filename="../../gui/main/mainwindow.cpp" line="158"/>
         <source>Unable to open file</source>
         <translation>Unable to open file</translation>
     </message>
     <message>
-        <location filename="../../gui/main/mainwindow.cpp" line="144"/>
+        <location filename="../../gui/main/mainwindow.cpp" line="153"/>
         <source>Wrong game data</source>
         <translation>Wrong game data</translation>
     </message>
     <message>
-        <location filename="../../gui/main/mainwindow.cpp" line="150"/>
+        <location filename="../../gui/main/mainwindow.cpp" line="159"/>
         <source>Misc reading error</source>
         <translation>Misc reading error</translation>
     </message>
@@ -975,19 +975,79 @@ b%2
 <context>
     <name>NewGameParametersDialog</name>
     <message>
-        <location filename="../../gui/newgameparametersdialog.cpp" line="17"/>
+        <location filename="../../gui/main/newgameparametersdialog.cpp" line="18"/>
         <source>Player side</source>
         <translation>Player side</translation>
     </message>
     <message>
-        <location filename="../../gui/newgameparametersdialog.cpp" line="20"/>
+        <location filename="../../gui/main/newgameparametersdialog.cpp" line="21"/>
         <source>White</source>
         <translation>White</translation>
     </message>
     <message>
-        <location filename="../../gui/newgameparametersdialog.cpp" line="21"/>
+        <location filename="../../gui/main/newgameparametersdialog.cpp" line="22"/>
         <source>Black</source>
         <translation>Black</translation>
+    </message>
+    <message>
+        <location filename="../../gui/main/newgameparametersdialog.cpp" line="25"/>
+        <source>Use time</source>
+        <translation>Use time</translation>
+    </message>
+    <message>
+        <location filename="../../gui/main/newgameparametersdialog.cpp" line="28"/>
+        <source>Player</source>
+        <translation>Player</translation>
+    </message>
+    <message>
+        <location filename="../../gui/main/newgameparametersdialog.cpp" line="32"/>
+        <location filename="../../gui/main/newgameparametersdialog.cpp" line="45"/>
+        <source>Minutes</source>
+        <translation>Minutes</translation>
+    </message>
+    <message>
+        <location filename="../../gui/main/newgameparametersdialog.cpp" line="36"/>
+        <location filename="../../gui/main/newgameparametersdialog.cpp" line="49"/>
+        <source>Seconds</source>
+        <translation>Seconds</translation>
+    </message>
+    <message>
+        <location filename="../../gui/main/newgameparametersdialog.cpp" line="38"/>
+        <source>Set different computer time</source>
+        <translation>Set different computer time</translation>
+    </message>
+    <message>
+        <location filename="../../gui/main/newgameparametersdialog.cpp" line="41"/>
+        <source>Computer</source>
+        <translation>Computer</translation>
+    </message>
+    <message>
+        <location filename="../../gui/main/newgameparametersdialog.cpp" line="191"/>
+        <location filename="../../gui/main/newgameparametersdialog.cpp" line="198"/>
+        <location filename="../../gui/main/newgameparametersdialog.cpp" line="208"/>
+        <location filename="../../gui/main/newgameparametersdialog.cpp" line="215"/>
+        <source>Time value error</source>
+        <translation>Time value error</translation>
+    </message>
+    <message>
+        <location filename="../../gui/main/newgameparametersdialog.cpp" line="191"/>
+        <source>Player minutes must be a positive number</source>
+        <translation>Player minutes must be a positive number</translation>
+    </message>
+    <message>
+        <location filename="../../gui/main/newgameparametersdialog.cpp" line="198"/>
+        <source>Player seconds must be a positive number</source>
+        <translation>Player seconds must be a positive number</translation>
+    </message>
+    <message>
+        <location filename="../../gui/main/newgameparametersdialog.cpp" line="208"/>
+        <source>Computer minutes must be a positive number</source>
+        <translation>Computer minutes must be a positive number</translation>
+    </message>
+    <message>
+        <location filename="../../gui/main/newgameparametersdialog.cpp" line="215"/>
+        <source>Computer seconds must be a positive number</source>
+        <translation>Computer seconds must be a positive number</translation>
     </message>
 </context>
 <context>
@@ -1217,39 +1277,48 @@ b%2
 <context>
     <name>loloof64::ChessBoard</name>
     <message>
-        <location filename="../../gui/chessboard/chessboard.cpp" line="576"/>
         <location filename="../../gui/chessboard/chessboard.cpp" line="579"/>
-        <location filename="../../gui/chessboard/chessboard.cpp" line="582"/>
-        <location filename="../../gui/chessboard/chessboard.cpp" line="585"/>
-        <location filename="../../gui/chessboard/chessboard.cpp" line="588"/>
+        <location filename="../../gui/chessboard/chessboard.cpp" line="583"/>
+        <location filename="../../gui/chessboard/chessboard.cpp" line="587"/>
+        <location filename="../../gui/chessboard/chessboard.cpp" line="591"/>
+        <location filename="../../gui/chessboard/chessboard.cpp" line="595"/>
         <source>Game finished</source>
         <comment>Game finished modal title</comment>
         <translation>Game finished</translation>
     </message>
     <message>
-        <location filename="../../gui/chessboard/chessboard.cpp" line="576"/>
+        <location filename="../../gui/chessboard/chessboard.cpp" line="579"/>
         <source>Checkmate</source>
         <translation>Checkmate</translation>
     </message>
     <message>
-        <location filename="../../gui/chessboard/chessboard.cpp" line="579"/>
+        <location filename="../../gui/chessboard/chessboard.cpp" line="583"/>
         <source>Stalemate</source>
         <translation>Stalemate</translation>
     </message>
     <message>
-        <location filename="../../gui/chessboard/chessboard.cpp" line="582"/>
+        <location filename="../../gui/chessboard/chessboard.cpp" line="587"/>
         <source>Draw by 3-folds repetition</source>
         <translation>Draw by 3-folds repetition</translation>
     </message>
     <message>
-        <location filename="../../gui/chessboard/chessboard.cpp" line="585"/>
+        <location filename="../../gui/chessboard/chessboard.cpp" line="591"/>
         <source>Draw by insuficient material</source>
         <translation>Draw by insuficient material</translation>
     </message>
     <message>
-        <location filename="../../gui/chessboard/chessboard.cpp" line="588"/>
+        <location filename="../../gui/chessboard/chessboard.cpp" line="595"/>
         <source>Draw by the 50 moves rule</source>
         <translation>Draw by the 50 moves rule</translation>
+    </message>
+</context>
+<context>
+    <name>loloof64::ComponentsZone</name>
+    <message>
+        <location filename="../../gui/main/componentszone.cpp" line="91"/>
+        <location filename="../../gui/main/componentszone.cpp" line="96"/>
+        <source>Game finished</source>
+        <translation>Game finished</translation>
     </message>
 </context>
 <context>
@@ -1298,6 +1367,35 @@ b%2
         <location filename="../../gui/game_selection/gameselectionmainzone.cpp" line="35"/>
         <source>This game is already over ! You can&apos;t play it !</source>
         <translation>This game is already over ! You can&apos;t play it !</translation>
+    </message>
+</context>
+<context>
+    <name>loloof64::GameTimer</name>
+    <message>
+        <location filename="../../gui/main/gametimer.cpp" line="9"/>
+        <source>White side</source>
+        <translation>White side</translation>
+    </message>
+    <message>
+        <location filename="../../gui/main/gametimer.cpp" line="10"/>
+        <source>Black side</source>
+        <translation>Black side</translation>
+    </message>
+    <message>
+        <location filename="../../gui/main/gametimer.cpp" line="79"/>
+        <location filename="../../gui/main/gametimer.cpp" line="80"/>
+        <location filename="../../gui/main/gametimer.cpp" line="102"/>
+        <location filename="../../gui/main/gametimer.cpp" line="103"/>
+        <source>Player</source>
+        <translation>Player</translation>
+    </message>
+    <message>
+        <location filename="../../gui/main/gametimer.cpp" line="79"/>
+        <location filename="../../gui/main/gametimer.cpp" line="80"/>
+        <location filename="../../gui/main/gametimer.cpp" line="102"/>
+        <location filename="../../gui/main/gametimer.cpp" line="103"/>
+        <source>Computer</source>
+        <translation>Computer</translation>
     </message>
 </context>
 <context>

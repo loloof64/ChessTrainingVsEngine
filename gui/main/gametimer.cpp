@@ -76,8 +76,8 @@ void loloof64::GameTimer::startNewTimedGame(bool playerHasWhite, int whiteTimeMs
     _remainingWhiteTimeMs = whiteTimeMs;
     _remainingBlackTimeMs = blackTimeMs;
 
-    _whiteSideLabel->setText(QString(tr(playerHasWhite ? "Player" : "Computer")));
-    _blackSideLabel->setText(QString(tr(playerHasWhite ? "Computer" : "Player")));
+    _whiteSideLabel->setText(QString(playerHasWhite ? tr("Player") : tr("Computer") ));
+    _blackSideLabel->setText(QString(playerHasWhite ? tr("Computer") : tr("Player")));
 
     updateTimerTexts();
 
@@ -99,8 +99,8 @@ void loloof64::GameTimer::startNewIllimitedGame(bool playerHasWhite)
     _remainingWhiteTimeMs = 0;
     _remainingBlackTimeMs = 0;
 
-    _whiteSideLabel->setText(QString(tr(playerHasWhite ? "Player" : "Computer")));
-    _blackSideLabel->setText(QString(tr(playerHasWhite ? "Computer" : "Player")));
+    _whiteSideLabel->setText(QString(playerHasWhite ? tr("Player") : tr("Computer")));
+    _blackSideLabel->setText(QString(playerHasWhite ? tr("Computer") : tr("Player")));
 
     _whiteTime->setText("--:--");
     _blackTime->setText("--:--");
