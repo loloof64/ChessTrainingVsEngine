@@ -1,5 +1,7 @@
 #include "gametimer.h"
 
+#include <QDebug>
+
 loloof64::GameTimer::GameTimer(QWidget *parent) : QWidget(parent)
 {
     _mainLayout = new QHBoxLayout();
@@ -31,13 +33,19 @@ loloof64::GameTimer::GameTimer(QWidget *parent) : QWidget(parent)
 
     connect(_whiteTimerComp, &QTimer::timeout, [this]() {
         _remainingWhiteTimeMs -= 1000;
-        if (_remainingWhiteTimeMs <= 0) emit whiteLostOnTime();
+        if (_remainingWhiteTimeMs <= 0)  {
+            stop();
+            emit whiteOutOfTime();
+        }
         updateTimerTexts();
     });
 
     connect(_blackTimerComp, &QTimer::timeout, [this]() {
         _remainingBlackTimeMs -= 1000;
-        if (_remainingBlackTimeMs <= 0) emit blackLostOnTime();
+        if (_remainingBlackTimeMs <= 0) {
+            stop();
+            emit blackOutOfTime();
+        }
         updateTimerTexts();
     });
 }
@@ -109,7 +117,7 @@ void loloof64::GameTimer::toggleClockSide()
 
         if (_remainingBlackTimeMs <= 0)
         {
-            emit blackLostOnTime();
+            emit blackOutOfTime();
             return;
         }
 
@@ -126,7 +134,7 @@ void loloof64::GameTimer::toggleClockSide()
 
         if (_remainingWhiteTimeMs <= 0)
         {
-            emit whiteLostOnTime();
+            emit whiteOutOfTime();
             return;
         }
 
@@ -154,6 +162,10 @@ void loloof64::GameTimer::updateTimerTexts()
 
 void loloof64::GameTimer::stop()
 {
+    /////////////////////////////////////
+    qDebug() << "Stopping game timer";
+    /////////////////////////////////////
+
     _whiteTimerComp->stop();
     _blackTimerComp->stop();
     _isActive = false;

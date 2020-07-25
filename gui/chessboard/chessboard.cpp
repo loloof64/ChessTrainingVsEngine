@@ -56,6 +56,8 @@ void ChessBoard::stopGame()
 {
     _gameFinishedStatus = GameFinishedStatus::STOPPED;
     repaint();
+
+    emit gameEnded();
 }
 
 void ChessBoard::paintEvent(QPaintEvent * /* event */)
@@ -573,18 +575,23 @@ void loloof64::ChessBoard::showGameFinishedMessageIfNecessary()
 {
     switch (_gameFinishedStatus) {
     case GameFinishedStatus::CHECKMATE:
+        emit gameEnded();
         QMessageBox::information(this, tr("Game finished", "Game finished modal title"), tr("Checkmate"));
         break;
     case GameFinishedStatus::STALEMATE:
+        emit gameEnded();
         QMessageBox::information(this, tr("Game finished", "Game finished modal title"), tr("Stalemate"));
         break;
     case GameFinishedStatus::REPETITIONS:
+        emit gameEnded();
         QMessageBox::information(this, tr("Game finished", "Game finished modal title"), tr("Draw by 3-folds repetition"));
         break;
     case GameFinishedStatus::INSUFICIENT_MATERIAL:
+        emit gameEnded();
         QMessageBox::information(this, tr("Game finished", "Game finished modal title"), tr("Draw by insuficient material"));
         break;
     case GameFinishedStatus::FIFTY_MOVES_RULE:
+        emit gameEnded();
         QMessageBox::information(this, tr("Game finished", "Game finished modal title"), tr("Draw by the 50 moves rule"));
         break;
     default:

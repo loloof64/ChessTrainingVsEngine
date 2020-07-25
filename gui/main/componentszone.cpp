@@ -65,6 +65,10 @@ loloof64::ComponentsZone::ComponentsZone(QWidget *parent) : QWidget(parent)
         makeComputerPlayNextMove();
     });
 
+    connect(_chessBoard, &loloof64::ChessBoard::gameEnded, [this]() {
+       _gameTimer->stop();
+    });
+
     connect(_movesHistory->getButtonsZone(), &MovesHistoryButtons::requestFirstPosition,
             [this](){
         _movesHistory->getMovesHistoryMainComponent()->gotoFirstPosition();
@@ -82,14 +86,12 @@ loloof64::ComponentsZone::ComponentsZone(QWidget *parent) : QWidget(parent)
         _movesHistory->getMovesHistoryMainComponent()->gotoNextPosition();
     });
 
-    connect(_gameTimer, &loloof64::GameTimer::whiteLostOnTime, [this]() {
-        _gameTimer->stop();
+    connect(_gameTimer, &loloof64::GameTimer::whiteOutOfTime, [this]() {
         _chessBoard->stopGame();
         QMessageBox::information(this, tr("Game finished"), tr(_playerHasWhite ? "You run into timeout" : "Computer run into timeout"));
     });
 
-    connect(_gameTimer, &loloof64::GameTimer::blackLostOnTime, [this]() {
-        _gameTimer->stop();
+    connect(_gameTimer, &loloof64::GameTimer::blackOutOfTime, [this]() {
         _chessBoard->stopGame();
         QMessageBox::information(this, tr("Game finished"), tr(_playerHasWhite ? "Computer run into timeout" :  "You run into timeout"));
     });

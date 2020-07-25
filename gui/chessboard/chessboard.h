@@ -75,6 +75,8 @@ namespace loloof64 {
         // Notify that is is the turn of an external player
         void externalTurn(QString currentPosition);
 
+        void gameEnded();
+
     public slots:
         void reverse();
         void newGame(QString startPosition);

@@ -24,8 +24,8 @@ public:
     void stop();
 
 signals:
-    void whiteLostOnTime();
-    void blackLostOnTime();
+    void whiteOutOfTime();
+    void blackOutOfTime();
 
 private:
     bool _isActive = false;
