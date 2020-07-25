@@ -6,7 +6,7 @@
 #define SourcePath "C:\projects\chesstrainingvsengine"
 #define BuildPath "C:\projects\chesstrainingvsengine\release"
 #define MyAppName "Chess Pgn Reviser"
-#define MyAppVersion "0.1.6"
+#define MyAppVersion "0.1.8"
 #define MyAppPublisher "loloof64"
 #define MyAppURL "https://github.com/loloof64/ChessTrainingVsEngine"
 #define MyAppExeName "ChessTrainingVsEngine.exe"
