@@ -1,3 +1,8 @@
+GNU nano 4.3
+[![Build Status](https://travis-ci.com/loloof64/ChessTrainingVsEngine.svg?branch=master)](https://travis-ci.com/loloof64/ChessTrainingVsEngine)
+[![Build Status](https://ci.appveyor.com/api/projects/status/github/loloof64/ChessTrainingVsEngine?svg=true&branch=master)](https://ci.appveyor.com/project/loloof64/ChessTrainingVsEngine)
+
+
 # Chess training Vs Engine
 
 Load or define a chess position, and train yourself against the engine (at its strongest level).
