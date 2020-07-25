@@ -22,7 +22,7 @@ SettingsDialog::SettingsDialog(QWidget *parent): QDialog(parent, Qt::WindowTitle
     _uciEngineChooserButton = new QPushButton(tr("Choose engine ..."), this);
 
     connect(_uciEngineChooserButton, &QPushButton::clicked, [this] {
-        auto choosenFile = QFileDialog::getOpenFileName(this, tr("Choose engine"), _fileChooserDir, tr("All files"));
+        auto choosenFile = QFileDialog::getOpenFileName(this, tr("Choose engine"), _fileChooserDir);
         if ( ! choosenFile.isEmpty() ) {
             _uciEngineLineEdit->setText(choosenFile);
             _fileChooserDir = QDir(choosenFile).absolutePath();
