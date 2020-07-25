@@ -1,0 +1,7 @@
+[Desktop Entry]
+Type=Application
+Name=Chess Training Vs Engine
+Comment=Load or define a chess position, and train yourself against the engine (at its strongest level).
+Exec=ChessTrainingVsEngine
+Icon=chess
+Categories=Game;
