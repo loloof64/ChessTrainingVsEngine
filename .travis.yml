@@ -31,7 +31,7 @@ script:
 - "./linuxdeployqt-continuous-x86_64.AppImage appdir/usr/share/applications/*.desktop
   -appimage -verbose=1"
 after_success:
-- mv Chess*Training*Vs*Engine.AppImage ChessTrainingVsEngine-Linux-x86_64.AppImage
+- mv *.AppImage ChessTrainingVsEngine-Linux-x86_64.AppImage
 - chmod a+x ChessTrainingVsEngine-Linux-x86_64.AppImage
 - wget -c https://github.com/probonopd/uploadtool/raw/master/upload.sh
 - bash upload.sh ChessTrainingVsEngine-Linux-x86_64.AppImage
