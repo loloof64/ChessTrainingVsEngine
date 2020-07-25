@@ -37,6 +37,7 @@ after_success:
 - bash upload.sh ChessTrainingVsEngine-Linux-x86_64.AppImage
 
 deploy:
+  edge: true
   provider: releases
   github_token: $GITHUB_TOKEN
   file: ChessTrainingVsEngine-Linux-x86_64.AppImage
