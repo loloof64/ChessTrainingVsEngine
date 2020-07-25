@@ -19,6 +19,7 @@ public:
 
     int getRemainingWhiteTimeMs() const { return _remainingWhiteTimeMs; }
     int getRemainingBlackTimeMs() const { return _remainingBlackTimeMs; }
+    bool isActive() const { return _isActive; }
     void toggleClockSide();
 
 signals:

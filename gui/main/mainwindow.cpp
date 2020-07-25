@@ -142,6 +142,9 @@ void MainWindow::loadGameFromPgn()
             connect(&gameParametersDialog, &NewGameParametersDialog::newGameRequest, [this](QString positionFen, bool playerHasWhite) {
                 startNewGame(positionFen, playerHasWhite);
             });
+            connect(&gameParametersDialog, &NewGameParametersDialog::newTimedGameRequest, [this](QString positionFen, bool playerHasWhite, int whiteTimeMs, int blackTimeMs) {
+               startNewTimedGame(positionFen, playerHasWhite, whiteTimeMs, blackTimeMs);
+            });
             gameParametersDialog.exec();
         }
         catch (loloof64::IllegalPositionException const &/* e */)

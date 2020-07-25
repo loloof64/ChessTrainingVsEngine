@@ -145,7 +145,16 @@ void loloof64::ComponentsZone::makeComputerPlayNextMove()
     uciPositionCommand += _chessBoard->getCurrentPosition();
     _engineCommunication->sendCommand(uciPositionCommand);
 
-    _engineCommunication->sendCommand("go movetime 1000");
+    if (_gameTimer->isActive())
+    {
+        QString uciMoveCommand;
+        int wTimeMs = _gameTimer->getRemainingWhiteTimeMs();
+        int bTimeMs = _gameTimer->getRemainingBlackTimeMs();
+        _engineCommunication->sendCommand(uciMoveCommand.sprintf("go wtime %d btime %d", wTimeMs, bTimeMs));
+    }
+    else {
+        _engineCommunication->sendCommand("go movetime 1000");
+    }
 }
 
 char loloof64::ComponentsZone::promotionPieceToPromotionFen(Piece promotion) const

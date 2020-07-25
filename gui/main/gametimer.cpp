@@ -32,11 +32,13 @@ loloof64::GameTimer::GameTimer(QWidget *parent) : QWidget(parent)
     connect(_whiteTimerComp, &QTimer::timeout, [this]() {
         _remainingWhiteTimeMs -= 1000;
         if (_remainingWhiteTimeMs <= 0) emit whiteLostOnTime();
+        updateTimerTexts();
     });
 
     connect(_blackTimerComp, &QTimer::timeout, [this]() {
         _remainingBlackTimeMs -= 1000;
         if (_remainingBlackTimeMs <= 0) emit blackLostOnTime();
+        updateTimerTexts();
     });
 }
 
@@ -73,10 +75,10 @@ void loloof64::GameTimer::startNewTimedGame(bool playerHasWhite, int whiteTimeMs
 
     if (blackStartGame)
     {
-        _blackTimerComp->start();
+        _blackTimerComp->start(1000);
     }
     else {
-        _whiteTimerComp->start();
+        _whiteTimerComp->start(1000);
     }
 }
 
@@ -102,18 +104,20 @@ void loloof64::GameTimer::toggleClockSide()
     if (_blackTimerActive)
     {
         _blackTimerComp->stop();
-        _whiteTimerComp->start();
+        _whiteTimerComp->start(1000);
         int remainingInterval = _blackTimerComp->remainingTime();
         _remainingBlackTimeMs -= 1000 - remainingInterval;
+        _blackTimerActive = false;
 
         updateTimerTexts();
     }
     else
     {
         _whiteTimerComp->stop();
-        _blackTimerComp->start();
+        _blackTimerComp->start(1000);
         int remainingInterval = _whiteTimerComp->remainingTime();
         _remainingWhiteTimeMs -= 1000 - remainingInterval;
+        _blackTimerActive = true;
 
         updateTimerTexts();
     }
@@ -123,9 +127,11 @@ void loloof64::GameTimer::updateTimerTexts()
 {
     int whiteSeconds = _remainingWhiteTimeMs / 1000;
     int whiteMinutes = whiteSeconds / 60;
+    whiteSeconds = whiteSeconds - 60 * whiteMinutes;
 
     int blackSeconds = _remainingBlackTimeMs / 1000;
     int blackMinutes = blackSeconds / 60;
+    blackSeconds = blackSeconds - 60 * blackMinutes;
 
     QString whiteTimeStr;
     _whiteTime->setText(whiteTimeStr.sprintf("%02d:%02d", whiteMinutes, whiteSeconds));
