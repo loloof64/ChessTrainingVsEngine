@@ -52,7 +52,11 @@ void loloof64::UCIEngineCommunication::sendCommand(QString command)
 {
     if (_readyOk)
     {
+#ifdef Q_OS_WIN
+        _relatedProcess->write(QString::asprintf("%s\r\n", command.toStdString().c_str()).toStdString().c_str());
+#else
         _relatedProcess->write(QString::asprintf("%s\n", command.toStdString().c_str()).toStdString().c_str());
+#endif
     }
 }
 
@@ -68,7 +72,11 @@ void loloof64::UCIEngineCommunication::setExecutablePath(QString executablePath)
     {
         auto stdOutputBytes = _relatedProcess->readAllStandardOutput();
         auto stdOutput = QString::fromStdString(stdOutputBytes.toStdString());
-        auto stdOutputLines = stdOutput.split('\n');
+#ifdef Q_OS_WIN
+       auto stdOutputLines = stdOutput.split("\r\n");
+#else
+        auto stdOutputLines = stdOutput.split("\n");
+#endif
 
         for (auto it = stdOutputLines.begin(); it != stdOutputLines.end(); ++it)
         {
@@ -96,5 +104,9 @@ void loloof64::UCIEngineCommunication::setExecutablePath(QString executablePath)
     });
 
     _relatedProcess->start(executablePath);
+#ifdef Q_OS_WIN
+    _relatedProcess->write("uci\r\n");
+#else
     _relatedProcess->write("uci\n");
+#endif
 }
