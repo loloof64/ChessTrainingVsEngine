@@ -129,7 +129,7 @@ void loloof64::MovesHistory::updateItemHighlightingTo(int newItemToHighlightInde
     if (_itemToHighlightIndex >= 0)
     {
         auto wigdetToUpdate = _widgetsItems[_itemToHighlightIndex];
-        wigdetToUpdate->setStyleSheet("QPushButton { background-color: transparent; margin: 0px 5px; font-size: 22px; }");
+        wigdetToUpdate->setStyleSheet("QPushButton { background-color: white; margin: 0px 5px; font-size: 22px; }");
     }
 
     _itemToHighlightIndex = newItemToHighlightIndex;
