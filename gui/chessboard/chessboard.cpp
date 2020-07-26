@@ -55,6 +55,11 @@ void ChessBoard::newGame(QString startPosition)
 void ChessBoard::stopGame()
 {
     _gameFinishedStatus = GameFinishedStatus::STOPPED;
+    if (_dndData != nullptr) {
+        delete _dndData;
+        _dndData = nullptr;
+    }
+
     repaint();
 
     emit gameEnded();
