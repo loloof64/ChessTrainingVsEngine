@@ -1238,9 +1238,8 @@ b%2
         <translation>Choose UCI engine</translation>
     </message>
     <message>
-        <location filename="../../gui/main/settingsdialog.cpp" line="25"/>
         <source>All files</source>
-        <translation>All files</translation>
+        <translation type="vanished">All files</translation>
     </message>
     <message>
         <location filename="../../gui/main/settingsdialog.cpp" line="41"/>
@@ -1258,18 +1257,28 @@ b%2
         <translation>Settings</translation>
     </message>
     <message>
-        <location filename="../../gui/main/settingsdialog.cpp" line="95"/>
-        <location filename="../../gui/main/settingsdialog.cpp" line="99"/>
+        <location filename="../../gui/main/settingsdialog.cpp" line="87"/>
+        <source>Saving error</source>
+        <translation>Saving error</translation>
+    </message>
+    <message>
+        <location filename="../../gui/main/settingsdialog.cpp" line="87"/>
+        <source>Failed to save configuration file !</source>
+        <translation>Failed to save configuration file !</translation>
+    </message>
+    <message>
+        <location filename="../../gui/main/settingsdialog.cpp" line="103"/>
+        <location filename="../../gui/main/settingsdialog.cpp" line="107"/>
         <source>Loading error</source>
         <translation>Loading error</translation>
     </message>
     <message>
-        <location filename="../../gui/main/settingsdialog.cpp" line="95"/>
+        <location filename="../../gui/main/settingsdialog.cpp" line="103"/>
         <source>No configuration file !</source>
         <translation>No configuration file !</translation>
     </message>
     <message>
-        <location filename="../../gui/main/settingsdialog.cpp" line="99"/>
+        <location filename="../../gui/main/settingsdialog.cpp" line="107"/>
         <source>Failed reading configuration file !</source>
         <translation>Failed reading configuration file !</translation>
     </message>
@@ -1277,37 +1286,37 @@ b%2
 <context>
     <name>loloof64::ChessBoard</name>
     <message>
-        <location filename="../../gui/chessboard/chessboard.cpp" line="579"/>
-        <location filename="../../gui/chessboard/chessboard.cpp" line="583"/>
-        <location filename="../../gui/chessboard/chessboard.cpp" line="587"/>
-        <location filename="../../gui/chessboard/chessboard.cpp" line="591"/>
-        <location filename="../../gui/chessboard/chessboard.cpp" line="595"/>
+        <location filename="../../gui/chessboard/chessboard.cpp" line="584"/>
+        <location filename="../../gui/chessboard/chessboard.cpp" line="588"/>
+        <location filename="../../gui/chessboard/chessboard.cpp" line="592"/>
+        <location filename="../../gui/chessboard/chessboard.cpp" line="596"/>
+        <location filename="../../gui/chessboard/chessboard.cpp" line="600"/>
         <source>Game finished</source>
         <comment>Game finished modal title</comment>
         <translation>Game finished</translation>
     </message>
     <message>
-        <location filename="../../gui/chessboard/chessboard.cpp" line="579"/>
+        <location filename="../../gui/chessboard/chessboard.cpp" line="584"/>
         <source>Checkmate</source>
         <translation>Checkmate</translation>
     </message>
     <message>
-        <location filename="../../gui/chessboard/chessboard.cpp" line="583"/>
+        <location filename="../../gui/chessboard/chessboard.cpp" line="588"/>
         <source>Stalemate</source>
         <translation>Stalemate</translation>
     </message>
     <message>
-        <location filename="../../gui/chessboard/chessboard.cpp" line="587"/>
+        <location filename="../../gui/chessboard/chessboard.cpp" line="592"/>
         <source>Draw by 3-folds repetition</source>
         <translation>Draw by 3-folds repetition</translation>
     </message>
     <message>
-        <location filename="../../gui/chessboard/chessboard.cpp" line="591"/>
+        <location filename="../../gui/chessboard/chessboard.cpp" line="596"/>
         <source>Draw by insuficient material</source>
         <translation>Draw by insuficient material</translation>
     </message>
     <message>
-        <location filename="../../gui/chessboard/chessboard.cpp" line="595"/>
+        <location filename="../../gui/chessboard/chessboard.cpp" line="600"/>
         <source>Draw by the 50 moves rule</source>
         <translation>Draw by the 50 moves rule</translation>
     </message>
@@ -1372,28 +1381,28 @@ b%2
 <context>
     <name>loloof64::GameTimer</name>
     <message>
-        <location filename="../../gui/main/gametimer.cpp" line="9"/>
+        <location filename="../../gui/main/gametimer.cpp" line="7"/>
         <source>White side</source>
         <translation>White side</translation>
     </message>
     <message>
-        <location filename="../../gui/main/gametimer.cpp" line="10"/>
+        <location filename="../../gui/main/gametimer.cpp" line="8"/>
         <source>Black side</source>
         <translation>Black side</translation>
     </message>
     <message>
-        <location filename="../../gui/main/gametimer.cpp" line="79"/>
-        <location filename="../../gui/main/gametimer.cpp" line="80"/>
-        <location filename="../../gui/main/gametimer.cpp" line="102"/>
-        <location filename="../../gui/main/gametimer.cpp" line="103"/>
+        <location filename="../../gui/main/gametimer.cpp" line="77"/>
+        <location filename="../../gui/main/gametimer.cpp" line="78"/>
+        <location filename="../../gui/main/gametimer.cpp" line="100"/>
+        <location filename="../../gui/main/gametimer.cpp" line="101"/>
         <source>Player</source>
         <translation>Player</translation>
     </message>
     <message>
-        <location filename="../../gui/main/gametimer.cpp" line="79"/>
-        <location filename="../../gui/main/gametimer.cpp" line="80"/>
-        <location filename="../../gui/main/gametimer.cpp" line="102"/>
-        <location filename="../../gui/main/gametimer.cpp" line="103"/>
+        <location filename="../../gui/main/gametimer.cpp" line="77"/>
+        <location filename="../../gui/main/gametimer.cpp" line="78"/>
+        <location filename="../../gui/main/gametimer.cpp" line="100"/>
+        <location filename="../../gui/main/gametimer.cpp" line="101"/>
         <source>Computer</source>
         <translation>Computer</translation>
     </message>
