@@ -3,7 +3,7 @@
 #include <QFileDialog>
 #include <QDir>
 #include <QMessageBox>
-#include <QDebug>
+#include <iostream>
 #include <string>
 
 
@@ -83,7 +83,7 @@ void SettingsDialog::serializeOptionFile()
     }
     catch (Yaml::OperationException &ex)
     {
-        qDebug() << ex.Message();
+        std::cerr << ex.Message() << std::endl;
         QMessageBox::critical(this, tr("Saving error"), tr("Failed to save configuration file !"));
     }
 }
@@ -99,11 +99,11 @@ void SettingsDialog::loadOptionsFile()
         _fileChooserDir = QDir(uciEnginePath).absolutePath();
     }
     catch (Yaml::OperationException &ex) {
-        qDebug() << ex.Message();
+        std::cerr << ex.Message() << std::endl;
         QMessageBox::critical(this, tr("Loading error"), tr("No configuration file !"));
     }
     catch (Yaml::ParsingException &ex) {
-        qDebug() << ex.Message();
+        std::cerr << ex.Message() << std::endl;
         QMessageBox::critical(this, tr("Loading error"), tr("Failed reading configuration file !"));
     }
 }

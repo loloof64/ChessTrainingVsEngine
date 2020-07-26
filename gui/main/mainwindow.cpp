@@ -7,7 +7,7 @@
 #include "../game_selection/gameselectiondialog.h"
 #include <QMessageBox>
 #include <QFileDialog>
-#include <QDebug>
+#include <iostream>
 
 MainWindow::MainWindow(QWidget *parent)
     : QMainWindow(parent)
@@ -99,11 +99,11 @@ void MainWindow::loadRegisteredEnginePath()
         _componentsZone->setEnginePath(uciEnginePath);
     }
     catch (Yaml::OperationException &ex) {
-        qDebug() << ex.Message();
+        std::cerr << ex.Message() << std::endl;
         QMessageBox::critical(this, tr("Loading error"), tr("No configuration file !"));
     }
     catch (Yaml::ParsingException &ex) {
-        qDebug() << ex.Message();
+        std::cerr << ex.Message() << std::endl;
         QMessageBox::critical(this, tr("Loading error"), tr("Failed reading configuration file !"));
     }
 }
