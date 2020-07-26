@@ -73,11 +73,19 @@ void SettingsDialog::serializeOptionFile()
 {
     Yaml::Node root;
 
-    auto newEnginePath = _uciEngineLineEdit->text();
-    root["uci_engine"] = newEnginePath.toStdString();
-    Yaml::Serialize(root, "ChessTrainingVsEngine.yml");
+    try
+    {
+        auto newEnginePath = _uciEngineLineEdit->text();
+        root["uci_engine"] = newEnginePath.toStdString();
+        Yaml::Serialize(root, "ChessTrainingVsEngine.yml");
 
-    emit enginePathChanged(newEnginePath);
+        emit enginePathChanged(newEnginePath);
+    }
+    catch (Yaml::OperationException &ex)
+    {
+        qDebug() << ex.Message();
+        QMessageBox::critical(this, tr("Saving error"), tr("Failed to save configuration file !"));
+    }
 }
 
 void SettingsDialog::loadOptionsFile()
