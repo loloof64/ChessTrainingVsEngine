@@ -1329,6 +1329,18 @@ b%2
         <source>Game finished</source>
         <translation>Fin de partie</translation>
     </message>
+    <message>
+        <location filename="../../gui/main/componentszone.cpp" line="91"/>
+        <location filename="../../gui/main/componentszone.cpp" line="96"/>
+        <source>You run into timeout</source>
+        <translation>Vous n&apos;avez plus de temps</translation>
+    </message>
+    <message>
+        <location filename="../../gui/main/componentszone.cpp" line="91"/>
+        <location filename="../../gui/main/componentszone.cpp" line="96"/>
+        <source>Computer run into timeout</source>
+        <translation>L&apos;ordinateur n&apos;a plus de temps</translation>
+    </message>
 </context>
 <context>
     <name>loloof64::GameSelectionDialog</name>

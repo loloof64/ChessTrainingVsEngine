@@ -88,12 +88,12 @@ loloof64::ComponentsZone::ComponentsZone(QWidget *parent) : QWidget(parent)
 
     connect(_gameTimer, &loloof64::GameTimer::whiteOutOfTime, [this]() {
         _chessBoard->stopGame();
-        QMessageBox::information(this, tr("Game finished"), tr(_playerHasWhite ? "You run into timeout" : "Computer run into timeout"));
+        QMessageBox::information(this, tr("Game finished"), _playerHasWhite ? tr("You run into timeout") : tr("Computer run into timeout"));
     });
 
     connect(_gameTimer, &loloof64::GameTimer::blackOutOfTime, [this]() {
         _chessBoard->stopGame();
-        QMessageBox::information(this, tr("Game finished"), tr(_playerHasWhite ? "Computer run into timeout" :  "You run into timeout"));
+        QMessageBox::information(this, tr("Game finished"), _playerHasWhite ? tr("Computer run into timeout") :  tr("You run into timeout"));
     });
 }
 
