@@ -99,12 +99,14 @@ void MainWindow::loadRegisteredEnginePath()
         _componentsZone->setEnginePath(uciEnginePath);
     }
     catch (Yaml::OperationException &ex) {
-        std::cerr << ex.Message() << std::endl;
+        std::cerr << "Exception " << ex.what() << " " << ex.Message() << std::endl;
         QMessageBox::critical(this, tr("Loading error"), tr("No configuration file !"));
+        QMessageBox::critical(this, "Error", QString::asprintf("%s || %s", ex.what(), ex.Message()));
     }
     catch (Yaml::ParsingException &ex) {
-        std::cerr << ex.Message() << std::endl;
+        std::cerr << "Exception " << ex.what() << " " << ex.Message() << std::endl;
         QMessageBox::critical(this, tr("Loading error"), tr("Failed reading configuration file !"));
+        QMessageBox::critical(this, "Error", QString::asprintf("%s || %s", ex.what(), ex.Message()));
     }
 }
 
