@@ -22,6 +22,7 @@
 * SOFTWARE.
 *
 */
+// Modified a bit by loloof64
 
 #include "Yaml.hpp"
 #include <memory>
@@ -31,6 +32,8 @@
 #include <list>
 #include <cstdio>
 #include <stdarg.h>
+
+#include <QString>
 
 #ifdef WIN32
 #include <windows.h>
@@ -57,7 +60,7 @@ std::string DescribeIosFailure(const std::ios& stream)
 
 #ifdef WIN32
   else  {
-    result = QString::number(errno).toStdString();
+    result = QString::asprintf("Got error number %d", errno).toStdString();
   }
 #endif
 
