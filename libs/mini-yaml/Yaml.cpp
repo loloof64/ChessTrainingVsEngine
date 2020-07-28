@@ -34,6 +34,7 @@
 
 #ifdef WIN32
 #include <errhandlingapi.h>
+#include <winbase.h>
 #else
 #include <string.h>
 #endif
