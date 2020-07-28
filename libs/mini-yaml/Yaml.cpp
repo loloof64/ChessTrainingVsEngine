@@ -57,26 +57,25 @@ std::string DescribeIosFailure(const std::ios& stream)
   if (stream.eof()) {
     result = "Unexpected end of file.";
   }
-
-#ifdef WIN32
-  else  {
-    result = QString::asprintf("Got error number %d", errno).toStdString();
-  }
-#endif
-
-  else if (errno) {
-#if defined(__unix__)
-    // We use strerror_r because it's threadsafe.
-    // GNU's strerror_r returns a string and may ignore buffer completely.
-    char buffer[255];
-    result = std::string(strerror_r(errno, buffer, sizeof(buffer)));
-#else
-    result = std::string(strerror(errno));
-#endif
-  }
-
   else {
-    result = "Unknown file error.";
+#ifdef WIN32
+    result = QString::asprintf("Got error number %d", errno).toStdString();
+#else
+      if (errno) {
+#if defined(__unix__)
+         // We use strerror_r because it's threadsafe.
+         // GNU's strerror_r returns a string and may ignore buffer completely.
+         char buffer[255];
+         result = std::string(strerror_r(errno, buffer, sizeof(buffer)));
+#else
+         result = std::string(strerror(errno));
+#endif
+       }
+
+       else {
+         result = "Unknown file error.";
+       }
+#endif
   }
 
   return result;
