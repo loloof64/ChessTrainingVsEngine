@@ -15,6 +15,8 @@ This project has been made with QtCreator and Qt 5.14.
 
 Don't forget to generate translations files, from resources/translations subfolder, with Qt Linguist.
 
+Also using errhandlingapi.h on Windows and string.h on Unix.
+
 ## Credits
 
 * FreeSerif font downloaded from https://fr.fonts2u.com/free-serif.police.

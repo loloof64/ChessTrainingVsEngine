@@ -32,9 +32,11 @@
 #include <cstdio>
 #include <stdarg.h>
 
-// added by loloof64
-#include <iostream>
-
+#ifdef WIN32
+#include <errhandlingapi.h>
+#else
+#include <string.h>
+#endif
 
 // Implementation access definitions.
 #define NODE_IMP static_cast<NodeImp*>(m_pImp)
@@ -43,6 +45,41 @@
 
 
 #define IT_IMP static_cast<IteratorImp*>(m_pImp)
+
+// https://stackoverflow.com/a/1725770/662618
+std::string DescribeIosFailure(const std::ios& stream)
+{
+  std::string result;
+
+  if (stream.eof()) {
+    result = "Unexpected end of file.";
+  }
+
+#ifdef WIN32
+  // GetLastError() gives more details than errno.
+  else if (GetLastError() != 0) {
+    result = FormatSystemMessage(GetLastError());
+  }
+#endif
+
+  else if (errno) {
+#if defined(__unix__)
+    // We use strerror_r because it's threadsafe.
+    // GNU's strerror_r returns a string and may ignore buffer completely.
+    char buffer[255];
+    result = std::string(strerror_r(errno, buffer, sizeof(buffer)));
+#else
+    result = std::string(strerror(errno));
+#endif
+  }
+
+  else {
+    result = "Unknown file error.";
+  }
+
+  return result;
+}
+
 
 
 namespace Yaml
@@ -2230,7 +2267,7 @@ namespace Yaml
         std::ifstream f(filename, std::ifstream::binary);
         if (f.is_open() == false)
         {
-            std::cerr << "Error reading " << filename << std::endl; // added by loloof64
+            std::cerr << "Error reading " << filename << " : " << DescribeIosFailure(f) << std::endl; // added by loloof64
             throw OperationException(g_ErrorCannotOpenFile);
         }
 
@@ -2297,7 +2334,7 @@ namespace Yaml
         std::ofstream f(filename);
         if (f.is_open() == false)
         {
-            std::cerr << "Error reading " << filename << std::endl; // added by loloof64
+            std::cerr << "Error saving " << filename << " : " << DescribeIosFailure(f) << std::endl; // added by loloof64
             throw OperationException(g_ErrorCannotOpenFile);
         }
 
