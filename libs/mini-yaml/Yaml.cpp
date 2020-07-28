@@ -32,6 +32,9 @@
 #include <cstdio>
 #include <stdarg.h>
 
+// added by loloof64
+#include <iostream>
+
 
 // Implementation access definitions.
 #define NODE_IMP static_cast<NodeImp*>(m_pImp)
@@ -2227,6 +2230,7 @@ namespace Yaml
         std::ifstream f(filename, std::ifstream::binary);
         if (f.is_open() == false)
         {
+            std::cerr << "Error reading " << filename << std::endl; // added by loloof64
             throw OperationException(g_ErrorCannotOpenFile);
         }
 
@@ -2293,6 +2297,7 @@ namespace Yaml
         std::ofstream f(filename);
         if (f.is_open() == false)
         {
+            std::cerr << "Error reading " << filename << std::endl; // added by loloof64
             throw OperationException(g_ErrorCannotOpenFile);
         }
 

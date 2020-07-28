@@ -85,7 +85,6 @@ void SettingsDialog::serializeOptionFile()
     {
         std::cerr << "Exception " << ex.what() << " " << ex.Message() << std::endl;
         QMessageBox::critical(this, tr("Saving error"), tr("Failed to save configuration file !"));
-        QMessageBox::critical(this, "Error", QString::asprintf("%s || %s", ex.what(), ex.Message()));
     }
 }
 
@@ -102,11 +101,9 @@ void SettingsDialog::loadOptionsFile()
     catch (Yaml::OperationException &ex) {
         std::cerr << "Exception " << ex.what() << " " << ex.Message() << std::endl;
         QMessageBox::critical(this, tr("Loading error"), tr("No configuration file !"));
-        QMessageBox::critical(this, "Error", QString::asprintf("%s || %s", ex.what(), ex.Message()));
     }
     catch (Yaml::ParsingException &ex) {
         std::cerr << "Exception " << ex.what() << " " << ex.Message() << std::endl;
         QMessageBox::critical(this, tr("Loading error"), tr("Failed reading configuration file !"));
-        QMessageBox::critical(this, "Error", QString::asprintf("%s || %s", ex.what(), ex.Message()));
     }
 }
