@@ -33,8 +33,7 @@
 #include <stdarg.h>
 
 #ifdef WIN32
-#include <errhandlingapi.h>
-#include <winbase.h>
+#include <windows.h>
 #else
 #include <string.h>
 #endif
@@ -57,9 +56,8 @@ std::string DescribeIosFailure(const std::ios& stream)
   }
 
 #ifdef WIN32
-  // GetLastError() gives more details than errno.
-  else if (GetLastError() != 0) {
-    result = FormatSystemMessage(GetLastError());
+  else  {
+    result = QString::number(errno).toStdString();
   }
 #endif
 
