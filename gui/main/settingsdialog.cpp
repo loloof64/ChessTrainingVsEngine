@@ -3,9 +3,6 @@
 #include <QFileDialog>
 #include <QDir>
 #include <QMessageBox>
-#include <iostream>
-#include <string>
-
 
 SettingsDialog::SettingsDialog(QWidget *parent): QDialog(parent, Qt::WindowTitleHint | Qt::CustomizeWindowHint), _fileChooserDir(QString())
 {
@@ -77,13 +74,14 @@ void SettingsDialog::serializeOptionFile()
     {
         auto newEnginePath = _uciEngineLineEdit->text();
         root["uci_engine"] = newEnginePath.toStdString();
-        Yaml::Serialize(root, "ChessTrainingVsEngine.yml");
+        auto filePath = QDir::toNativeSeparators(QDir::homePath() + "/ChessTrainingVsEngine.yml");
+        Yaml::Serialize(root, filePath.toStdString().c_str());
 
         emit enginePathChanged(newEnginePath);
     }
     catch (Yaml::OperationException &ex)
     {
-        std::cerr << "Exception " << ex.what() << " " << ex.Message() << std::endl;
+        std::cerr << ex.Message() << std::endl;
         QMessageBox::critical(this, tr("Saving error"), tr("Failed to save configuration file !"));
     }
 }
@@ -92,18 +90,19 @@ void SettingsDialog::loadOptionsFile()
 {
     try {
         Yaml::Node root;
-        Yaml::Parse(root, "ChessTrainingVsEngine.yml");
+        auto filePath = QDir::toNativeSeparators(QDir::homePath() + "/ChessTrainingVsEngine.yml");
+        Yaml::Parse(root, filePath.toStdString().c_str());
 
         auto uciEnginePath = QString::fromStdString(root["uci_engine"].As<std::string>());
         _uciEngineLineEdit->setText(uciEnginePath);
         _fileChooserDir = QDir(uciEnginePath).absolutePath();
     }
     catch (Yaml::OperationException &ex) {
-        std::cerr << "Exception " << ex.what() << " " << ex.Message() << std::endl;
+        std::cerr << ex.Message() << std::endl;
         QMessageBox::critical(this, tr("Loading error"), tr("No configuration file !"));
     }
     catch (Yaml::ParsingException &ex) {
-        std::cerr << "Exception " << ex.what() << " " << ex.Message() << std::endl;
+        std::cerr << ex.Message() << std::endl;
         QMessageBox::critical(this, tr("Loading error"), tr("Failed reading configuration file !"));
     }
 }

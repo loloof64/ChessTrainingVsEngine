@@ -22,7 +22,6 @@
 * SOFTWARE.
 *
 */
-// Modified a bit by loloof64
 
 #include "Yaml.hpp"
 #include <memory>
@@ -33,14 +32,6 @@
 #include <cstdio>
 #include <stdarg.h>
 
-#include <QString>
-
-#ifdef WIN32
-#include <windows.h>
-#else
-#include <string.h>
-#endif
-
 // Implementation access definitions.
 #define NODE_IMP static_cast<NodeImp*>(m_pImp)
 #define NODE_IMP_EXT(node) static_cast<NodeImp*>(node.m_pImp)
@@ -48,40 +39,6 @@
 
 
 #define IT_IMP static_cast<IteratorImp*>(m_pImp)
-
-// https://stackoverflow.com/a/1725770/662618
-std::string DescribeIosFailure(const std::ios& stream)
-{
-  std::string result;
-
-  if (stream.eof()) {
-    result = "Unexpected end of file.";
-  }
-  else {
-#ifdef WIN32
-    result = QString::asprintf("Got error number %d", errno).toStdString();
-#else
-      if (errno) {
-#if defined(__unix__)
-         // We use strerror_r because it's threadsafe.
-         // GNU's strerror_r returns a string and may ignore buffer completely.
-         char buffer[255];
-         result = std::string(strerror_r(errno, buffer, sizeof(buffer)));
-#else
-         result = std::string(strerror(errno));
-#endif
-       }
-
-       else {
-         result = "Unknown file error.";
-       }
-#endif
-  }
-
-  return result;
-}
-
-
 
 namespace Yaml
 {
@@ -2268,7 +2225,6 @@ namespace Yaml
         std::ifstream f(filename, std::ifstream::binary);
         if (f.is_open() == false)
         {
-            std::cerr << "Error reading " << filename << " : " << DescribeIosFailure(f) << std::endl; // added by loloof64
             throw OperationException(g_ErrorCannotOpenFile);
         }
 
@@ -2335,7 +2291,6 @@ namespace Yaml
         std::ofstream f(filename);
         if (f.is_open() == false)
         {
-            std::cerr << "Error saving " << filename << " : " << DescribeIosFailure(f) << std::endl; // added by loloof64
             throw OperationException(g_ErrorCannotOpenFile);
         }
 
