@@ -28,6 +28,7 @@ namespace loloof64 {
         void setEnginePath(QString enginePath);
         void startNewGame(QString positionFen, bool playerHasWhite);
         void startNewTimedGame(QString positionFen, bool playerHasWhite, int whiteTimeMs, int blackTimeMs);
+        void stopGame();
 
     public slots:
         void reverseBoard();

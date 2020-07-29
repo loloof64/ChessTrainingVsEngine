@@ -49,6 +49,14 @@ MainWindow::MainWindow(QWidget *parent)
         loadGameFromPgn();
     });
 
+    _mainToolBar->addAction(QIcon(QPixmap(":/icons/stop.svg")), QString(tr("Stop game")), [this]() {
+        auto validation = QMessageBox::question(this, tr("Stop game"), tr("Do you really want to stop the game ?"));
+        if (validation == QMessageBox::Ok)
+        {
+            _componentsZone->stopGame();
+        }
+    });
+
     _mainToolBar->addAction(QIcon(QPixmap(":/icons/swap.svg")), QString(tr("Toggle side", "Caption for the button 'toggle side'")), [this](){
         this->_componentsZone->reverseBoard();
     });
@@ -93,7 +101,8 @@ void MainWindow::loadRegisteredEnginePath()
 {
     try {
         Yaml::Node root;
-        Yaml::Parse(root, "ChessTrainingVsEngine.yml");
+        auto filePath = QDir::toNativeSeparators(QDir::homePath() + "/ChessTrainingVsEngine.yml");
+        Yaml::Parse(root, filePath.toStdString().c_str());
 
         auto uciEnginePath = QString::fromStdString(root["uci_engine"].As<std::string>());
         _componentsZone->setEnginePath(uciEnginePath);

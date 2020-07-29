@@ -252,3 +252,9 @@ void loloof64::ComponentsZone::reactToEngineMoveIfPossible(QString bestMove)
         _chessBoard->playMove(startFile, startRank, endFile, endRank);
     }
 }
+
+void loloof64::ComponentsZone::stopGame()
+{
+    _gameTimer->stop();
+    _chessBoard->stopGame();
+}
