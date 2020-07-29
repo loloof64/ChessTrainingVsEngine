@@ -334,65 +334,76 @@ b%2
     </message>
     <message>
         <location filename="../../gui/main/mainwindow.cpp" line="52"/>
+        <location filename="../../gui/main/mainwindow.cpp" line="56"/>
+        <source>Stop game</source>
+        <translation>Arrêter la partie</translation>
+    </message>
+    <message>
+        <location filename="../../gui/main/mainwindow.cpp" line="56"/>
+        <source>Do you really want to stop the game ?</source>
+        <translation type="unfinished">Souhaitez-vous vraiment arrêter la partie ?</translation>
+    </message>
+    <message>
+        <location filename="../../gui/main/mainwindow.cpp" line="64"/>
         <source>Toggle side</source>
         <comment>Caption for the button &apos;toggle side&apos;</comment>
         <translation>Tourner l&apos;échiquier</translation>
     </message>
     <message>
-        <location filename="../../gui/main/mainwindow.cpp" line="55"/>
+        <location filename="../../gui/main/mainwindow.cpp" line="67"/>
         <source>Settings</source>
         <comment>Caption for the button &apos;settings&apos;</comment>
         <translation>Paramètres</translation>
     </message>
     <message>
-        <location filename="../../gui/main/mainwindow.cpp" line="103"/>
-        <location filename="../../gui/main/mainwindow.cpp" line="107"/>
+        <location filename="../../gui/main/mainwindow.cpp" line="115"/>
+        <location filename="../../gui/main/mainwindow.cpp" line="118"/>
         <source>Loading error</source>
         <translation>Erreur de chargement</translation>
     </message>
     <message>
-        <location filename="../../gui/main/mainwindow.cpp" line="103"/>
+        <location filename="../../gui/main/mainwindow.cpp" line="115"/>
         <source>No configuration file !</source>
         <translation>Pas de fichier de configuration !</translation>
     </message>
     <message>
-        <location filename="../../gui/main/mainwindow.cpp" line="107"/>
+        <location filename="../../gui/main/mainwindow.cpp" line="118"/>
         <source>Failed reading configuration file !</source>
         <translation>Echec de lecture du fichier de configuration !</translation>
     </message>
     <message>
-        <location filename="../../gui/main/mainwindow.cpp" line="113"/>
+        <location filename="../../gui/main/mainwindow.cpp" line="124"/>
         <source>Choose pgn</source>
         <translation>Choisissez le PGN</translation>
     </message>
     <message>
-        <location filename="../../gui/main/mainwindow.cpp" line="113"/>
+        <location filename="../../gui/main/mainwindow.cpp" line="124"/>
         <source>Pgn file (*.pgn)</source>
         <translation>Fichier PGN (*.pgn)</translation>
     </message>
     <message>
-        <location filename="../../gui/main/mainwindow.cpp" line="137"/>
+        <location filename="../../gui/main/mainwindow.cpp" line="148"/>
         <source>Game already over</source>
         <translation>Partie déjà terminée</translation>
     </message>
     <message>
-        <location filename="../../gui/main/mainwindow.cpp" line="137"/>
+        <location filename="../../gui/main/mainwindow.cpp" line="148"/>
         <source>The game is already over. You can&apos;t play it.</source>
         <translation>La partie est déjà terminée. Vous ne pouvez pas la jouer.</translation>
     </message>
     <message>
-        <location filename="../../gui/main/mainwindow.cpp" line="152"/>
-        <location filename="../../gui/main/mainwindow.cpp" line="158"/>
+        <location filename="../../gui/main/mainwindow.cpp" line="163"/>
+        <location filename="../../gui/main/mainwindow.cpp" line="169"/>
         <source>Unable to open file</source>
         <translation>Impossible d&apos;ouvrir le fichier</translation>
     </message>
     <message>
-        <location filename="../../gui/main/mainwindow.cpp" line="153"/>
+        <location filename="../../gui/main/mainwindow.cpp" line="164"/>
         <source>Wrong game data</source>
         <translation>Données de jeu incorrectes</translation>
     </message>
     <message>
-        <location filename="../../gui/main/mainwindow.cpp" line="159"/>
+        <location filename="../../gui/main/mainwindow.cpp" line="170"/>
         <source>Misc reading error</source>
         <translation>Erreur de lecture diverse</translation>
     </message>
@@ -1223,17 +1234,17 @@ b%2
 <context>
     <name>SettingsDialog</name>
     <message>
-        <location filename="../../gui/main/settingsdialog.cpp" line="20"/>
+        <location filename="../../gui/main/settingsdialog.cpp" line="17"/>
         <source>UCI engine</source>
         <translation>Moteur UCI</translation>
     </message>
     <message>
-        <location filename="../../gui/main/settingsdialog.cpp" line="22"/>
+        <location filename="../../gui/main/settingsdialog.cpp" line="19"/>
         <source>Choose engine ...</source>
         <translation>Choix du moteur UCI ...</translation>
     </message>
     <message>
-        <location filename="../../gui/main/settingsdialog.cpp" line="25"/>
+        <location filename="../../gui/main/settingsdialog.cpp" line="22"/>
         <source>Choose engine</source>
         <translation>Choix du moteur UCI</translation>
     </message>
@@ -1242,43 +1253,43 @@ b%2
         <translation type="vanished">Tous les fichiers</translation>
     </message>
     <message>
-        <location filename="../../gui/main/settingsdialog.cpp" line="41"/>
+        <location filename="../../gui/main/settingsdialog.cpp" line="38"/>
         <source>No engine choosen</source>
         <translation>Aucun fichier choisi</translation>
     </message>
     <message>
-        <location filename="../../gui/main/settingsdialog.cpp" line="41"/>
+        <location filename="../../gui/main/settingsdialog.cpp" line="38"/>
         <source>You can&apos;t validate without choosing an UCI engine !</source>
         <translation>Vous ne pouvez pas valider sans avoir choisi un moteur UCI !</translation>
     </message>
     <message>
-        <location filename="../../gui/main/settingsdialog.cpp" line="56"/>
+        <location filename="../../gui/main/settingsdialog.cpp" line="53"/>
         <source>Settings</source>
         <translation>Paramètres</translation>
     </message>
     <message>
-        <location filename="../../gui/main/settingsdialog.cpp" line="87"/>
+        <location filename="../../gui/main/settingsdialog.cpp" line="85"/>
         <source>Saving error</source>
         <translation>Erreur de sauvegarde</translation>
     </message>
     <message>
-        <location filename="../../gui/main/settingsdialog.cpp" line="87"/>
+        <location filename="../../gui/main/settingsdialog.cpp" line="85"/>
         <source>Failed to save configuration file !</source>
         <translation>Erreur de sauvegarde de la configuration !</translation>
     </message>
     <message>
-        <location filename="../../gui/main/settingsdialog.cpp" line="103"/>
-        <location filename="../../gui/main/settingsdialog.cpp" line="107"/>
+        <location filename="../../gui/main/settingsdialog.cpp" line="102"/>
+        <location filename="../../gui/main/settingsdialog.cpp" line="106"/>
         <source>Loading error</source>
         <translation>Erreur de chargement</translation>
     </message>
     <message>
-        <location filename="../../gui/main/settingsdialog.cpp" line="103"/>
+        <location filename="../../gui/main/settingsdialog.cpp" line="102"/>
         <source>No configuration file !</source>
         <translation>Pas de fichier de configuration !</translation>
     </message>
     <message>
-        <location filename="../../gui/main/settingsdialog.cpp" line="107"/>
+        <location filename="../../gui/main/settingsdialog.cpp" line="106"/>
         <source>Failed reading configuration file !</source>
         <translation>Echec de lecture du fichier de configuration !</translation>
     </message>

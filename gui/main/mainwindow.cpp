@@ -50,10 +50,14 @@ MainWindow::MainWindow(QWidget *parent)
     });
 
     _mainToolBar->addAction(QIcon(QPixmap(":/icons/stop.svg")), QString(tr("Stop game")), [this]() {
-        auto validation = QMessageBox::question(this, tr("Stop game"), tr("Do you really want to stop the game ?"));
-        if (validation == QMessageBox::Ok)
+        auto gameInProgress = _componentsZone->gameInProgress();
+        if (gameInProgress)
         {
-            _componentsZone->stopGame();
+            auto validation = QMessageBox::question(this, tr("Stop game"), tr("Do you really want to stop the game ?"));
+            if (validation == QMessageBox::Yes)
+            {
+                _componentsZone->stopGame();
+            }
         }
     });
 
