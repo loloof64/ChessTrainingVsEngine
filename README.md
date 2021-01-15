@@ -12,6 +12,8 @@ This project has been made with QtCreator and Qt 5.14.
 
 Don't forget to generate translations files, from resources/translations subfolder, with Qt Linguist.
 
+Also, you must use a compiler which is compatible with C++14.
+
 ## Credits
 
 * FreeSerif font downloaded from https://fr.fonts2u.com/free-serif.police.
